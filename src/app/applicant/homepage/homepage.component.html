@@ -1,0 +1,84 @@
+<!-- registrasi -->
+<div class="surface-section px-4 py-8 md:px-6 lg:px-8"
+    style="background: linear-gradient(0deg, rgba(0, 123, 255, 0.5), rgba(0, 123, 255, 0.5)), linear-gradient(92.54deg, #1C80CF 47.88%, #FFFFFF 100.01%);">
+    <div class="text-center text-white">
+        <span class="text-5xl pi pi-briefcase mb-3"></span>
+        <div class="text-900 font-bold text-5xl mb-1 text-white"> Bergabunglah sekarang, dan kembangkan kariermu</div>
+        <div class="text-700 text-2xl mb-5 text-white">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit
+            numquam
+            eligendi quos.</div>
+        <button pButton pRipple label="Daftar" icon="pi pi-pencil"
+            class="font-bold px-5 py-3 pt-3 p-button-raised p-button-rounded p-button-warning white-space-nowrap"></button>
+    </div>
+</div>
+
+<!-- Search bar -->
+<div class="p-fluid grid px-5 py-5">
+    <span class="col-12 p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input type="text" pInputText placeholder="Cari pekerjaan" (ngModel)='value3' />
+    </span>
+    <div class=" col-12 text-blue-600 font-bold text-xl pi pi-chart-line"> 123 Lowongan pekerjaan</div>
+</div>
+
+
+<div class="grid px-5">
+    <!-- filterbox -->
+    <div class="grid md:col-4 lg:col-3">
+        <p-listbox class="col" [options]="job" (ngModel)="selectedJob" [metaKeySelection]="false" [checkbox]="true"
+            [filter]="true" [multiple]="true" optionLabel="name" [listStyle]="{'max-height':'150px'}"
+            [style]="{'width':'15rem'}" filterPlaceHolder="Spesialisasi">
+            <ng-template let-job pTemplate="item">
+                <div class="job-item">
+                    {{job.name}}
+                </div>
+            </ng-template>
+        </p-listbox>
+
+        <p-listbox class="col" [options]="countries" (ngModel)="selectedCountries" [metaKeySelection]="false"
+            [checkbox]="true" [filter]="true" [multiple]="true" optionLabel="name" [listStyle]="{'max-height':'150px'}"
+            [style]="{'width':'15rem'}" filterPlaceHolder="kota">
+            <ng-template let-countries pTemplate="item">
+                <div class="countries-item">
+                    {{countries.name}}
+                </div>
+            </ng-template>
+        </p-listbox>
+    </div>
+
+    <!-- ngfor card job here -->
+    <div class="col-12 md:col-3 lg:col-3">
+        <div class="surface-card shadow-2 p-4 border-round">
+            <div class="grid flex align-items-center justify-content-start mb-1">
+                <div class="col-fix md:col-3 lg:col-3">
+                    <p-image src="https://picsum.photos/200/200" alt="Image" width="60"></p-image>
+                </div>
+                <div class="col-9 flex">
+                    <div class="col-12 text-800 font-bold text-xl">Back End Developer</div>
+                </div>
+            </div>
+
+            <div class="flex align-items-center text-600 mb-3 ">Company name</div>
+            <div class="flex align-items-center text-500">
+                <i class="pi pi-map-marker mr-3"></i>
+                <span>Location</span>
+            </div>
+            <div class="flex align-items-center mt-1 text-500">
+                <i class="pi pi-money-bill mr-3"></i>
+                <span>Salary, Rp. xxx.xxx</span>
+            </div>
+            <div class="flex align-items-center mt-1 text-500">
+                <i class="pi pi-clock mr-3"></i>
+                <span>Freshgraduate /1th experience</span>
+            </div>
+            <div class="flex align-items-center mt-1 mb-3 text-500">
+                <i class="pi pi-calendar-plus mr-3"></i>
+                <span>12/09/2022</span>
+            </div>
+            <div class="flex mt-5">
+                <p-button label="Apply Now" icon="pi pi-check justify-content-start" onclick="apply()"></p-button>
+            </div>
+        </div>
+    </div>
+
+</div>
