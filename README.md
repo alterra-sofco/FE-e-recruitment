@@ -1,20 +1,29 @@
 # JobPortal
 
-_
-|__ Applicant component 
-| |__ Homepage component (homepage job list for applicant)
-|
-|__ Core Component
-| |__Footer component
-| |__Header component (empty)
-|
-|__ Job component (realted job CRUD component dump in here)
-|
-|__ Shared Component (related to services)
-| |__ Services 
-| |__ Shared Modul (service provider, import & export module)
-|
-|__ App routing
+```sh
+Applicant component 
+  - Homepage component (homepage job list for applicant)
+```
+
+```sh
+ Core Component
+  - Footer component
+  - Header component (empty)
+```
+
+```sh
+Job component (realted job CRUD component dump in here)
+```
+
+```sh
+Shared Component (related to services)
+  - Services 
+  - Shared Modul (service provider, import & export module)
+```
+
+```sh
+App routing
+```
 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.3.
