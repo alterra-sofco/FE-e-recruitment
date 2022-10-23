@@ -11,6 +11,8 @@ import { ToastModule } from 'primeng/toast';
 import { StyleClassModule} from 'primeng/styleclass';
 import { RippleModule } from 'primeng/ripple';
 import {MenubarModule} from 'primeng/menubar';
+import {DividerModule} from 'primeng/divider';
+import { TagModule } from 'primeng/tag';
 //card
 import { ButtonModule } from 'primeng/button';
 import { CardModule, } from 'primeng/card';
@@ -23,13 +25,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //overlay
 import {DynamicDialogModule} from 'primeng/dynamicdialog';
 import { DialogModule } from 'primeng/dialog';
+import { StepHomepageComponent } from './step-homepage/step-homepage.component';
+
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    StepHomepageComponent
+  ],
   imports: [
     CommonModule,
     BrowserAnimationsModule,
+  
     //primeNg
     RippleModule,
     StyleClassModule,
@@ -43,6 +50,8 @@ import { DialogModule } from 'primeng/dialog';
     MenubarModule,
     DynamicDialogModule,
     DialogModule,
+    DividerModule,
+    TagModule,
     
     //reactive 
     ReactiveFormsModule,
@@ -64,10 +73,13 @@ import { DialogModule } from 'primeng/dialog';
     MenubarModule,
     DynamicDialogModule,
     DialogModule,
+    DividerModule,
+    TagModule,
 
     //reactive 
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    StepHomepageComponent,
   ],
   //service in here
   providers: [],
