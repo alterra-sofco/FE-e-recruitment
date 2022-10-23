@@ -1,4 +1,4 @@
-# JobPortal
+# Job seeker homepage
 
 ```sh
 Applicant component 
