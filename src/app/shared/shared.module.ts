@@ -13,6 +13,8 @@ import { RippleModule } from 'primeng/ripple';
 import {MenubarModule} from 'primeng/menubar';
 import {DividerModule} from 'primeng/divider';
 import { TagModule } from 'primeng/tag';
+import {FileUploadModule} from 'primeng/fileupload';
+import {HttpClientModule} from '@angular/common/http';
 //card
 import { ButtonModule } from 'primeng/button';
 import { CardModule, } from 'primeng/card';
@@ -26,6 +28,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {DynamicDialogModule} from 'primeng/dynamicdialog';
 import { DialogModule } from 'primeng/dialog';
 import { StepHomepageComponent } from './step-homepage/step-homepage.component';
+//calender
+import {CalendarModule} from 'primeng/calendar';
+
 
 
 
@@ -38,6 +43,8 @@ import { StepHomepageComponent } from './step-homepage/step-homepage.component';
     BrowserAnimationsModule,
   
     //primeNg
+    FileUploadModule,
+    HttpClientModule,
     RippleModule,
     StyleClassModule,
     StepsModule,
@@ -52,6 +59,7 @@ import { StepHomepageComponent } from './step-homepage/step-homepage.component';
     DialogModule,
     DividerModule,
     TagModule,
+    CalendarModule,
     
     //reactive 
     ReactiveFormsModule,
@@ -61,6 +69,8 @@ import { StepHomepageComponent } from './step-homepage/step-homepage.component';
     BrowserAnimationsModule,
 
     //primeNg
+    FileUploadModule,
+    HttpClientModule,
     RippleModule,
     StyleClassModule,
     StepsModule,
@@ -75,6 +85,7 @@ import { StepHomepageComponent } from './step-homepage/step-homepage.component';
     DialogModule,
     DividerModule,
     TagModule,
+    CalendarModule,
 
     //reactive 
     ReactiveFormsModule,

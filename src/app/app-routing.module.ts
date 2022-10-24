@@ -12,7 +12,7 @@ const routes: Routes = [
     component: ProfileComponent,
     children: [
       {path: 'details',component: ProfileDetailsComponent},
-      {path: 'update',component: ProfileUpdateComponent}
+      {path: 'details/update',component: ProfileUpdateComponent}
     ]
   }
 ];

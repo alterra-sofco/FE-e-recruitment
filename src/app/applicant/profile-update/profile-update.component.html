@@ -1,26 +1,46 @@
-<div class="text-900 font-semibold text-lg mt-3">Profile</div>
-<p-divider class="p-element">
-    <div role="separator" class="p-divider p-component p-divider-horizontal p-divider-solid p-divider-left">
-        <div class="p-divider-content"></div>
-    </div>
-</p-divider>
+<!-- <p-toast></p-toast> -->
+
+<div class="text-900 font-semibold text-lg mt-3 mb-5">Edit Profile</div>
+
 <div class="flex gap-5 flex-column-reverse md:flex-row">
     <div class="flex-auto p-fluid">
         <div class="mb-4"><label for="email" class="block font-medium text-900 mb-2">Name</label><input id="email"
                 type="text" pinputtext="" class="p-inputtext p-component p-element"></div>
-        <div class="mb-4"><label for="bio" class="block font-medium text-900 mb-2">Bio</label><textarea id="bio"
-                type="text" pinputtextarea="" rows="5"
+
+        <!-- bio -->
+        <div class="mb-4"><label for="bio" class="block font-medium text-900 mb-2">Bio</label>
+            <textarea id="bio" type="text" pinputtextarea="" rows="5"
                 class="p-inputtextarea p-inputtext p-component p-element p-inputtextarea-resizable"
-                style="height: 131px; overflow: hidden;"></textarea></div>
-        <div class="mb-4"><label for="website" class="block font-medium text-900 mb-2">URL</label>
-            <div class="p-inputgroup"><span class="p-inputgroup-addon">https://</span><input id="website" type="text"
-                    pinputtext="" class="p-inputtext p-component p-element"></div>
+                style="height: 131px; overflow: hidden;">
+            </textarea>
         </div>
-        <div class="mb-4"><label for="state" class="block font-medium text-900 mb-2">Company</label><input id="state"
-                type="text" pinputtext="" class="p-inputtext p-component p-element"></div>
-        <div><button pbutton="" pripple="" label="Update Profile"
-                class="p-element p-ripple w-auto p-button p-component"><span class="p-button-label">Update
-                    Profile</span><span class="p-ink"></span></button></div>
+
+        <!-- cv upload -->
+        <div class="mb-4"><label for="state" class="block font-medium text-900 mb-2">Curiculum Vitae</label>
+            <p-fileUpload #fubauto mode="basic" name="demo[]" url="./upload.php" accept="pdf/*" maxFileSize!="1000000"
+                (onUpload)="onUpload($event)" [auto]="true" chooseLabel="Browse"></p-fileUpload>
+        </div>
+
+        <!-- dob date input -->
+        <div class="mb-4"><label for="state" class="block font-medium text-900 mb-2">Date of Birth</label>
+            <p-calendar [(ngModel)]="date3" [showIcon]="true" inputId="icon"></p-calendar>
+        </div>
+
+        <!-- porto -->
+        <div class="mb-4"><label for="website" class="block font-medium text-900 mb-2">Portofolio</label>
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon">https://</span>
+                <input id="website" type="text" pinputtext="" class="p-inputtext p-component p-element">
+            </div>
+        </div>
+
+        <!-- btn -->
+        <div>
+            <button pbutton="" pripple="" label="Update Profile"
+                class="p-element p-ripple w-auto p-button p-component"><span class="p-button-label">
+                    Update Profile</span><span class="p-ink"></span>
+            </button>
+        </div>
     </div>
     <div class="flex flex-column align-items-center flex-or"><span class="font-medium text-900 mb-2">Profile
             Picture</span><img src="assets/images/blocks/avatars/circle-big/avatar-f-2.png"
