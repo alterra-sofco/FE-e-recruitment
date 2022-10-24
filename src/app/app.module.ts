@@ -1,4 +1,3 @@
-
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -12,6 +11,8 @@ import { FooterComponent } from './core/footer/footer.component';
 import { SharedModule } from 'primeng/api';
 import { ApplicantModule } from './applicant/applicant.module';
 import { NgModule } from '@angular/core';
+import { CoreModule } from './core/core.module';
+import { StepHomepageComponent } from './shared/step-homepage/step-homepage.component';
 
 @NgModule({
   declarations: [

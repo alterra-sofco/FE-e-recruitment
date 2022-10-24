@@ -9,9 +9,12 @@ import { PrimeNGConfig } from 'primeng/api';
 export class HomepageComponent implements OnInit {
 
   value3: string = '';
+  //modal
+  displayMaximizable!: boolean;
 
-  selectedCountries!: Country;
-  countries: Country[];
+  //filter
+  selectedSkill!: Skill;
+  skill: Skill[];
 
   selectedJob!: any;
   job: any[];
@@ -19,11 +22,11 @@ export class HomepageComponent implements OnInit {
   constructor(
     private primengConfig: PrimeNGConfig,
   ) {
-    this.countries = [
-      { name: 'Jawa Barat', code: 'AU' },
-      { name: 'Jawa Timur', code: 'BR' },
-      { name: 'Jawa Tengah', code: 'CN' },
-      { name: 'Jakarta', code: 'EG' },
+    this.skill = [
+      { name: 'Phyton', code: 'AU' },
+      { name: 'Golang', code: 'BR' },
+      { name: 'Java', code: 'CN' },
+      { name: 'JMarketing', code: 'EG' },
     ];
 
     this.job = [
@@ -43,11 +46,15 @@ export class HomepageComponent implements OnInit {
 
   }
 
+  showMaximizableDialog() {
+    this.displayMaximizable = true;
+}
+
 
 }
 
 
-interface Country {
+interface Skill {
   name: string;
   code: string;
 }
