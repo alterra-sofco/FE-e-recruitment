@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PrimeNGConfig } from 'primeng/api';
+import { Skill } from 'src/app/shared/models/skill';
 // import { MessageService } from 'primeng/api';
 
 @Component({
@@ -17,13 +19,26 @@ export class ProfileUpdateComponent implements OnInit {
   invalidDates!: Array<Date>
 
   //file
-  uploadedFiles!: File;
+  uploadedFiles: any[] = [];
+
+  //skill
+  selectedSkill!: Skill;
+  skills: Skill[];
 
   constructor(
+    private primengConfig: PrimeNGConfig,
     // private messageService: MessageService
-    ) { }
+  ) {
+    this.skills = [
+      { name: 'Phyton', code: 'NY' },
+      { name: 'Angular', code: 'RM' },
+      { name: 'Java', code: 'LDN' },
+    ];
+
+  }
 
   ngOnInit(): void {
+   
     // date
     let today = new Date();
     let month = today.getMonth();
@@ -44,12 +59,11 @@ export class ProfileUpdateComponent implements OnInit {
     this.invalidDates = [today, invalidDate];
   }
 
-  onUpload(event: any) {
-    for (let file of  event.files) {
-      this.uploadedFiles = file;
+  onBasicUpload(event: any) {
+    for (let file of event.files) {
+      this.uploadedFiles.push(file);
     }
-
-    // this.messageService.add({ severity: 'info', summary: 'File Uploaded', detail: '' });
+    //  this.messageService.add({ severity: 'info', summary: 'File Uploaded', detail: '' });
   }
 
 }
