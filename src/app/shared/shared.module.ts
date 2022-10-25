@@ -36,6 +36,11 @@ import { DialogModule } from 'primeng/dialog';
 //calender
 import { CalendarModule } from 'primeng/calendar';
 import { AuthenticationService } from './services/authentication.service';
+import { SkillService } from './services/skill.service';
+import { EducationService } from './services/education.service';
+import { ExperienceService } from './services/experience.service';
+import { FileService } from './services/file.service';
+import { ProfileService } from './services/profile.service';
 
 
 @NgModule({
@@ -111,6 +116,11 @@ import { AuthenticationService } from './services/authentication.service';
   //service in here
   providers: [
     AuthenticationService,
+    SkillService,
+    EducationService,
+    ExperienceService,
+    FileService,
+    ProfileService
   ],
 })
 export class SharedModule { }

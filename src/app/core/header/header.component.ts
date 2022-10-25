@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
+import { SessionService } from 'src/app/shared/services/session.service';
 
 @Component({
   selector: 'app-header',
@@ -8,10 +9,21 @@ import { PrimeNGConfig } from 'primeng/api';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private primengConfig: PrimeNGConfig) { }
+  userSession: any;
+  isLoggin: boolean = false;
+  constructor(
+    private primengConfig: PrimeNGConfig,
+    private sessionService: SessionService) { 
+    }
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
+    this.isLoggin = this.sessionService.isUserLogin();
+  }
+
+  logOut() {
+    this.sessionService.destroySession();
+    alert("logout")
   }
 
 }

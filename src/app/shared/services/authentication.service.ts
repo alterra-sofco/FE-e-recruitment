@@ -17,8 +17,8 @@ export class AuthenticationService {
     return this.httpClient.post<Register>(`${environment.apiUrl}/authentication/register`, payload);
   }
 
-  login(payload: Login): Observable<Login> {
-    return this.httpClient.post<Login>(`${environment.apiUrl}/authentication/login/job-seeker`, payload);
+  login(payload: Login): Observable<any> {
+    return this.httpClient.post<any>(`${environment.apiUrl}/authentication/login/job-seeker`, payload);
   }
 }
 
