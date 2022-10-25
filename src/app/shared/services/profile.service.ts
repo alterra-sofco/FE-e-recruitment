@@ -23,4 +23,12 @@ export class ProfileService {
     return this.httpClient.patch<UserProfile>(`${environment.apiUrl}/account/applicant/basic`,payload);
   }
 
+  uploadProfilePicture(payload: any): Observable<any> {
+    return this.httpClient.patch<any>(`${environment.apiUrl}/account/applicant/avatar`,payload);
+  }
+
+  uploadCv(payload: any): Observable<any> {
+    return this.httpClient.patch<any>(`${environment.apiUrl}/account/applicant/cv`,payload);
+  }
+
 }
