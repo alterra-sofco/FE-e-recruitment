@@ -15,7 +15,8 @@ import { MenubarModule } from 'primeng/menubar';
 import { DividerModule } from 'primeng/divider';
 import { TagModule } from 'primeng/tag';
 import { FileUploadModule } from 'primeng/fileupload';
-import {MultiSelectModule} from 'primeng/multiselect';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { FieldsetModule } from 'primeng/fieldset';
 //card
 import { ButtonModule } from 'primeng/button';
 import { CardModule, } from 'primeng/card';
@@ -44,6 +45,7 @@ import { CalendarModule } from 'primeng/calendar';
     BrowserAnimationsModule,
 
     //primeNg
+    FieldsetModule,
     MultiSelectModule,
     FileUploadModule,
     HttpClientModule,
@@ -71,6 +73,7 @@ import { CalendarModule } from 'primeng/calendar';
     BrowserAnimationsModule,
 
     //primeNg
+    FieldsetModule,
     MultiSelectModule,
     FileUploadModule,
     HttpClientModule,

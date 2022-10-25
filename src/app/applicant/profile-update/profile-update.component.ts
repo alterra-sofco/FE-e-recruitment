@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PrimeNGConfig } from 'primeng/api';
 import { Skill } from 'src/app/shared/models/skill';
 // import { MessageService } from 'primeng/api';
@@ -27,6 +28,7 @@ export class ProfileUpdateComponent implements OnInit {
 
   constructor(
     private primengConfig: PrimeNGConfig,
+    private router: Router,
     // private messageService: MessageService
   ) {
     this.skills = [
@@ -64,6 +66,10 @@ export class ProfileUpdateComponent implements OnInit {
       this.uploadedFiles.push(file);
     }
     //  this.messageService.add({ severity: 'info', summary: 'File Uploaded', detail: '' });
+  }
+
+  onSubmit(){
+    this.router.navigateByUrl('profile/details')
   }
 
 }
