@@ -17,6 +17,8 @@ import { TagModule } from 'primeng/tag';
 import { FileUploadModule } from 'primeng/fileupload';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { FieldsetModule } from 'primeng/fieldset';
+import {OverlayPanelModule} from 'primeng/overlaypanel';
+import {DropdownModule} from 'primeng/dropdown';
 //card
 import { ButtonModule } from 'primeng/button';
 import { CardModule, } from 'primeng/card';
@@ -45,6 +47,8 @@ import { CalendarModule } from 'primeng/calendar';
     BrowserAnimationsModule,
 
     //primeNg
+    DropdownModule,
+    OverlayPanelModule,
     FieldsetModule,
     MultiSelectModule,
     FileUploadModule,
@@ -73,6 +77,8 @@ import { CalendarModule } from 'primeng/calendar';
     BrowserAnimationsModule,
 
     //primeNg
+    DropdownModule,
+    OverlayPanelModule,
     FieldsetModule,
     MultiSelectModule,
     FileUploadModule,
