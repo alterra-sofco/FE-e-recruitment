@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { StepHomepageComponent } from './components/step-homepage/step-homepage.component';
+import { CardJobComponent } from './components/card-job/card-job.component';
 
 //form
 import { ReactiveFormsModule } from '@angular/forms';
@@ -17,8 +19,8 @@ import { TagModule } from 'primeng/tag';
 import { FileUploadModule } from 'primeng/fileupload';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { FieldsetModule } from 'primeng/fieldset';
-import {OverlayPanelModule} from 'primeng/overlaypanel';
-import {DropdownModule} from 'primeng/dropdown';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { DropdownModule } from 'primeng/dropdown';
 //card
 import { ButtonModule } from 'primeng/button';
 import { CardModule, } from 'primeng/card';
@@ -31,22 +33,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //overlay
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { DialogModule } from 'primeng/dialog';
-import { StepHomepageComponent } from './step-homepage/step-homepage.component';
 //calender
 import { CalendarModule } from 'primeng/calendar';
-
-
+import { AuthenticationService } from './services/authentication.service';
 
 
 @NgModule({
   declarations: [
-    StepHomepageComponent
+    StepHomepageComponent,
+    CardJobComponent
   ],
   imports: [
     CommonModule,
     BrowserAnimationsModule,
 
     //primeNg
+    StepsModule,
     DropdownModule,
     OverlayPanelModule,
     FieldsetModule,
@@ -55,7 +57,6 @@ import { CalendarModule } from 'primeng/calendar';
     HttpClientModule,
     RippleModule,
     StyleClassModule,
-    StepsModule,
     ToastModule,
     CardModule,
     ButtonModule,
@@ -77,6 +78,7 @@ import { CalendarModule } from 'primeng/calendar';
     BrowserAnimationsModule,
 
     //primeNg
+    StepsModule,
     DropdownModule,
     OverlayPanelModule,
     FieldsetModule,
@@ -85,7 +87,6 @@ import { CalendarModule } from 'primeng/calendar';
     HttpClientModule,
     RippleModule,
     StyleClassModule,
-    StepsModule,
     ToastModule,
     CardModule,
     ButtonModule,
@@ -102,9 +103,14 @@ import { CalendarModule } from 'primeng/calendar';
     //reactive 
     ReactiveFormsModule,
     FormsModule,
+
+    //components
     StepHomepageComponent,
+    CardJobComponent,
   ],
   //service in here
-  providers: [],
+  providers: [
+    AuthenticationService,
+  ],
 })
 export class SharedModule { }

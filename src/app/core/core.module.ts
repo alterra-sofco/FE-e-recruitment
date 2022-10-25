@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
-import { StepHomepageComponent } from '../shared/step-homepage/step-homepage.component';
+import { StepHomepageComponent } from '../shared/components/step-homepage/step-homepage.component';
 
 @NgModule({
   declarations: [

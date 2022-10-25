@@ -10,8 +10,6 @@ import { Skill } from 'src/app/shared/models/skill';
 export class HomepageComponent implements OnInit {
 
   value3: string = '';
-  //modal
-  displayMaximizable!: boolean;
 
   //filter
   selectedSkill!: Skill;
@@ -42,15 +40,6 @@ export class HomepageComponent implements OnInit {
     this.primengConfig.ripple = true;
 
   }
-
-  apply() {
-
-  }
-
-  showMaximizableDialog() {
-    this.displayMaximizable = true;
-}
-
 
 }
 

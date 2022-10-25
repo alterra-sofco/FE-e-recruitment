@@ -1,23 +1,30 @@
+import { Education } from "./education"
+import { Experience } from "./experience"
+import { Skill } from "./skill"
+
 export interface Applicant{
-    id: number,
-    avatar: File,
+    address: string,
+    avatarFileId: string,
+    avatarURL: string,
     bio: string,
-    portofolioUrl: string,
-    cv: File,
-    addess: string,
-    dob: Date,
-    ownedBy: User, //user
-    skills: Set<SkillEntity>,
-}
-
-export interface User{
-    id: number,
-    name: string,
+    cvFileId: string,
+    cvURL: string,
+    dob: any,
+    educations: Education[],
     email: string,
+    experiences: Experience[],
+    name: string,
     phoneNumber: string,
-    roleName: string,
+    skills: Skill[],
+    userId: number
 }
 
-export interface SkillEntity{
+export interface UserProfile{
+    address: string,
+    bio: string,
+    dob: any,
+    name: string,
+    phoneNumber: string,
+  }
 
-}
+

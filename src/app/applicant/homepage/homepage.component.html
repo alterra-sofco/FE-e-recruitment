@@ -7,7 +7,7 @@
         <div class="text-700 text-2xl mb-5 text-white">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit
             numquam
             eligendi quos.</div>
-        <button pButton pRipple label="Daftar" icon="pi pi-pencil"
+        <button pButton pRipple label="Daftar" icon="pi pi-pencil" [routerLink]="['/register']"
             class="font-bold px-5 py-3 pt-3 p-button-raised p-button-rounded p-button-warning white-space-nowrap"></button>
     </div>
 </div>
@@ -52,52 +52,10 @@
         <div class=""
             style=" padding: 3px; border-radius: 10px; background: linear-gradient(90deg, rgba(116, 204, 195, 0.2), rgba(127, 178, 220, 0.2)), linear-gradient(180deg, rgba(167, 192, 205, 0.2), rgba(145, 210, 204, 0.2));">
             <div class=" p-5 surface-card h-full p-button-raised" style="border-radius: 8px;">
-                <div class="grid">
-                    <div class="col-1 mr-5">
-                        <p-image src="https://picsum.photos/200/200" alt="Image" width="80"></p-image>
-                    </div>
-                    <div class="col-7 flex-column cursor-pointer" pRipple (click)="showMaximizableDialog()">
-                        <div class="text-800 font-bold text-xl mb-1">Back End Developer
-                            <i class="pi pi-verified px-2 text-cyan-600"></i>
-                        </div>
-                        <div>
-                            <span class="align-items-center text-green-600 mr-2">Company name, </span>
-                            <span class="text-500">Indonesia</span>
-                        </div>
-                        <div class="grid col-9 mt-1 align-items-center text-500">
-                            <div class="flex pi pi-dollar align-items-center mr-2">
-                                <span class="px-2">Disclosured</span>
-                            </div>
-                            <div class="flex pi pi-history align-items-center">
-                                <span class="px-2">Full Time</span>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-3 flex justify-content-end flex-wrap">
-                        <div class="mb-1">
-                            <button pButton pRipple type="button" label="Apply Now"
-                                class="p-button-raised p-button-primary" icon="pi pi-check align-items-center"
-                                onclick="apply()"></button>
-                        </div>
-                        <div class="pi pi-calendar-plus align-items-center text-500 ">
-                            <span class="px-2">12-January-2022</span>
-                        </div>
-                    </div>
-                </div>
+                <app-card-job></app-card-job>
             </div>
         </div>
     </div>
 </div>
 
 <app-step-homepage></app-step-homepage>
-
-<p-dialog header="Company" [(visible)]="displayMaximizable" [modal]="true" [style]="{width: '50vw'}"
-    [maximizable]="true" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
-    <p>Detail here</p>
-    <ng-template pTemplate="footer">
-        <button pButton pRipple type="button" icon="pi pi-check" (click)="apply()" label="Apply"
-            class="p-button-text p-button-raised p-button-primary"></button>
-        <!-- <button pButton pRipple type="button" icon="pi pi-times" class="p-button-raised p-button-danger p-button-text" (click)="displayMaximizable=false"></button> -->
-    </ng-template>
-</p-dialog>
