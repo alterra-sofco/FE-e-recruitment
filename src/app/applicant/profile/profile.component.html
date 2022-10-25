@@ -3,21 +3,32 @@
         <!-- menu -->
         <ul
             class="list-none m-0 p-0 flex flex-row lg:flex-column justify-content-evenly md:justify-content-between lg:justify-content-start mb-5 lg:pr-8 lg:mb-0">
-            <li><a pripple=""
+            <li><a pRipple [routerLink]="['details']" style="text-decoration: none;"
                     class="p-ripple p-element flex align-items-center cursor-pointer p-3 border-round text-800 hover:surface-hover transition-duration-150 transition-colors"><i
-                        class="pi pi-user md:mr-2"></i><span class="font-medium hidden md:block" [routerLink]="['details']">Profile</span><span
-                        class="p-ink"></span></a></li>
-            <li><a pripple=""
+                        class="pi pi-user md:mr-2"></i>
+                    <span class="font-medium hidden md:block">Profile</span>
+                    <span class="p-ink"></span></a>
+            </li>
+            <li><a pRipple [routerLink]="['education']" style="text-decoration: none;"
                     class="p-ripple p-element flex align-items-center cursor-pointer p-3 border-round text-800 hover:surface-hover transition-duration-150 transition-colors"><i
-                        class="pi pi-cog md:mr-2"></i><span class="font-medium hidden md:block" [routerLink]="['']">Account</span><span
-                        class="p-ink"></span></a></li>
-            <li><a pripple=""
+                        class="pi pi-cog md:mr-2"></i>
+                    <span class="font-medium hidden md:block">Education</span>
+                    <span class="p-ink"></span></a>
+            </li>
+            <li><a pRipple [routerLink]="['experience']" style="text-decoration: none;"
+                class="p-ripple p-element flex align-items-center cursor-pointer p-3 border-round text-800 hover:surface-hover transition-duration-150 transition-colors"><i
+                    class="pi pi-cog md:mr-2"></i>
+                <span class="font-medium hidden md:block">Experience</span>
+                <span class="p-ink"></span></a>
+        </li>
+            <li><a pRipple [routerLink]="['applied']" style="text-decoration: none;"
                     class="p-ripple p-element flex align-items-center cursor-pointer p-3 border-round text-800 hover:surface-hover transition-duration-150 transition-colors"><i
-                        class="pi pi-palette md:mr-2"></i><span
-                        class="font-medium hidden md:block">Credential</span><span class="p-ink"></span></a></li>
+                        class="pi pi-palette md:mr-2"></i>
+                    <span class="font-medium hidden md:block">Applied Job</span>
+                    <span class="p-ink"></span></a>
+            </li>
         </ul>
         <div class="surface-card p-5 shadow-2 border-round flex-auto">
-
             <!-- reuseable component here -->
             <router-outlet></router-outlet>
 

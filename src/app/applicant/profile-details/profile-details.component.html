@@ -1,30 +1,58 @@
 <div class="flex align-items-start flex-column md:flex-row mb-5">
-    
+
     <!-- avatar -->
-    <img [src]="" alt="applicant.avatar" class="mr-6 mb-3 lg:mb-0"
-        style="width: 100px; height: 100px;">
+    <img [src]="" alt="applicant.avatar" class="mr-6 mb-3 lg:mb-0" style="width: 100px; height: 100px;">
     <!-- nama -->
     <div><span class="text-900 font-medium text-3xl">applicant.ownedBy.name</span>
-        <!-- <i class="pi pi-star text-2xl ml-4 text-yellow-500"></i> -->
-            <!-- edit btn -->
-        <div class="pt-5 w-5 h-2 flex align-items-center flex-wrap text-sm">
-            <button pbutton="" pripple="" icon="pi pi-download" label="Download" [routerLink]="['update']"
-                    class="p-element p-ripple p-button-outlined p-button p-component"><span
-                        class="p-button-label" >Edit</span><span class="p-ink"></span>
-                </button>
+        <div class="pt-5 w-4 h-2 flex align-items-center flex-wrap text-sm">
+
+            <!-- btn edit -->
+            <button pbutton="" pRipple label="Edit" icon="pi pi-arrow-right" iconpos="right"
+                class="p-element p-ripple p-button-rounded p-button p-component" [routerLink]="['update']"><span
+                    class="p-button-icon p-button-icon-right pi pi-arrow-right" aria-hidden="true"></span><span
+                    class="p-button-label">Edit</span><span class="p-ink"
+                    style="height: 151px; width: 151px; top: -60.1667px; left: 25.85px;"></span>
+            </button>
+
         </div>
     </div>
 </div>
-<ul class="list-none p-0 m-0 border-top-1 border-300">
+<ul class="list-none p-0 m-0 border-300">
+
+    <li class="mb-3 pt-3">
+        <p-fieldset legend="Personal Information" [toggleable]="true">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore
+                magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat.
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                Excepteur sint occaecat
+                cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </p-fieldset>
+    </li>
     <li class="flex align-items-center py-3 px-2 flex-wrap">
         <!-- bio -->
         <div class="text-500 w-full md:w-2 font-medium">Bio</div>
         <div class="text-900 w-full md:w-10 line-height-3">applicant.bio</div>
     </li>
 
+    <!-- address -->
     <li class="flex align-items-center py-3 px-2 flex-wrap surface-50">
         <div class="text-500 w-full md:w-2 font-medium">Address</div>
         <div class="text-900 w-full md:w-10">applicant.address</div>
+    </li>
+
+    <!-- email -->
+    <li class="flex align-items-center py-3 px-2 flex-wrap">
+        <div class="text-500 w-full md:w-2 font-medium">Email</div>
+        <div class="text-900 w-full md:w-10 line-height-3">applicant.ownedBy.email</div>
+    </li>
+
+    <!-- phone -->
+    <li class="flex align-items-center py-3 px-2 flex-wrap surface-50">
+        <div class="text-500 w-full md:w-2 font-medium">Phone Number</div>
+        <div class="text-900 w-full md:w-10">applicant.ownedBy.phone</div>
     </li>
 
     <li class="flex align-items-center py-3 px-2 flex-wrap">
@@ -65,4 +93,31 @@
             </div>
         </div>
     </li>
+
+    <li class="mb-3">
+        <p-fieldset legend="Education" [toggleable]="true">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore
+                magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat.
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                Excepteur sint occaecat
+                cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </p-fieldset>
+    </li>
+
+    <li class="mb-3">
+        <p-fieldset legend="Education" [toggleable]="true">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore
+                magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat.
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                Excepteur sint occaecat
+                cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </p-fieldset>
+    </li>
+
 </ul>

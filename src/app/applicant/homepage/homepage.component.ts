@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
+import { Skill } from 'src/app/shared/models/skill';
 
 @Component({
   selector: 'app-homepage',
@@ -54,7 +55,3 @@ export class HomepageComponent implements OnInit {
 }
 
 
-interface Skill {
-  name: string;
-  code: string;
-}

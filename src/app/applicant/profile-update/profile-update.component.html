@@ -4,49 +4,85 @@
 
 <div class="flex gap-5 flex-column-reverse md:flex-row">
     <div class="flex-auto p-fluid">
-        <div class="mb-4"><label for="email" class="block font-medium text-900 mb-2">Name</label><input id="email"
-                type="text" pinputtext="" class="p-inputtext p-component p-element"></div>
+        <!-- name -->
+        <div class="mb-4"><label for="name" class="block font-medium text-900 mb-2">Name</label>
+            <input id="name" type="text" pinputtext="" class="p-inputtext p-component p-element">
+        </div>
+
+        <!-- address -->
+        <div class="mb-4"><label for="address" class="block font-medium text-900 mb-2">Address</label>
+            <input id="name" type="text" pinputtext="" class="p-inputtext p-component p-element">
+        </div>
+
+        <!-- dob date input -->
+        <div class="mb-4"><label for="dob"
+                class="block font-medium text-900 mb-2">Date
+                of Birth</label>
+            <p-calendar [(ngModel)]="date3" [showIcon]="true" inputId="icon"></p-calendar>
+        </div>
 
         <!-- bio -->
         <div class="mb-4"><label for="bio" class="block font-medium text-900 mb-2">Bio</label>
             <textarea id="bio" type="text" pinputtextarea="" rows="5"
                 class="p-inputtextarea p-inputtext p-component p-element p-inputtextarea-resizable"
-                style="height: 131px; overflow: hidden;">
+                style="height: 143px; overflow: hidden;">
             </textarea>
         </div>
 
-        <!-- cv upload -->
-        <div class="mb-4"><label for="state" class="block font-medium text-900 mb-2">Curiculum Vitae</label>
-            <p-fileUpload #fubauto mode="basic" name="demo[]" url="./upload.php" accept="pdf/*" maxFileSize!="1000000"
-                (onUpload)="onUpload($event)" [auto]="true" chooseLabel="Browse"></p-fileUpload>
-        </div>
-
-        <!-- dob date input -->
-        <div class="mb-4"><label for="state" class="block font-medium text-900 mb-2">Date of Birth</label>
-            <p-calendar [(ngModel)]="date3" [showIcon]="true" inputId="icon"></p-calendar>
+        <!-- multi select -->
+        <div class="mb-4"><label for="bio" class="block font-medium text-900 mb-2">Skills</label>
+            <p-multiSelect [options]="skills" (ngModel)="selectedSkill" defaultLabel="Select a skill" optionLabel="name"
+                display="chip"></p-multiSelect>
         </div>
 
         <!-- porto -->
-        <div class="mb-4"><label for="website" class="block font-medium text-900 mb-2">Portofolio</label>
+        <div class="mb-4"><label for="porto" class="block font-medium text-900 mb-2">Portofolio</label>
             <div class="p-inputgroup">
                 <span class="p-inputgroup-addon">https://</span>
                 <input id="website" type="text" pinputtext="" class="p-inputtext p-component p-element">
             </div>
         </div>
 
-        <!-- btn -->
-        <div>
-            <button pbutton="" pripple="" label="Update Profile"
-                class="p-element p-ripple w-auto p-button p-component"><span class="p-button-label">
-                    Update Profile</span><span class="p-ink"></span>
+        <!-- btn update -->
+        <div class="py-4">
+            <button pbutton="" pripple="" label="Update Profile" (click)="onSubmit()"
+                class="p-element p-ripple w-auto p-button p-component">
+                <span class="p-button-label"> Update Profile</span><span class="p-ink"></span>
             </button>
         </div>
     </div>
-    <div class="flex flex-column align-items-center flex-or"><span class="font-medium text-900 mb-2">Profile
-            Picture</span><img src="assets/images/blocks/avatars/circle-big/avatar-f-2.png"
-            class="h-10rem w-10rem"><button pbutton="" type="button" icon="pi pi-pencil"
-            class="p-element p-button-rounded -mt-4 p-button p-component p-button-icon-only"><span
-                class="p-button-icon pi pi-pencil" aria-hidden="true"></span><span aria-hidden="true"
-                class="p-button-label">&nbsp;</span></button>
+
+
+    <!-- avatar -->
+    <div class="surface-border border-left px-4 flex flex-column align-items-center flex-or">
+        <span class="font-medium text-900 mb-2">
+            Profile Picture</span><img src="" class="h-10rem w-10rem">
+        <button pbutton="" class="p-element p-button-rounded -mt-4 p-button p-component p-button-icon-only">
+            <p-fileUpload mode="basic" name="myfile[]" (onUpload)="onBasicUpload($event)" accept="image/*"
+                chooseLabel="Drop Cv">
+            </p-fileUpload>
+        </button>
+
+        <!-- email -->
+        <div class="mb-4 surface-border mb-4 pt-8 text-center flex-column"><label for="email"
+                class="block font-medium text-900 mb-2">Email</label>
+            <input id="name" type="text" pinputtext="" class="p-inputtext p-component p-element">
+        </div>
+
+        <!-- phone -->
+        <div class="mb-4 text-center"><label for="phone" class="block font-medium text-900 mb-2">Phone</label>
+            <input id="name" type="text" pinputtext="" class="p-inputtext p-component p-element">
+        </div>
+
+        <!-- cv -->
+        <div class="surface-borderl text-center flex-column align-items-center ">
+            <label for="cv" class="block font-medium text-900 mb-2">Curiculum Vitae
+            </label>
+            <p-fileUpload mode="basic" name="myfile[]" (onUpload)="onBasicUpload($event)" accept="image/*"
+                chooseLabel="Drop Cv">
+            </p-fileUpload>
+        </div>
+
     </div>
+
 </div>
