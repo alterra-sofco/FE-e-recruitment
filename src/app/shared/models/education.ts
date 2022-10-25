@@ -1,14 +1,15 @@
-import { User } from "./applicant";
+import { UserProfile } from "./applicant"
+
 
 export interface Education{
     educationId: number,
-    educationName: string,
-    major: string,
     degree: any,
-    startDate: Date,
-    endDate: Date,
     description: string,
-    ownedBy: User
+    educationName: string,
+    endDate: any
+    startDate: any,
+    major: string,
+    ownedBy: UserProfile
 }
 
 export interface Degree{

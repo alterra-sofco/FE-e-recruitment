@@ -6,7 +6,6 @@ import { AppliedJobComponent } from './applied-job/applied-job.component';
 
 @NgModule({
   declarations: [
-  
     AppliedJobComponent
   ],
   imports: [

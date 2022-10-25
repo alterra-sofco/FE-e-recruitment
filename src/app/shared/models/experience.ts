@@ -1,11 +1,7 @@
-import { User } from "./applicant";
-
-export interface Experience{
-    experienceId: number,
+export interface Experience {
     corporateName: string,
-    position: string,
-    startDate: Date,
-    endDate: Date,
     description: string,
-    ownedBy: User
+    endDate: any,
+    position: string,
+    startDate: any
 }

@@ -14,7 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     SharedModule,
     FormsModule,
-        ReactiveFormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class AuthModule { }
