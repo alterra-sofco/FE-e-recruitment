@@ -17,8 +17,8 @@ import { TagModule } from 'primeng/tag';
 import { FileUploadModule } from 'primeng/fileupload';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { FieldsetModule } from 'primeng/fieldset';
-import {OverlayPanelModule} from 'primeng/overlaypanel';
-import {DropdownModule} from 'primeng/dropdown';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { DropdownModule } from 'primeng/dropdown';
 //card
 import { ButtonModule } from 'primeng/button';
 import { CardModule, } from 'primeng/card';
@@ -31,16 +31,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //overlay
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { DialogModule } from 'primeng/dialog';
-import { StepHomepageComponent } from './step-homepage/step-homepage.component';
+import { StepHomepageComponent } from './components/step-homepage/step-homepage.component';
 //calender
 import { CalendarModule } from 'primeng/calendar';
-
-
+import { CardJobComponent } from './components/card-job/card-job.component';
 
 
 @NgModule({
   declarations: [
-    StepHomepageComponent
+    StepHomepageComponent,
+    CardJobComponent
   ],
   imports: [
     CommonModule,
@@ -103,6 +103,7 @@ import { CalendarModule } from 'primeng/calendar';
     ReactiveFormsModule,
     FormsModule,
     StepHomepageComponent,
+    CardJobComponent,
   ],
   //service in here
   providers: [],
