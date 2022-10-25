@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { StepHomepageComponent } from './components/step-homepage/step-homepage.component';
+import { CardJobComponent } from './components/card-job/card-job.component';
 
 //form
 import { ReactiveFormsModule } from '@angular/forms';
@@ -31,10 +33,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //overlay
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { DialogModule } from 'primeng/dialog';
-import { StepHomepageComponent } from './components/step-homepage/step-homepage.component';
 //calender
 import { CalendarModule } from 'primeng/calendar';
-import { CardJobComponent } from './components/card-job/card-job.component';
 
 
 @NgModule({
@@ -47,6 +47,7 @@ import { CardJobComponent } from './components/card-job/card-job.component';
     BrowserAnimationsModule,
 
     //primeNg
+    StepsModule,
     DropdownModule,
     OverlayPanelModule,
     FieldsetModule,
@@ -55,7 +56,6 @@ import { CardJobComponent } from './components/card-job/card-job.component';
     HttpClientModule,
     RippleModule,
     StyleClassModule,
-    StepsModule,
     ToastModule,
     CardModule,
     ButtonModule,
@@ -77,6 +77,7 @@ import { CardJobComponent } from './components/card-job/card-job.component';
     BrowserAnimationsModule,
 
     //primeNg
+    StepsModule,
     DropdownModule,
     OverlayPanelModule,
     FieldsetModule,
@@ -85,7 +86,6 @@ import { CardJobComponent } from './components/card-job/card-job.component';
     HttpClientModule,
     RippleModule,
     StyleClassModule,
-    StepsModule,
     ToastModule,
     CardModule,
     ButtonModule,

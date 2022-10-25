@@ -11,12 +11,14 @@ import { FooterComponent } from './core/footer/footer.component';
 import { SharedModule } from 'primeng/api';
 import { ApplicantModule } from './applicant/applicant.module';
 import { NgModule } from '@angular/core';
+import { RegisterComponent } from './auth/register/register.component';
+import { LoginComponent } from './auth/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
