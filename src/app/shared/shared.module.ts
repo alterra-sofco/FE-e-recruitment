@@ -35,6 +35,7 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { DialogModule } from 'primeng/dialog';
 //calender
 import { CalendarModule } from 'primeng/calendar';
+import { AuthenticationService } from './services/authentication.service';
 
 
 @NgModule({
@@ -102,10 +103,14 @@ import { CalendarModule } from 'primeng/calendar';
     //reactive 
     ReactiveFormsModule,
     FormsModule,
+
+    //components
     StepHomepageComponent,
     CardJobComponent,
   ],
   //service in here
-  providers: [],
+  providers: [
+    AuthenticationService,
+  ],
 })
 export class SharedModule { }
