@@ -11,26 +11,28 @@ import { ProfileComponent } from './applicant/profile/profile.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { AppliedJobComponent } from './job/applied-job/applied-job.component';
+import { AuthGuard } from './shared/auth.guard';
 
 const routes: Routes = [
-  {path: '', component: HomepageComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'login', component: LoginComponent},
+  { path: '', component: HomepageComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
   {
-    path: 'profile', 
+    path: 'profile',
+    canActivate: [AuthGuard],
     component: ProfileComponent,
     children: [
-      {path: 'details',component: ProfileDetailsComponent},
-      {path: 'details/update',component: ProfileUpdateComponent},
-      {path: 'applied',component: AppliedJobComponent},
-      
-      {path: 'experience',component: ProfileExperienceComponent},
-      {path: 'experience/form', component: FormExperienceComponent},
-      
-      {path: 'education',component: ProfileEducationComponent},
-      {path: 'education/form', component: FormEducationComponent}
-    ]
-  }
+      { path: 'details', component: ProfileDetailsComponent },
+      { path: 'details/update', component: ProfileUpdateComponent },
+      { path: 'applied', component: AppliedJobComponent },
+
+      { path: 'experience', component: ProfileExperienceComponent },
+      { path: 'experience/form', component: FormExperienceComponent },
+
+      { path: 'education', component: ProfileEducationComponent },
+      { path: 'education/form', component: FormEducationComponent }
+    ],
+  },
 ];
 
 @NgModule({

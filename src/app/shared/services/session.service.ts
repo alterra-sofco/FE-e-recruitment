@@ -1,10 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SessionService {
+
+  constructor(){
+    
+  }
 
   createSession(info: any) {
     localStorage.setItem('userPayload', JSON.stringify(info));
@@ -14,31 +19,22 @@ export class SessionService {
     return JSON.parse(localStorage.getItem('userPayload')!);
   }
 
+  getTokenS() {
+    const token = this.getSession();
+    return token["accessToken"];
+  }
+
   getToken() {
     return localStorage.getItem('jwtToken');
   }
 
   isUserLogin(): boolean {
-    const jwt = localStorage.getItem('jwtToken');
+    const jwt = localStorage.getItem('userPayload');
     return jwt ? true : false;
-  }
-
-  getEmail(): Observable<string> {
-    const email = this.getSession()?.email;
-    return of(email);
-  }
-
-  getName(): Observable<string> {
-    const name = this.getSession()?.name;
-    return of(name);
-  }
-
-  getRole():Observable<string> {
-    const role = this.getSession()?.role;
-    return of(role);
   }
 
   destroySession() {
     localStorage.clear();
+    window.sessionStorage.clear();
   }
 }

@@ -41,6 +41,9 @@ import { EducationService } from './services/education.service';
 import { ExperienceService } from './services/experience.service';
 import { FileService } from './services/file.service';
 import { ProfileService } from './services/profile.service';
+import { SessionService } from './services/session.service';
+import { HttpIntercepInterceptor } from './interceptor/http-intercep.interceptor';
+import { AuthGuard } from './auth.guard';
 
 
 @NgModule({
@@ -78,6 +81,7 @@ import { ProfileService } from './services/profile.service';
     //reactive 
     ReactiveFormsModule,
     FormsModule
+    
   ],
   exports: [
     BrowserAnimationsModule,
@@ -112,6 +116,7 @@ import { ProfileService } from './services/profile.service';
     //components
     StepHomepageComponent,
     CardJobComponent,
+    
   ],
   //service in here
   providers: [
@@ -120,7 +125,10 @@ import { ProfileService } from './services/profile.service';
     EducationService,
     ExperienceService,
     FileService,
-    ProfileService
+    ProfileService,
+    SessionService,
+    HttpIntercepInterceptor,
+    AuthGuard,
   ],
 })
 export class SharedModule { }

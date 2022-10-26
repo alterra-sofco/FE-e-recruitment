@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Applicant } from 'src/app/shared/models/applicant';
 
 @Component({
   selector: 'app-profile-education',
@@ -7,6 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./profile-education.component.css']
 })
 export class ProfileEducationComponent implements OnInit {
+
+  @Input('dataEdu') dataUser!: Applicant;
 
   constructor(
     private router: Router,

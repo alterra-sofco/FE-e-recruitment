@@ -1,88 +1,127 @@
 <!-- <p-toast></p-toast> -->
 
-<div class="text-900 font-semibold text-lg mt-3 mb-5">Edit Profile</div>
 
-<div class="flex gap-5 flex-column-reverse md:flex-row">
-    <div class="flex-auto p-fluid">
-        <!-- name -->
-        <div class="mb-4"><label for="name" class="block font-medium text-900 mb-2">Name</label>
-            <input id="name" type="text" pinputtext="" class="p-inputtext p-component p-element">
-        </div>
+<form [formGroup]="formProfile" (ngSubmit)="onSubmit()">
+    <div class="text-900 font-semibold text-lg mt-3 mb-5">Profile Information</div>
+    <div class="grid flex gap-5 flex-column md:flex-row mb-5">
+        <div class="col flex-auto p-fluid">
 
-        <!-- address -->
-        <div class="mb-4"><label for="address" class="block font-medium text-900 mb-2">Address</label>
-            <input id="name" type="text" pinputtext="" class="p-inputtext p-component p-element">
-        </div>
+            <!-- name -->
+            <div class="mb-4"><label for="name" class="block font-medium text-900 mb-2">Name</label>
+                <input formControlName="name" [(ngModel)]="userData.name" type="text" pinputtext=""
+                    class="p-inputtext p-component p-element">
+            </div>
 
-        <!-- dob date input -->
-        <div class="mb-4"><label for="dob"
-                class="block font-medium text-900 mb-2">Date
-                of Birth</label>
-            <p-calendar [(ngModel)]="date3" [showIcon]="true" inputId="icon"></p-calendar>
-        </div>
+            <!-- address -->
+            <div class="mb-4"><label for="address" class="block font-medium text-900 mb-2">Address</label>
+                <input formControlName="address" [(ngModel)]="userData.address" type="text" pinputtext=""
+                    class="p-inputtext p-component p-element">
+            </div>
 
-        <!-- bio -->
-        <div class="mb-4"><label for="bio" class="block font-medium text-900 mb-2">Bio</label>
-            <textarea id="bio" type="text" pinputtextarea="" rows="5"
-                class="p-inputtextarea p-inputtext p-component p-element p-inputtextarea-resizable"
-                style="height: 143px; overflow: hidden;">
+            <!-- bio -->
+            <div class="mb-4"><label for="bio" class="block font-medium text-900 mb-2">Bio</label>
+                <textarea formControlName="bio" [(ngModel)]="userData.bio" type="text" pinputtextarea="" rows="5"
+                    class="p-inputtextarea p-inputtext p-component p-element p-inputtextarea-resizable"
+                    style="height: 143px; overflow: hidden;">
             </textarea>
-        </div>
-
-        <!-- multi select skill-->
-        <div class="mb-4"><label for="bio" class="block font-medium text-900 mb-2">Skills</label>
-            <p-multiSelect [options]="skills" (ngModel)="selectedSkill" defaultLabel="Select a skill" optionLabel="skillName"
-                display="chip"></p-multiSelect>
-        </div>
-
-        <!-- porto -->
-        <div class="mb-4"><label for="porto" class="block font-medium text-900 mb-2">Portofolio</label>
-            <div class="p-inputgroup">
-                <span class="p-inputgroup-addon">https://</span>
-                <input id="website" type="text" pinputtext="" class="p-inputtext p-component p-element">
             </div>
         </div>
 
-        <!-- btn update -->
-        <div class="py-4">
-            <button pbutton="" pripple="" label="Update Profile" (click)="onSubmit()"
-                class="p-element p-ripple w-auto p-button p-component">
-                <span class="p-button-label"> Update Profile</span><span class="p-ink"></span>
-            </button>
+        <div class="col-4">
+            <!-- email -->
+            <div class="mb-4"><label for="email" class="block font-medium text-900 mb-2">Email</label>
+                <input formControlName="email" [(ngModel)]="userData.email" type="text" pinputtext=""
+                    class="p-inputtext p-component p-element">
+            </div>
+
+            <!-- phone -->
+            <div class="mb-4"><label for="phone" class="block font-medium text-900 mb-2">Phone</label>
+                <input formControlName="phoneNumber" [(ngModel)]="userData.phoneNumber" type="text" pinputtext=""
+                    class="p-inputtext p-component p-element">
+            </div>
+
+            <!-- dob date input -->
+            <div class="mb-6"><label for="dob" class="block font-medium text-900 mb-2">Date
+                    of Birth</label>
+                <p-calendar formControlName="dob" [(ngModel)]="userData.dob" [showIcon]="true" inputId="icon">
+                </p-calendar>
+            </div>
+
+            <!-- btn update -->
+            <div class="">
+                <button pbutton="" pripple="" label="Update Profile" (click)="onSubmit()"
+                    class="p-element p-ripple w-auto p-button p-component">
+                    <span class="p-button-label"> Update Profile</span><span class="p-ink"></span>
+                </button>
+            </div>
         </div>
     </div>
+</form>
 
 
-    <!-- avatar -->
-    <div class="surface-border border-left px-4 flex flex-column align-items-center flex-or">
-        <span class="font-medium text-900 mb-2">
-            Profile Picture</span><img src="" class="h-10rem w-10rem">
-        <button pbutton="" class="p-element p-button-rounded -mt-4 p-button p-component p-button-icon-only">
-            <p-fileUpload mode="basic" name="myfile[]" (onUpload)="onBasicUpload($event)" accept="image/*"
-                chooseLabel="Drop Cv">
-            </p-fileUpload>
-        </button>
-
-        <!-- email -->
-        <div class="mb-4 surface-border mb-4 pt-8 text-center flex-column"><label for="email"
-                class="block font-medium text-900 mb-2">Email</label>
-            <input id="name" type="text" pinputtext="" class="p-inputtext p-component p-element">
+<div class="grid flex gap-5 flex-column md:flex-row mb-5">
+    <div class="col flex-auto p-fluid">
+        <div class="grid col-3 py-2">
+            <div>
+                <div class="mb-2 ">
+                    <span class="font-medium text-center text-900"> Profile Picture</span>
+                </div>
+                <div>
+                    <img formControlName="avatarFileId" [src]="userData.avatarFileId" class="h-10rem w-10rem">
+                </div>
+                <div class="col px-6">
+                    <button pbutton="" class="p-element p-button-rounded -mt-4 p-button p-component p-button-icon-only">
+                        <p-fileUpload mode="basic" name="myfile[]" (onUpload)="onBasicUpload($event)" accept="image/*"
+                            chooseLabel="Drop Cv">
+                        </p-fileUpload>
+                    </button>
+                </div>
+            </div>
+            
         </div>
 
-        <!-- phone -->
-        <div class="mb-4 text-center"><label for="phone" class="block font-medium text-900 mb-2">Phone</label>
-            <input id="name" type="text" pinputtext="" class="p-inputtext p-component p-element">
-        </div>
+        <div class="col">
+            <!-- cv -->
+            <div class="grid px-2 py-3">
+                <!-- <label for="cv" class="block font-medium text-900 mb-2">Curiculum Vitae</label> -->
+                <p-fileUpload formControlName="cvFileId" [(ngModel)]="userData.cvFileId" mode="basic" name="myfile[]"
+                    (onUpload)="onBasicUpload($event)" accept="image/*" chooseLabel="Drop Cv">
+                </p-fileUpload>
+            </div>
 
-        <!-- cv -->
-        <div class="surface-borderl text-center flex-column align-items-center ">
-            <label for="cv" class="block font-medium text-900 mb-2">Curiculum Vitae
-            </label>
-            <p-fileUpload mode="basic" name="myfile[]" (onUpload)="onBasicUpload($event)" accept="image/*"
-                chooseLabel="Drop Cv">
-            </p-fileUpload>
-        </div>
+            <!-- multi select skill-->
+            <div class="grid py-3">
+                <!-- <div class="col"><label class="block font-medium text-900 mb-2">Skills</label></div> -->
+                <div class="col-8">
+                    <p-multiSelect [options]="skills" [(ngModel)]="selectedSkill" id="skills" name="skills"
+                        defaultLabel="Select a skill" optionLabel="skillName" display="chip"></p-multiSelect>
+                </div>
+                <div class="col">
+                    <button pbutton="" pripple="" label="add skill" (click)="onSubmitSkill()"
+                        class="p-element p-ripple w-auto p-button p-component">
+                        <span class="p-button-label pi pi-plus"> </span><span class="p-ink"></span>
+                    </button>
+                </div>
+            </div>
 
+
+            <!-- porto -->
+            <div class="grid py-3">
+                <!-- <div class="col"><label class="block font-medium text-900 mb-3">Portofolio</label></div> -->
+                <div class="col-8">
+                    <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon">https://</span>
+                        <input formControlName="cvURL" [(ngModel)]="userData.cvURL" type="text" pinputtext=""
+                            placeholder="link portofolio" class="p-inputtext p-component p-element">
+                    </div>
+                </div>
+                <div class="col">
+                    <button pbutton="" pripple="" label="add portofolio" (click)="onSubmitPorto()"
+                        class="p-element p-ripple w-auto p-button p-component">
+                        <span class="p-button-label pi pi-plus"> </span><span class="p-ink"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
-
 </div>

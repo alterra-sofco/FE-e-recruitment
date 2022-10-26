@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Degree } from 'src/app/shared/models/education';
+import { Subscription, take } from 'rxjs';
+import { Applicant } from 'src/app/shared/models/applicant';
+import { Degree, Education } from 'src/app/shared/models/education';
+import { EducationService } from 'src/app/shared/services/education.service';
 
 @Component({
   selector: 'app-form-education',
@@ -9,6 +13,9 @@ import { Degree } from 'src/app/shared/models/education';
 })
 export class FormEducationComponent implements OnInit {
 
+  @Input('dataEdu') dataUser!: Applicant;
+
+  subscription!: Subscription;
   //date
   dateStart!: Date;
   dateEnd!: Date;
@@ -22,16 +29,36 @@ export class FormEducationComponent implements OnInit {
   degrees!: Degree[];
   selectedDegree!: Degree;
 
+  education!: Education[];
+
+  submitted = false;
+  formEducation: FormGroup = new FormGroup({
+    degree: new FormControl('', [Validators.required, Validators.maxLength(50)]),
+    description: new FormControl('', [Validators.required, Validators.maxLength(50)]),
+    educationName: new FormControl('', [Validators.required, Validators.maxLength(50)]),
+    endDate: new FormControl('', [Validators.required, Validators.maxLength(50)]),
+    major: new FormControl('', [Validators.required, Validators.maxLength(50)]),
+    startDate: new FormControl('', [Validators.required, Validators.maxLength(50)])
+
+  });
+
   constructor(
     private router: Router,
-  ) { 
+    private educationService: EducationService,
+  ) {
     this.degrees = [
-      { name: 'UnderGraduate' },
-      { name: 'PostGraduate'},
+      { name: 'HIGH_SCHOOL' },
+      { name: 'BACHELOR' },
+      { name: 'MASTER' },
+      { name: 'DOCTOR' },
+      { name: 'PHD' }
     ];
   }
 
   ngOnInit(): void {
+    //data
+    
+
     // date
     let today = new Date();
     let month = today.getMonth();
@@ -53,8 +80,28 @@ export class FormEducationComponent implements OnInit {
 
   }
 
-  onSubmit(){
-    this.router.navigateByUrl('profile/details')
+  onSubmit() {
+    this.submitted = true;
+    console.log(this.formEducation.value)
+    if (this.formEducation.valid) {
+      this.educationService.addEducation(this.formEducation.value).pipe(take(1)).subscribe(data => {
+        alert("updated")
+        this.router.navigateByUrl('/profile/details')
+      })
+      this.onReset()
+    }
+  }
+
+  onReset(): void {
+    this.submitted = false;
+    this.formEducation.reset();
+
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
 }

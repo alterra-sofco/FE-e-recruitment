@@ -9,6 +9,7 @@ import { ProfileEducationComponent } from './profile-education/profile-education
 import { ProfileExperienceComponent } from './profile-experience/profile-experience.component';
 import { FormEducationComponent } from './profile-education/form-education/form-education.component';
 import { FormExperienceComponent } from './profile-experience/form-experience/form-experience.component';
+import { ProfileSkillComponent } from './profile-skill/profile-skill.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { FormExperienceComponent } from './profile-experience/form-experience/fo
     ProfileExperienceComponent,
     FormEducationComponent,
     FormExperienceComponent,
+    ProfileSkillComponent,
   ],
   imports: [
     CommonModule,

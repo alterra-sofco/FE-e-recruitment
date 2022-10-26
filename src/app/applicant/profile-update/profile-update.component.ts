@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PrimeNGConfig } from 'primeng/api';
-import { take } from 'rxjs';
+import { Subscription, take } from 'rxjs';
+import { Applicant } from 'src/app/shared/models/applicant';
 import { Skill } from 'src/app/shared/models/skill';
+import { ProfileService } from 'src/app/shared/services/profile.service';
 import { SkillService } from 'src/app/shared/services/skill.service';
 // import { MessageService } from 'primeng/api';
 
@@ -13,8 +16,10 @@ import { SkillService } from 'src/app/shared/services/skill.service';
 })
 export class ProfileUpdateComponent implements OnInit {
 
+  subscription!: Subscription;
+
   //date
-  date3!: Date;
+  // date3!: Date;
   dates!: Date[];
   rangeDates!: Date[];
   minDate!: Date;
@@ -25,27 +30,50 @@ export class ProfileUpdateComponent implements OnInit {
   uploadedFiles: any[] = [];
 
   //skill
-  selectedSkill!: Skill;
-  skills: Skill[]=[];
+  selectedSkill!: Skill[];
+  skills: Skill[] = [];
+
+  //subs
+  userData!: Applicant;
+
+  submitted = false;
+  formProfile: FormGroup = new FormGroup({
+    address: new FormControl('', [Validators.required, Validators.maxLength(50)]),
+    // avatarFileId: new FormControl('', [ Validators.maxLength(50)]),
+    // avatarURL: new FormControl('', [Validators.maxLength(50)]),
+    bio: new FormControl('', [Validators.required, Validators.maxLength(50)]),
+    // cvFileId: new FormControl('', [ Validators.maxLength(50)]),
+    // cvURL: new FormControl('', [ Validators.maxLength(50)]),
+    dob: new FormControl('', [Validators.required, Validators.maxLength(50)]),
+    email: new FormControl('', [Validators.maxLength(50)]),
+    name: new FormControl('', [Validators.required, Validators.maxLength(50)]),
+    phoneNumber: new FormControl('', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)/), Validators.maxLength(12)]),
+    // skills: new FormControl('', [Validators.required, Validators.maxLength(50)]),
+
+  });
 
   constructor(
     private primengConfig: PrimeNGConfig,
     private router: Router,
     private skillService: SkillService,
+    private profileService: ProfileService,
     // private messageService: MessageService
-  ) {
-
-  }
+  ) {}
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
 
-    //skill
+    //sub profile
+    this.profileService.getProfile().pipe(take(1)).subscribe(data => {
+      this.userData = data["data"];
+    })
+
+    //skill list
     this.skillService.getSkill().pipe(take(1)).subscribe((data: any) => {
       let res = data
       this.skills = res["data"];
     })
-    
+
     // date
     let today = new Date();
     let month = today.getMonth();
@@ -73,8 +101,35 @@ export class ProfileUpdateComponent implements OnInit {
     //  this.messageService.add({ severity: 'info', summary: 'File Uploaded', detail: '' });
   }
 
-  onSubmit(){
-    this.router.navigateByUrl('profile/details')
+  onSubmit() {
+    this.submitted = true;
+    if (this.formProfile.valid) {
+      this.profileService.editUserProfile(this.formProfile.value).pipe(take(1)).subscribe(data => {
+        alert("updated")
+        this.router.navigateByUrl('profile/details')
+      })
+      this.onReset()
+    }
+  }
+
+  onSubmitSkill(){
+
+  }
+
+  onSubmitPorto(){
+    
+  }
+
+  onReset(): void {
+    this.submitted = false;
+    this.formProfile.reset();
+
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
 }

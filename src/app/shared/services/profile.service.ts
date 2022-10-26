@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Applicant, UserProfile } from '../models/applicant';
 
@@ -9,26 +10,44 @@ import { Applicant, UserProfile } from '../models/applicant';
 })
 export class ProfileService {
 
-  constructor(
-    private httpClient: HttpClient
-  ) { }
+  sharedData!: Subject<Applicant>;
   
-  //all data in relationship
-  getProfile(): Observable<Applicant[]> {
-    return this.httpClient.get<Applicant[]>(`${environment.apiUrl}/account/applicant`);
+  constructor(
+    private httpClient: HttpClient,
+    ) { 
+      this.sharedData = new Subject<Applicant>(); 
+    }
+
+  getProfile(): Observable<any> {
+    return this.httpClient.get<any>(`${environment.apiUrl}/account/applicant`);
   }
 
   //personal data only
   editUserProfile(payload: UserProfile): Observable<UserProfile> {
-    return this.httpClient.patch<UserProfile>(`${environment.apiUrl}/account/applicant/basic`,payload);
+    const headerOption = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json; charset=UTF-8',
+      }),
+    };
+    return this.httpClient.patch<UserProfile>(`${environment.apiUrl}/account/applicant/basic`, payload, headerOption);
   }
 
   uploadProfilePicture(payload: any): Observable<any> {
-    return this.httpClient.patch<any>(`${environment.apiUrl}/account/applicant/avatar`,payload);
+    const headerOption = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json; charset=UTF-8',
+      }),
+    };
+    return this.httpClient.patch<any>(`${environment.apiUrl}/account/applicant/avatar`, payload, headerOption);
   }
 
   uploadCv(payload: any): Observable<any> {
-    return this.httpClient.patch<any>(`${environment.apiUrl}/account/applicant/cv`,payload);
+    const headerOption = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json; charset=UTF-8',
+      }),
+    };
+    return this.httpClient.patch<any>(`${environment.apiUrl}/account/applicant/cv`, payload, headerOption);
   }
 
 }

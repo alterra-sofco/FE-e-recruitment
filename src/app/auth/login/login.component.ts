@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
   constructor(
     private primengConfig: PrimeNGConfig,
     private router: Router,
-    private route: ActivatedRoute,
     private authService: AuthenticationService,
     private sessionService: SessionService,
     // public messageService: MessageService
@@ -37,26 +36,24 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     if (this.formRegister.valid) {
-      this.authService.login(this.formRegister.value).pipe(take(1)).subscribe(data => {
+      this.authService.login(this.formRegister.value).subscribe((data: any) => {
         if (data) {
-          // localStorage.setItem('JwtToken', data.data.accessToken);
+          localStorage.setItem('JwtToken', data.data?.accessToken);
           this.sessionService.createSession(data.data);
+          alert("ok")
         }
-        alert("login ok")
         this.router.navigateByUrl("")
       })
       this.onReset()
+    }
+    else {
+      alert("error")
     }
   }
 
   onReset(): void {
     this.submitted = false;
     this.formRegister.reset();
-
-  }
-
-  get f(): { [key: string]: AbstractControl } {
-    return this.formRegister.controls;
   }
 
   ngOnDestroy() {

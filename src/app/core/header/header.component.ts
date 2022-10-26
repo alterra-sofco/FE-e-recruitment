@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PrimeNGConfig } from 'primeng/api';
+import { take } from 'rxjs';
 import { SessionService } from 'src/app/shared/services/session.service';
 
 @Component({
@@ -10,19 +12,34 @@ import { SessionService } from 'src/app/shared/services/session.service';
 export class HeaderComponent implements OnInit {
 
   userSession: any;
-  isLoggin: boolean = false;
+
+  //user
+  userName$?: string;
+
   constructor(
     private primengConfig: PrimeNGConfig,
-    private sessionService: SessionService) { 
-    }
+    private sessionService: SessionService,
+    private router: Router) {
+  }
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
-    this.isLoggin = this.sessionService.isUserLogin();
+    if (this.sessionService.isUserLogin()) {
+      this.userName$ = this.sessionService.getSession().name;
+    }
+  }
+
+  goingTo() {
+    this.ngOnInit();
+    this.router.navigateByUrl('profile/details');
+    console.log("login")
   }
 
   logOut() {
     this.sessionService.destroySession();
+    this.ngOnInit()
+   
+    this.router.navigateByUrl('');
     alert("logout")
   }
 

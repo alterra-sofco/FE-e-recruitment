@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PrimeNGConfig } from 'primeng/api';
+import { Applicant } from 'src/app/shared/models/applicant';
 
 @Component({
   selector: 'app-profile-experience',
@@ -9,6 +10,8 @@ import { PrimeNGConfig } from 'primeng/api';
 })
 export class ProfileExperienceComponent implements OnInit {
 
+  @Input('dataEdu') dataUser!: Applicant;
+  
   constructor(private router: Router,
     private primengConfig: PrimeNGConfig) { }
 

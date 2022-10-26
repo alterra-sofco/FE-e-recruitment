@@ -7,25 +7,25 @@
         <div pRipple
             class="align-items-center flex-grow-1 justify-content-between lg:flex absolute lg:static w-full surface-overlay left-0 top-100 z-1 shadow-2 lg:shadow-none hidden">
             <ul class="list-none p-0 m-0 flex lg:align-items-center select-none flex-column lg:flex-row">
-                <li><a pRipple [routerLink]="['']" style="text-decoration: none;"
+                <li><a pRipple (click)="ngOnInit()" [routerLink]="['']" style="text-decoration: none;"
                         class="p-ripple p-element flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150"><i
                             class="pi pi-home mr-2"></i>
                         <span>Home</span><span class="p-ink"></span></a></li>
 
-                <!-- <ng-template [ngIf]="!isLoggin" [ngIfElse]="notLoggin"> -->
-                    <div pRipple [routerLink]="['/login']" style="text-decoration: none;"
+                <ng-template [ngIf]="!userName$" [ngIfElse]="notLoggin">
+                    <div pRipple (click)="ngOnInit()" [routerLink]="['/login']" style="text-decoration: none;"
                         class=" p-ripple p-element flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150">
                         <i class="pi pi-check  mr-2"></i>
                         <span>Login</span><span class="p-ink"></span>
                     </div>
-                <!-- </ng-template> -->
-                <!-- <ng-template #notLoggin> -->
-                    <div pRipple [routerLink]="['']" style="text-decoration: none;" (click)="logOut()"
+                </ng-template>
+                <ng-template #notLoggin>
+                    <div pRipple style="text-decoration: none;" (click)="logOut()"
                         class="  p-ripple p-element flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150">
                         <i class="pi pi-check mr-2"></i>
                         <span>Logout</span><span class="p-ink"></span>
                     </div>
-                <!-- </ng-template> -->
+                </ng-template>
 
             </ul>
             <ul
@@ -41,13 +41,13 @@
                                 id="pr_id_8_badge"
                                 class="p-badge p-component p-badge-danger p-badge-dot"></span></i><span
                             class="block lg:hidden font-medium">Notifications</span><span class="p-ink"></span></a></li>
-                <li class="border-top-1 surface-border lg:border-top-none"><a pRipple=""
+                <li *ngIf="userName$" (click)="goingTo()" class="border-top-1 surface-border lg:border-top-none"><a pRipple=""
                         class="p-ripple p-element flex px-6 p-3 lg:px-3 lg:py-2 align-items-center hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150"><img
-                            src="assets/images/blocks/avatars/circle/avatar-f-1.png" [routerLink]="['profile/details']"
+                            src="" 
                             class="mr-3 lg:mr-0" style="width: 28px; height: 28px;">
-                        <div class="block lg:hidden">
-                            <div class="text-900 font-medium">User Name</div><span
-                                class="text-600 font-medium text-sm">Posisition</span>
+                        <div class="block" >
+                            <div class="text-900 font-medium px-1">{{userName$}}</div><span
+                                class="text-600 font-medium text-sm px-1">Posisition</span>
                         </div><span class="p-ink"></span>
                     </a></li>
             </ul>
