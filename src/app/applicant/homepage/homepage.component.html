@@ -36,11 +36,11 @@
         </p-listbox>
 
         <p-listbox class="col" [options]="skill" (ngModel)="selectedSkill" [metaKeySelection]="false" [checkbox]="true"
-            [filter]="true" [multiple]="true" optionLabel="name" [listStyle]="{'max-height':'130px'}"
+            [filter]="true" [multiple]="true" optionLabel="skillName" [listStyle]="{'max-height':'130px'}"
             [style]="{'width':'16rem'}" filterPlaceHolder="skill">
             <ng-template let-skill pTemplate="item">
                 <div class="skill-item">
-                    {{skill.name}}
+                    {{skill.skillName}}
                 </div>
             </ng-template>
         </p-listbox>

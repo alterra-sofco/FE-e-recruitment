@@ -13,8 +13,8 @@ export class SkillService {
     private httpClient: HttpClient
   ) { }
 
-  getSkill(): Observable<Skill[]> {
-    return this.httpClient.get<Skill[]>(`${environment.apiUrl}/master_skill`);
+  getSkill(): Observable<any[]> {
+    return this.httpClient.get<any[]>(`${environment.apiUrl}/master_skill`);
   }
 
   addSkill(payload: Skill): Observable<Skill> {

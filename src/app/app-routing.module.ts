@@ -8,12 +8,14 @@ import { FormExperienceComponent } from './applicant/profile-experience/form-exp
 import { ProfileExperienceComponent } from './applicant/profile-experience/profile-experience.component';
 import { ProfileUpdateComponent } from './applicant/profile-update/profile-update.component';
 import { ProfileComponent } from './applicant/profile/profile.component';
+import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { AppliedJobComponent } from './job/applied-job/applied-job.component';
 
 const routes: Routes = [
   {path: '', component: HomepageComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'login', component: LoginComponent},
   {
     path: 'profile', 
     component: ProfileComponent,

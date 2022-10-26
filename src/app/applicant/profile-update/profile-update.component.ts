@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PrimeNGConfig } from 'primeng/api';
+import { take } from 'rxjs';
 import { Skill } from 'src/app/shared/models/skill';
+import { SkillService } from 'src/app/shared/services/skill.service';
 // import { MessageService } from 'primeng/api';
 
 @Component({
@@ -24,23 +26,26 @@ export class ProfileUpdateComponent implements OnInit {
 
   //skill
   selectedSkill!: Skill;
-  skills: Skill[];
+  skills: Skill[]=[];
 
   constructor(
     private primengConfig: PrimeNGConfig,
     private router: Router,
+    private skillService: SkillService,
     // private messageService: MessageService
   ) {
-    this.skills = [
-      { name: 'Phyton', code: 'NY' },
-      { name: 'Angular', code: 'RM' },
-      { name: 'Java', code: 'LDN' },
-    ];
 
   }
 
   ngOnInit(): void {
-   
+    this.primengConfig.ripple = true;
+
+    //skill
+    this.skillService.getSkill().pipe(take(1)).subscribe((data: any) => {
+      let res = data
+      this.skills = res["data"];
+    })
+    
     // date
     let today = new Date();
     let month = today.getMonth();
