@@ -27,13 +27,13 @@ export class EducationService {
     return this.httpClient.put<Education>(`${environment.apiUrl}/account/applicant/education/${educationId}`, payload, headerOption);
   }
 
-  addEducation(payload: Education): Observable<Education> {
+  addEducation(payload: Education): Observable<any> {
     const headerOption = {
       headers: new HttpHeaders({
         'Content-type': 'application/json; charset=UTF-8',
       }),
     };
-    return this.httpClient.post<Education>(`${environment.apiUrl}/account/applicant/education/`, payload, headerOption);
+    return this.httpClient.post<any>(`${environment.apiUrl}/account/applicant/education`, payload, headerOption);
   }
 
   deleteEducation(educationId: number): Observable<Education> {

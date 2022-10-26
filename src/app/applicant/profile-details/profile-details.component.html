@@ -93,7 +93,8 @@
         <p-fieldset legend="Education" [toggleable]="true" [collapsed]="false">
             <button pButton pRipple type="button" label="add education" class="w-10rem p-button-info p-button-text"
                 [routerLink]="['/profile/education/form']"></button>
-            <app-form-education [dataEdu]="userData"></app-form-education>
+            <app-profile-education [dataEdu]="userData.educations"></app-profile-education>
+            <!-- <app-form-education [dataEdu]="userData" hidden></app-form-education> -->
         </p-fieldset>
     </li>
 

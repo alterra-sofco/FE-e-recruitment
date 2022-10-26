@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Applicant } from 'src/app/shared/models/applicant';
+import { Education } from 'src/app/shared/models/education';
 
 @Component({
   selector: 'app-profile-education',
@@ -9,7 +10,7 @@ import { Applicant } from 'src/app/shared/models/applicant';
 })
 export class ProfileEducationComponent implements OnInit {
 
-  @Input('dataEdu') dataUser!: Applicant;
+  @Input('dataEdu') dataEdu!: Education[];
 
   constructor(
     private router: Router,
@@ -20,7 +21,8 @@ export class ProfileEducationComponent implements OnInit {
   }
 
   onSubmit(){
-    this.router.navigateByUrl('profile/education/form')
+    // this.router.navigateByUrl('/profile/education/form')
+
   }
 
 }

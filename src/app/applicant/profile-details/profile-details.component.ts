@@ -18,15 +18,11 @@ export class ProfileDetailsComponent implements OnInit {
   
   constructor(
     private profileService: ProfileService,
-    private educationService: EducationService,
-    private experience: ExperienceService,
-    private http: HttpClient,
      ) { }
 
   ngOnInit(): void {
     this.profileService.getProfile().pipe(take(1)).subscribe(data => {
       this.userData =data.data;
-      console.log(this.userData.address)
     })
 
     this.profileService.sharedData.next(this.userData);

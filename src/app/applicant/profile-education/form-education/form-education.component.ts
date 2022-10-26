@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, take } from 'rxjs';
 import { Applicant } from 'src/app/shared/models/applicant';
 import { Degree, Education } from 'src/app/shared/models/education';
@@ -13,8 +13,6 @@ import { EducationService } from 'src/app/shared/services/education.service';
 })
 export class FormEducationComponent implements OnInit {
 
-  @Input('dataEdu') dataUser!: Applicant;
-
   subscription!: Subscription;
   //date
   dateStart!: Date;
@@ -26,10 +24,22 @@ export class FormEducationComponent implements OnInit {
   invalidDates!: Array<Date>
 
   //degree
-  degrees!: Degree[];
+  degrees: any[];
   selectedDegree!: Degree;
 
   education!: Education[];
+  selectedId: any;
+  selectedEdu: Education ={
+    educationId:0,
+    degree: '',
+    description:'' ,
+    educationName:'', 
+    endDate: '',
+    major:'',
+    startDate:'' 
+  }
+
+  isUpdate = false;
 
   submitted = false;
   formEducation: FormGroup = new FormGroup({
@@ -44,20 +54,21 @@ export class FormEducationComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private educationService: EducationService,
   ) {
-    this.degrees = [
-      { name: 'HIGH_SCHOOL' },
-      { name: 'BACHELOR' },
-      { name: 'MASTER' },
-      { name: 'DOCTOR' },
-      { name: 'PHD' }
-    ];
+
+    this.degrees = [ "HIGH_SCHOOL","BACHELOR","MASTER","DOCTOR", "PHD" ];
   }
 
   ngOnInit(): void {
-    //data
-    
+    console.log(this.degrees)
+
+    this.selectedId = this.route.snapshot.paramMap.get('id');
+    if (this.selectedId) this.educationService.getEducation(this.selectedId).subscribe((data: any) => {
+      this.selectedEdu = data.data;
+      this.isUpdate = true;
+    })
 
     // date
     let today = new Date();
@@ -83,9 +94,18 @@ export class FormEducationComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     console.log(this.formEducation.value)
-    if (this.formEducation.valid) {
-      this.educationService.addEducation(this.formEducation.value).pipe(take(1)).subscribe(data => {
-        alert("updated")
+    console.log(this.isUpdate)
+    if (this.formEducation.valid && this.isUpdate == false) {
+      this.educationService.addEducation(this.formEducation.value).subscribe(data => {
+        alert("add")
+        this.router.navigateByUrl('/profile/details')
+      })
+      this.onReset()
+    }
+    else if (this.formEducation.valid && this.isUpdate == true) {
+      this.educationService.updateEducation(parseInt(this.selectedId), this.formEducation.value).subscribe(data => {
+        alert("update")
+        this.isUpdate = false;
         this.router.navigateByUrl('/profile/details')
       })
       this.onReset()

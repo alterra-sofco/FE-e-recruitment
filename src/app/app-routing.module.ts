@@ -30,7 +30,8 @@ const routes: Routes = [
       { path: 'experience/form', component: FormExperienceComponent },
 
       { path: 'education', component: ProfileEducationComponent },
-      { path: 'education/form', component: FormEducationComponent }
+      { path: 'education/form', component: FormEducationComponent },
+      { path: 'education/form/:id', component: FormEducationComponent }
     ],
   },
 ];

@@ -28,7 +28,7 @@ export class HttpIntercepInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    if (this.sessionService.getSession() || this.sessionService.getToken()) {
+    if (this.sessionService.getSession() || this.sessionService.getTokenS()) {
       let headers = request.headers.set(
         'Authorization',
         `Bearer ${this.sessionService.getTokenS()}`
