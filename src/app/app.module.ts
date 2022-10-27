@@ -15,8 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthModule } from './auth/auth.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpIntercepInterceptor } from './shared/interceptor/http-intercep.interceptor';
-import { ActivatedRoute, convertToParamMap } from '@angular/router';
-import { of } from 'rxjs';
+import { HttpClientModule } from '@angular/common/http';
 
 // registerLocaleData(localeId, 'id');
 @NgModule({
@@ -28,6 +27,7 @@ import { of } from 'rxjs';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
 
     //module here
     JobModule,
@@ -39,8 +39,7 @@ import { of } from 'rxjs';
     FormsModule
   ],
   providers: [
-    // {provide: localeId, useValue: "id-ID"},
-    // {provide: MessageService},
+    {provide: MessageService},
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpIntercepInterceptor,

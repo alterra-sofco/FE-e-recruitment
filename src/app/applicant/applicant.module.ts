@@ -10,6 +10,7 @@ import { ProfileExperienceComponent } from './profile-experience/profile-experie
 import { FormEducationComponent } from './profile-education/form-education/form-education.component';
 import { FormExperienceComponent } from './profile-experience/form-experience/form-experience.component';
 import { ProfileSkillComponent } from './profile-skill/profile-skill.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ProfileSkillComponent } from './profile-skill/profile-skill.component';
   imports: [
     CommonModule,
     SharedModule,
+    HttpClientModule
   ]
 })
 export class ApplicantModule { }

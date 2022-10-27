@@ -3,7 +3,6 @@ import {
   HttpErrorResponse,
   HttpEvent,
   HttpHandler,
-  HttpHeaders,
   HttpInterceptor,
   HttpRequest,
   HttpResponse,
@@ -11,9 +10,7 @@ import {
 } from '@angular/common/http';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { SessionService } from '../services/session.service';
-import { MessageService } from "primeng/api";
 import { AuthenticationService } from '../services/authentication.service';
-import { STRING_TYPE } from '@angular/compiler';
 
 @Injectable()
 export class HttpIntercepInterceptor implements HttpInterceptor {
@@ -28,7 +25,8 @@ export class HttpIntercepInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    if (this.sessionService.getSession() || this.sessionService.getTokenS()) {
+    //never changed or error
+    if (this.sessionService.getSession() || this.sessionService.getToken()) {
       let headers = request.headers.set(
         'Authorization',
         `Bearer ${this.sessionService.getTokenS()}`
@@ -55,7 +53,7 @@ export class HttpIntercepInterceptor implements HttpInterceptor {
           reason: error && error.error && error.error.message ? error.error.message : '',
           status: error.status
         };
-        // this.messageService.add({ severity: 'error', summary: 'Error', detail: data?.status + ': ' + data?.reason });
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: data?.status + ': ' + data?.reason });
         console.log(error);
         return throwError(() => error);
       }));
