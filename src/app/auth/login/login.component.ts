@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { PrimeNGConfig } from 'primeng/api';
+import {  FormControl, FormGroup, Validators } from '@angular/forms';
+import {  Router } from '@angular/router';
+import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { Subscription, take } from 'rxjs';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 import { SessionService } from 'src/app/shared/services/session.service';
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private authService: AuthenticationService,
     private sessionService: SessionService,
-    // public messageService: MessageService
+    public messageService: MessageService
   ) { }
 
   ngOnInit() {
@@ -36,11 +36,14 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     if (this.formRegister.valid) {
-      this.authService.login(this.formRegister.value).subscribe((data: any) => {
+      this.authService.login(this.formRegister.value).pipe(take(1)).subscribe((data:any) => {
+        console.log(data);
         if (data) {
-          localStorage.setItem('JwtToken', data.data?.accessToken);
+          localStorage.setItem('JwtToken', data.data.accessToken);
           this.sessionService.createSession(data.data);
           alert("ok")
+        } else {
+          alert("login error")
         }
         this.router.navigateByUrl("")
       })
