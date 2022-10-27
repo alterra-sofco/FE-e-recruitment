@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { PrimeNGConfig } from 'primeng/api';
-import { take } from 'rxjs';
-import { SessionService } from 'src/app/shared/services/session.service';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {PrimeNGConfig} from 'primeng/api';
+import {SessionService} from 'src/app/shared/services/session.service';
 
 @Component({
   selector: 'app-header',
@@ -38,7 +37,7 @@ export class HeaderComponent implements OnInit {
   logOut() {
     this.sessionService.destroySession();
     this.ngOnInit()
-   
+
     this.router.navigateByUrl('');
     alert("logout")
   }

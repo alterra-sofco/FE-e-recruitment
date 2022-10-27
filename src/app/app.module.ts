@@ -1,9 +1,9 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
+import {BrowserModule} from '@angular/platform-browser';
+import {AppRoutingModule} from './app-routing.module';
 
 //component
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './core/header/header.component';
+import {AppComponent} from './app.component';
+import {HeaderComponent} from './core/header/header.component';
 
 //module shared by
 import { JobModule } from './job/job.module';
@@ -48,4 +48,5 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

@@ -6,7 +6,6 @@ import {
   HttpInterceptor,
   HttpRequest,
   HttpResponse,
-  HTTP_INTERCEPTORS,
 } from '@angular/common/http';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { SessionService } from '../services/session.service';
@@ -19,7 +18,8 @@ export class HttpIntercepInterceptor implements HttpInterceptor {
   constructor(
     private authService: AuthenticationService,
     private sessionService: SessionService,
-  ) { }
+  ) {
+  }
 
   intercept(
     request: HttpRequest<unknown>,
