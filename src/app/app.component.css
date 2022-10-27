@@ -15,8 +15,10 @@
   body {
     font-family: var(--font-family);
     color: var(--text-color);
+
   }
 
   html {
     font-size: 1rem;
+    margin:0 !important;
   }

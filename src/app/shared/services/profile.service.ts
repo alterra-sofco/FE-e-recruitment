@@ -1,9 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { JwtHelperService } from '@auth0/angular-jwt';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { environment } from 'src/environments/environment';
-import { Applicant, UserProfile } from '../models/applicant';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Observable, Subject} from 'rxjs';
+import {environment} from 'src/environments/environment';
+import {Applicant, UserProfile} from '../models/applicant';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +10,12 @@ import { Applicant, UserProfile } from '../models/applicant';
 export class ProfileService {
 
   sharedData!: Subject<Applicant>;
-  
+
   constructor(
     private httpClient: HttpClient,
-    ) { 
-      this.sharedData = new Subject<Applicant>(); 
-    }
+  ) {
+    this.sharedData = new Subject<Applicant>();
+  }
 
   getProfile(): Observable<any> {
     return this.httpClient.get<any>(`${environment.apiUrl}/account/applicant`);
