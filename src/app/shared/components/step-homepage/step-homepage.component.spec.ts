@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { StepHomepageComponent } from './step-homepage.component';
+import {StepHomepageComponent} from './step-homepage.component';
 
 describe('StepHomepageComponent', () => {
   let component: StepHomepageComponent;
@@ -8,9 +8,9 @@ describe('StepHomepageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ StepHomepageComponent ]
+      declarations: [StepHomepageComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(StepHomepageComponent);
     component = fixture.componentInstance;

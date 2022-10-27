@@ -1,14 +1,12 @@
-import { Injectable } from '@angular/core';
-import { JwtHelperService } from '@auth0/angular-jwt';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import {Injectable} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SessionService {
 
-  constructor(){
-    
+  constructor() {
+
   }
 
   createSession(info: any) {
@@ -21,7 +19,7 @@ export class SessionService {
 
   getTokenS() {
     const token = this.getSession();
-    return token["accessToken"];
+    return localStorage.getItem('JwtToken');
   }
 
   getToken() {
