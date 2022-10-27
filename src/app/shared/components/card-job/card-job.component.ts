@@ -1,8 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { take } from 'rxjs';
-import { Applicant } from '../../models/applicant';
-import { Job, JobDetails } from '../../models/job';
-import { JobService } from '../../services/job.service';
+import {Component, Input, OnInit} from '@angular/core';
+import {take} from 'rxjs';
+import {Applicant} from '../../models/applicant';
+import {Job, JobDetails} from '../../models/job';
+import {JobService} from '../../services/job.service';
 
 @Component({
   selector: 'app-card-job',
@@ -14,7 +14,7 @@ export class CardJobComponent implements OnInit {
   @Input('jobList') job!: Job;
   @Input('userData') applicant!: Applicant;
 
-  jobDetail: JobDetails[] =  [{
+  jobDetail: JobDetails[] = [{
     JobDetail: '',
     isApplied: true,
     jobPosition: '',
@@ -28,7 +28,8 @@ export class CardJobComponent implements OnInit {
 
   constructor(
     private jobService: JobService,
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
   }
@@ -36,14 +37,14 @@ export class CardJobComponent implements OnInit {
 
   apply() {
     this.jobService.applyJob(this.applicant.userId, this.applicant.cvFileId)
-    .pipe(take(1)).subscribe(data =>{
+      .pipe(take(1)).subscribe(data => {
       alert("apllied the job");
     })
   }
 
   showMaximizableDialog() {
     this.displayMaximizable = true;
-    this.jobService.getJobDetail(this.job.jobPostingId).pipe(take(1)).subscribe(data =>{
+    this.jobService.getJobDetail(this.job.jobPostingId).pipe(take(1)).subscribe(data => {
       this.jobDetail = data.data;
     })
   }

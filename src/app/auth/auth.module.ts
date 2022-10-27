@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RegisterComponent } from './register/register.component';
@@ -17,6 +18,9 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule
+    ButtonModule,
+    ToastModule,
   ]
 })
-export class AuthModule { }
+export class AuthModule {
+}
