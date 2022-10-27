@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
 import { take } from 'rxjs';
+import { Applicant } from 'src/app/shared/models/applicant';
+import { Job } from 'src/app/shared/models/job';
 import { Skill } from 'src/app/shared/models/skill';
+import { JobService } from 'src/app/shared/services/job.service';
+import { ProfileService } from 'src/app/shared/services/profile.service';
 import { SkillService } from 'src/app/shared/services/skill.service';
 
 @Component({
@@ -11,27 +15,35 @@ import { SkillService } from 'src/app/shared/services/skill.service';
 })
 export class HomepageComponent implements OnInit {
 
-  value3: string = '';
+  search: string = '';
+  applicant!: Applicant;
 
   //filter
   selectedSkill!: Skill;
   skill: Skill[] = [];
 
+  //job
   selectedJob!: any;
-  job: any[];
+  job: Job[] = [];
+  jobList: Job[] = [];
+
+  displayMaximizable!: boolean;
 
   constructor(
     private primengConfig: PrimeNGConfig,
     private skillService: SkillService,
+    private profileService: ProfileService,
+    private jobService : JobService,
   ) {
-
-    this.job = [
-    ];
-
   }
 
   ngOnInit() {
     this.primengConfig.ripple = true;
+
+    //user
+    this.profileService.getProfile().pipe(take(1)).subscribe((data:any) => {
+      this.applicant = data.data;
+    })
 
     //skill
     this.skillService.getSkill().pipe(take(1)).subscribe((data: any) => {
@@ -39,6 +51,15 @@ export class HomepageComponent implements OnInit {
       this.skill = (res["data"]);
     })
 
+    //skill
+    this.jobService.getAllJob().pipe(take(1)).subscribe((data:any) =>{
+      this.jobList = data.data;
+    })
+
+  }
+
+  showMaximizableDialog() {
+    this.displayMaximizable = true;
   }
 
 }

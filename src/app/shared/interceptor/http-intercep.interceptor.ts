@@ -3,30 +3,35 @@ import {
   HttpErrorResponse,
   HttpEvent,
   HttpHandler,
+  HttpHeaders,
   HttpInterceptor,
   HttpRequest,
   HttpResponse,
+  HTTP_INTERCEPTORS,
 } from '@angular/common/http';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { SessionService } from '../services/session.service';
 import { MessageService } from "primeng/api";
+import { AuthenticationService } from '../services/authentication.service';
+import { STRING_TYPE } from '@angular/compiler';
 
 @Injectable()
 export class HttpIntercepInterceptor implements HttpInterceptor {
+  messageService: any;
 
   constructor(
-    private sessionService: SessionService, 
-    private messageService: MessageService) {
-  }
+    private authService: AuthenticationService,
+    private sessionService: SessionService,
+  ) { }
 
   intercept(
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    if (this.sessionService.getSession() || this.sessionService.getToken()) {
+    if (this.sessionService.getSession() || this.sessionService.getTokenS()) {
       let headers = request.headers.set(
         'Authorization',
-        `Bearer ${this.sessionService.getToken()}`
+        `Bearer ${this.sessionService.getTokenS()}`
       );
 
       request = request.clone({
@@ -41,7 +46,7 @@ export class HttpIntercepInterceptor implements HttpInterceptor {
     }
     return next.handle(request).pipe(map((event: HttpEvent<any>) => {
       if (event instanceof HttpResponse) {
-        console.log('event--->>>', event);
+        console.log('log:', event);
       }
       return event;
     }),
@@ -50,11 +55,10 @@ export class HttpIntercepInterceptor implements HttpInterceptor {
           reason: error && error.error && error.error.message ? error.error.message : '',
           status: error.status
         };
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: data?.status + ': ' + data?.reason });
+        // this.messageService.add({ severity: 'error', summary: 'Error', detail: data?.status + ': ' + data?.reason });
         console.log(error);
-        return throwError(error);
+        return throwError(() => error);
       }));
 
   }
-
 }

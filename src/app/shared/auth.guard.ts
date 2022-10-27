@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, CanLoad, Route, Router, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import {  CanActivate, CanLoad, Router} from '@angular/router';
+
 import { SessionService } from './services/session.service';
 
 @Injectable({
@@ -20,7 +20,7 @@ export class AuthGuard implements CanActivate, CanLoad {
   canLoad(): boolean {
     const result = this.isLogin();
     if (result == false) {
-      this.router.navigateByUrl('/auth/login');
+      this.router.navigateByUrl('login');
     }
     return result;
   }
@@ -29,6 +29,7 @@ export class AuthGuard implements CanActivate, CanLoad {
     if (this.sessionService.isUserLogin()) {
       return true;
     } else {
+      // this.router.navigateByUrl('login');
       return false;
     }
   }

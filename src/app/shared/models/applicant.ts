@@ -9,7 +9,7 @@ export interface Applicant{
     bio: string,
     cvFileId: string,
     cvURL: string,
-    dob: any,
+    dob: Date,
     educations: Education[],
     email: string,
     experiences: Experience[],

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -19,15 +19,30 @@ export class EducationService {
   }
 
   updateEducation(educationId: number, payload: Education): Observable<Education> {
-    return this.httpClient.put<Education>(`${environment.apiUrl}/account/applicant/education/${educationId}`, payload);
+    const headerOption = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json; charset=UTF-8',
+      }),
+    };
+    return this.httpClient.put<Education>(`${environment.apiUrl}/account/applicant/education/${educationId}`, payload, headerOption);
   }
 
-  addEducation(payload: Education): Observable<Education> {
-    return this.httpClient.post<Education>(`${environment.apiUrl}/account/applicant/education/`, payload);
+  addEducation(payload: Education): Observable<any> {
+    const headerOption = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json; charset=UTF-8',
+      }),
+    };
+    return this.httpClient.post<any>(`${environment.apiUrl}/account/applicant/education`, payload, headerOption);
   }
 
   deleteEducation(educationId: number): Observable<Education> {
-    return this.httpClient.delete<Education>(`${environment.apiUrl}/account/applicant/education/${educationId}`);
+    const headerOption = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json; charset=UTF-8',
+      }),
+    };
+    return this.httpClient.delete<Education>(`${environment.apiUrl}/account/applicant/education/${educationId}`, headerOption);
   }
 
 }
