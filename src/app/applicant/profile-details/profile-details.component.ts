@@ -14,18 +14,22 @@ import { ProfileService } from 'src/app/shared/services/profile.service';
 export class ProfileDetailsComponent implements OnInit {
 
   applicant!: Applicant;
-  userData!: Applicant;
-  
+  userData!: Applicant | null;
+  isSkillTouched: boolean = false;
+
   constructor(
     private profileService: ProfileService,
      ) { }
 
   ngOnInit(): void {
     this.profileService.getProfile().pipe(take(1)).subscribe(data => {
-      this.userData =data.data;
+      this.userData = data.data;
     })
 
-    this.profileService.sharedData.next(this.userData);
+  }
+
+  showCrud(){
+    this.isSkillTouched = true;
   }
 
   onSubmitEdu(){
@@ -35,6 +39,7 @@ export class ProfileDetailsComponent implements OnInit {
   onSubmitExp(){
 
   }
+
 
   onUpload($event:any){
 

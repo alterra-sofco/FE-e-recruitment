@@ -1,5 +1,5 @@
 import { ConstantPool } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { take } from 'rxjs';
 import { Skill } from 'src/app/shared/models/skill';
@@ -11,7 +11,7 @@ import { SkillService } from 'src/app/shared/services/skill.service';
   templateUrl: './profile-skill.component.html',
   styleUrls: ['./profile-skill.component.css']
 })
-export class ProfileSkillComponent implements OnInit {
+export class ProfileSkillComponent implements OnInit{
 
     //skill
     skillTree: Skill[]=[]
@@ -38,18 +38,19 @@ export class ProfileSkillComponent implements OnInit {
 
   }
 
+
   onSubmitSkill(){
     this.skillService.addSkill(this.selectedSkill).pipe(take(1)).subscribe(data => {
       alert("add skill");
-      this.router.navigateByUrl("/skill");
+      this.router.navigateByUrl("/profile/details");
     })
 
   }
 
-  deleteSkill(data: Skill){
-    this.skillService.deleteSkill(data.id).pipe(take(1)).subscribe((data:any) => {
+  async deleteSkill(skill: any){
+    this.skillService.deleteSkill(skill.skillId).pipe(take(1)).subscribe(data => {
       alert("deleted");
-      this.router.navigateByUrl("/skill");
+      this.router.navigateByUrl("/profile/details").finally;
     })
   }
 }
