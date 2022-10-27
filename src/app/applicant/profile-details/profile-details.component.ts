@@ -36,4 +36,8 @@ export class ProfileDetailsComponent implements OnInit {
 
   }
 
+  onUpload($event:any){
+
+  }
+
 }

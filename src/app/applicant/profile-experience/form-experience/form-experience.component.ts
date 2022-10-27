@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { Experience } from 'src/app/shared/models/experience';
+import { ExperienceService } from 'src/app/shared/services/experience.service';
 
 @Component({
   selector: 'app-form-experience',
@@ -8,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class FormExperienceComponent implements OnInit {
 
+  subscription!: Subscription;
   //date
   dateStart!: Date;
   dateEnd!: Date;
@@ -17,9 +22,39 @@ export class FormExperienceComponent implements OnInit {
   maxDate!: Date;
   invalidDates!: Array<Date>
 
-  constructor(private router: Router) { }
+  experience!: Experience[];
+  selectedId: any;
+  selectedExp: Experience ={
+    experienceId: 0,
+    corporateName: '',
+    description: '',
+    endDate: '',
+    position: '',
+    startDate: '',
+  }
+
+  isUpdate = false;
+  submitted = false;
+  formExperience: FormGroup = new FormGroup({
+    position: new FormControl('', [Validators.required, Validators.maxLength(50)]),
+    description: new FormControl('', [Validators.required, Validators.maxLength(50)]),
+    corporateName: new FormControl('', [Validators.required, Validators.maxLength(50)]),
+    endDate: new FormControl('', [Validators.required]),
+    startDate: new FormControl('', [Validators.required])
+  });
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private experienceService: ExperienceService,
+    ) { }
 
   ngOnInit(): void { 
+    this.selectedId = this.route.snapshot.paramMap.get('id');
+    if (this.selectedId) this.experienceService.getExperience(this.selectedId).subscribe((data: any) => {
+      this.selectedExp = data.data;
+      this.isUpdate = true;
+    })
     
     // date
     let today = new Date();
@@ -42,8 +77,38 @@ export class FormExperienceComponent implements OnInit {
 
   }
 
+  
   onSubmit() {
-    this.router.navigateByUrl('profile/details')
+    this.submitted = true;
+    console.log(this.formExperience.value)
+    console.log(this.isUpdate)
+    if (this.formExperience.valid && this.isUpdate == false) {
+      this.experienceService.addExperience(this.formExperience.value).subscribe(data => {
+        alert("add")
+        this.router.navigateByUrl('/profile/details')
+      })
+      this.onReset()
+    }
+    else if (this.formExperience.valid && this.isUpdate == true) {
+      this.experienceService.updateExperience(parseInt(this.selectedId), this.formExperience.value).subscribe(data => {
+        alert("update")
+        this.isUpdate = false;
+        this.router.navigateByUrl('/profile/details')
+      })
+      this.onReset()
+    }
+  }
+
+  onReset(): void {
+    this.submitted = false;
+    this.formExperience.reset();
+
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
 }

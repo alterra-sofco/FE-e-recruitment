@@ -19,7 +19,6 @@ export class ProfileUpdateComponent implements OnInit {
   subscription!: Subscription;
 
   //date
-  // date3!: Date;
   dates!: Date[];
   rangeDates!: Date[];
   minDate!: Date;
@@ -28,10 +27,6 @@ export class ProfileUpdateComponent implements OnInit {
 
   //file
   uploadedFiles: any[] = [];
-
-  //skill
-  selectedSkill!: Skill[];
-  skills: Skill[] = [];
 
   //subs
   userData!: Applicant;
@@ -48,14 +43,13 @@ export class ProfileUpdateComponent implements OnInit {
     email: new FormControl('', [Validators.maxLength(50)]),
     name: new FormControl('', [Validators.required, Validators.maxLength(50)]),
     phoneNumber: new FormControl('', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)/), Validators.maxLength(12)]),
-    // skills: new FormControl('', [Validators.required, Validators.maxLength(50)]),
+    
 
   });
 
   constructor(
     private primengConfig: PrimeNGConfig,
     private router: Router,
-    private skillService: SkillService,
     private profileService: ProfileService,
     // private messageService: MessageService
   ) {}
@@ -66,12 +60,6 @@ export class ProfileUpdateComponent implements OnInit {
     //sub profile
     this.profileService.getProfile().pipe(take(1)).subscribe(data => {
       this.userData = data["data"];
-    })
-
-    //skill list
-    this.skillService.getSkill().pipe(take(1)).subscribe((data: any) => {
-      let res = data
-      this.skills = res["data"];
     })
 
     // date
@@ -97,6 +85,10 @@ export class ProfileUpdateComponent implements OnInit {
   onBasicUpload(event: any) {
     for (let file of event.files) {
       this.uploadedFiles.push(file);
+      this.profileService.uploadProfilePicture(file).pipe(take(1)).subscribe(data => {
+        console.log(data);
+        alert(data.message)
+      })
     }
     //  this.messageService.add({ severity: 'info', summary: 'File Uploaded', detail: '' });
   }
@@ -112,9 +104,7 @@ export class ProfileUpdateComponent implements OnInit {
     }
   }
 
-  onSubmitSkill(){
-
-  }
+  
 
   onSubmitPorto(){
     

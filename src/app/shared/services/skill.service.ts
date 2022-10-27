@@ -21,7 +21,7 @@ export class SkillService {
     return this.httpClient.post<Skill>(`${environment.apiUrl}/account/applicant/skill`,payload);
   }
 
-  deleteSkill(skillId: number): Observable<number>{
-    return this.httpClient.delete<number>(`${environment .apiUrl}/account/applicant/skill/${skillId}`);
+  deleteSkill(skillId: any): Observable<Skill>{
+    return this.httpClient.delete<Skill>(`${environment.apiUrl}/account/applicant/skill/${skillId}`);
   }
 }

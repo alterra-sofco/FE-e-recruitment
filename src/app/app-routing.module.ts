@@ -6,6 +6,7 @@ import { FormEducationComponent } from './applicant/profile-education/form-educa
 import { ProfileEducationComponent } from './applicant/profile-education/profile-education.component';
 import { FormExperienceComponent } from './applicant/profile-experience/form-experience/form-experience.component';
 import { ProfileExperienceComponent } from './applicant/profile-experience/profile-experience.component';
+import { ProfileSkillComponent } from './applicant/profile-skill/profile-skill.component';
 import { ProfileUpdateComponent } from './applicant/profile-update/profile-update.component';
 import { ProfileComponent } from './applicant/profile/profile.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -28,10 +29,14 @@ const routes: Routes = [
 
       { path: 'experience', component: ProfileExperienceComponent },
       { path: 'experience/form', component: FormExperienceComponent },
+      { path: 'experience/form/:id', component: FormExperienceComponent },
 
       { path: 'education', component: ProfileEducationComponent },
       { path: 'education/form', component: FormEducationComponent },
-      { path: 'education/form/:id', component: FormEducationComponent }
+      { path: 'education/form/:id', component: FormEducationComponent },
+
+      { path: 'skill', component: ProfileSkillComponent },
+      { path: 'skill/:id', component: ProfileSkillComponent },
     ],
   },
 ];

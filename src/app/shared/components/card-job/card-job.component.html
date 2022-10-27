@@ -1,22 +1,22 @@
-
+<!-- real here................................................................ -->
 <div class="grid">
     <div class="col-1 mr-5">
         <p-image src="https://picsum.photos/200/200" alt="Image" width="80"></p-image>
     </div>
     <div class="col-7 flex-column cursor-pointer" pRipple (click)="showMaximizableDialog()">
-        <div class="text-800 font-bold text-xl mb-1">Back End Developer
+        <div class="text-800 font-bold text-xl mb-1">{{job.jobPosition}}
             <i class="pi pi-verified px-2 text-cyan-600"></i>
         </div>
         <div>
-            <span class="align-items-center text-green-600 mr-2">Company name, </span>
+            <span class="align-items-center text-green-600 mr-2">Company</span>
             <span class="text-500">Indonesia</span>
         </div>
         <div class="grid col-9 mt-1 align-items-center text-500">
             <div class="flex pi pi-dollar align-items-center mr-2">
-                <span class="px-2">Disclosured</span>
+                <span class="px-2">disclosed</span>
             </div>
             <div class="flex pi pi-history align-items-center">
-                <span class="px-2">Full Time</span>
+                <span class="px-2">{{job.yearExperience}} year Experience</span>
             </div>
         </div>
 
@@ -27,7 +27,7 @@
                 icon="pi pi-check align-items-center" onclick="apply()"></button>
         </div>
         <div class="pi pi-calendar-plus align-items-center text-500 ">
-            <span class="px-2">12-January-2022</span>
+            <span class="px-2">{{job.updatedAt}}</span>
         </div>
     </div>
 </div>
@@ -36,10 +36,15 @@
 <!-- modal -->
 <p-dialog header="Company" [(visible)]="displayMaximizable" [modal]="true" [style]="{width: '50vw'}"
     [maximizable]="true" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
-    <p>Detail here</p>
+    <p>Company</p>
+    <div>
+        <p>{{jobDetail}}</p>
+    </div>
     <ng-template pTemplate="footer">
-        <button pButton pRipple type="button" icon="pi pi-check" (click)="apply()" label="Apply"
-            class="p-button-text p-button-raised p-button-primary"></button>
+        <!-- <button *ngIf="{{jobDetail.isApplied}}" pButton pRipple type="button" icon="pi pi-check" disabled
+            (click)="apply()" label="Apply" class="p-button-text p-button-raised p-button-primary"></button>
+        <button *ngIf="{{!jobDetail.isApplied}}" pButton pRipple type="button" icon="pi pi-check" (click)="apply()"
+            label="Apply" class="p-button-text p-button-raised p-button-primary"></button> -->
         <!-- <button pButton pRipple type="button" icon="pi pi-times" class="p-button-raised p-button-danger p-button-text" (click)="displayMaximizable=false"></button> -->
     </ng-template>
 </p-dialog>

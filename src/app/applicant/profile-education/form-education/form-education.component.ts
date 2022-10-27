@@ -46,9 +46,9 @@ export class FormEducationComponent implements OnInit {
     degree: new FormControl('', [Validators.required, Validators.maxLength(50)]),
     description: new FormControl('', [Validators.required, Validators.maxLength(50)]),
     educationName: new FormControl('', [Validators.required, Validators.maxLength(50)]),
-    endDate: new FormControl('', [Validators.required, Validators.maxLength(50)]),
+    endDate: new FormControl('', [Validators.required]),
     major: new FormControl('', [Validators.required, Validators.maxLength(50)]),
-    startDate: new FormControl('', [Validators.required, Validators.maxLength(50)])
+    startDate: new FormControl('', [Validators.required])
 
   });
 
@@ -62,7 +62,6 @@ export class FormEducationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.degrees)
 
     this.selectedId = this.route.snapshot.paramMap.get('id');
     if (this.selectedId) this.educationService.getEducation(this.selectedId).subscribe((data: any) => {

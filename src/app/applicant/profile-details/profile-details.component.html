@@ -1,7 +1,20 @@
 <div class="flex align-items-start flex-column md:flex-row mb-5">
 
     <!-- avatar -->
-    <img [src]="userData.avatarFileId" alt="" class="mr-6 mb-3 lg:mb-0" style="width: 100px; height: 100px;">
+    <div class="grid">
+        <div class="col-12">
+            <img [src]="userData.avatarFileId" alt="" class="mr-6 mb-2 lg:mb-0" style="width: 150px; height: 150px;">
+        </div>
+        <div class="col-6">
+            <button pRipple
+                class="align-items-center flex-column p-element p-button-rounded -mt-5 p-button p-component p-button-icon-only">
+                <p-fileUpload mode="basic" name="myfile[]" (onUpload)="onUpload($event)" accept="image/*"
+                    chooseLabel="Drop Cv">
+                </p-fileUpload>
+            </button>
+        </div>
+
+    </div>
     <!-- nama -->
     <div><span class="text-900 font-medium text-3xl">{{userData.name}}</span>
         <!-- bio -->
@@ -14,14 +27,14 @@
 </div>
 <ul class="list-none p-0 m-0 border-300">
     <!-- btn edit -->
-    <div class="p-3 pt-5 w-16rem flex align-items-center flex-wrap">
+    <div class="p-3 pt-3 w-16rem flex align-items-center flex-wrap">
         <button pbutton="" pRipple label="edit" icon="pi pi-arrow-right" iconpos="right"
             class=" p-element p-ripple p-button-rounded p-button p-component" [routerLink]="['update']"><span
                 class="p-button-icon p-button-icon-right pi pi-arrow-right" aria-hidden="true"></span><span
                 class="p-button-label">Edit Information</span><span class="p-ink"></span>
         </button>
     </div>
-    <li class="mb-3 pt-3">
+    <li class="mb-3 pt-2">
         <p-fieldset legend="Personal Information" [toggleable]="true">
 
             <!-- address -->
@@ -90,11 +103,10 @@
 
     <!-- education -->
     <li class="mb-3">
-        <p-fieldset legend="Education" [toggleable]="true" [collapsed]="false">
+        <p-fieldset legend="Education" [toggleable]="true" [collapsed]="true">
             <button pButton pRipple type="button" label="add education" class="w-10rem p-button-info p-button-text"
                 [routerLink]="['/profile/education/form']"></button>
             <app-profile-education [dataEdu]="userData.educations"></app-profile-education>
-            <!-- <app-form-education [dataEdu]="userData" hidden></app-form-education> -->
         </p-fieldset>
     </li>
 
@@ -103,8 +115,7 @@
         <p-fieldset legend="Experience" [toggleable]="true" [collapsed]="true">
             <button pButton pRipple type="button" label="add experience" class="w-10rem p-button-info p-button-text"
                 [routerLink]="['/profile/experience/form']"></button>
-            <app-form-experience></app-form-experience>
-            <!-- <app-profile-experience [dataExp]="userData"></app-profile-experience> -->
+            <app-profile-experience [dataExp]="userData.experiences"></app-profile-experience>
         </p-fieldset>
     </li>
 
