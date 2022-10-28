@@ -7,6 +7,7 @@ import {
   HttpRequest,
   HttpResponse,
 } from '@angular/common/http';
+
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { SessionService } from '../services/session.service';
 import { AuthenticationService } from '../services/authentication.service';

@@ -1,4 +1,3 @@
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {NgModule} from '@angular/core';
@@ -8,6 +7,7 @@ import {LoginComponent} from './login/login.component';
 import {SharedModule} from 'primeng/api';
 import {ButtonModule} from "primeng/button";
 import {ToastModule} from "primeng/toast";
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [

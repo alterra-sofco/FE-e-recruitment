@@ -5,7 +5,6 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './core/header/header.component';
 
-//module shared by
 import { JobModule } from './job/job.module';
 import { FooterComponent } from './core/footer/footer.component';
 import { MessageService, SharedModule } from 'primeng/api';
