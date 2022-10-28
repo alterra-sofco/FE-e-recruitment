@@ -44,7 +44,6 @@ export class CardJobComponent implements OnInit {
     this.formApply = new FormGroup({
       coverLetter: new FormControl('please kindly check my profile', [Validators.required]),
     });
-
   }
 
   apply() {
@@ -78,6 +77,8 @@ export class CardJobComponent implements OnInit {
       this.jobDetail = data.data;
     })
   }
+
+
 
   ngOnDestroy() {
     if (this.subscription) {

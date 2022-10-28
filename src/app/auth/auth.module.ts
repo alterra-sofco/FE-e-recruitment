@@ -7,6 +7,7 @@ import {LoginComponent} from './login/login.component';
 import {SharedModule} from 'primeng/api';
 import {ButtonModule} from "primeng/button";
 import {ToastModule} from "primeng/toast";
+import {RouterLink} from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import {ToastModule} from "primeng/toast";
     HttpClientModule,
     ButtonModule,
     ToastModule,
+    RouterLink,
   ]
 })
 export class AuthModule {

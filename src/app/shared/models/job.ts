@@ -13,3 +13,15 @@ export interface JobDetails {
   updatedAt: any,
   yearExperience: number,
 }
+
+export interface MasterDataModel {
+  next: boolean,
+  previous: boolean,
+  message?: string,
+  currentPage: number,
+  totalPages: number,
+  pageSize: number,
+  totalData: number,
+  status: string,
+  data: Job[]
+}

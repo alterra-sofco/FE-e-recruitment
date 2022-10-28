@@ -4,3 +4,10 @@
 }
 
 
+.layout-footer {
+  bottom: 0;
+  position: absolute;
+  padding-top: 1rem;
+  border-top: 1px solid var(--surface-border);
+}
+

@@ -1,50 +1,54 @@
-<!-- registrasi -->
-<div class="surface-section py-8 mb-5 md:px-6 lg:px-8"
-     style="background: linear-gradient(0deg, rgba(0, 123, 255, 0.5), rgba(0, 123, 255, 0.5)), linear-gradient(92.54deg, #1C80CF 47.88%, #FFFFFF 100.01%);">
-  <div class="text-center text-white">
-    <span class="text-5xl pi pi-briefcase mb-3"></span>
-    <div class="text-900 font-bold text-5xl mb-1 text-white"> Bergabunglah sekarang, dan kembangkan kariermu</div>
-    <div class="text-700 text-2xl mb-5 text-white">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit
-      numquam
-      eligendi quos.
-    </div>
-    <button pButton pRipple label="Daftar" icon="pi pi-pencil" [routerLink]="['/register']"
-            class="font-bold px-5 py-3 pt-3 p-button-raised p-button-rounded p-button-warning white-space-nowrap"></button>
+<div class="grid-nogutter pt-8">
+  <div class="card col-8 col-offset-2 surface-card p-5 shadow-2 border-round flex-auto">
+    <p-dataView #dt [value]="jobList" [paginator]="true" [rows]="12" (onLazyLoad)="loadDataLazy($event)"
+                [loading]="isLoading"
+                [lazy]="true" [totalRecords]="totalRecords" layout="grid">
+      <ng-template pTemplate="header">
+        <div class="flex flex-column md:flex-row md:justify-content-between">
+
+        <span class="p-input-icon-left mb-2 md:mb-0">
+                    <span class="p-input-icon-left mb-2 md:mb-0">
+                    <i class="pi pi-search"></i>
+                    <input type="search" pInputText (input)="searchData($event)" placeholder="Search by Position">
+                </span>
+
+                </span>
+          <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+        </div>
+      </ng-template>
+      <ng-template let-job pTemplate="listItem">
+        <div class="col-12">
+          <div class="product-list-item cursor-pointer hover:shadow-2 hover:bg-gray-200">
+
+            <div class="product-list-detail">
+              <div class="product-name">{{job.jobPosition}}</div>
+              <div class="font-medium text-600 text-sm">Minimal Pengalaman :{{job.description}}</div>
+              <div class="font-medium text-600 text-sm">Posted : {{job.updatedAt | date: 'dd MMM yyyy HH:mm'}}</div>
+
+
+            </div>
+
+          </div>
+        </div>
+      </ng-template>
+      <ng-template let-job pTemplate="gridItem">
+        <div class="col-12 md:col-3">
+          <div class="product-grid-item card shadow-none cursor-pointer hover:shadow-2 hover:bg-gray-200"
+               (click)="viewDetail(job)">
+            <div class="col text-center pt-1 flex-column">
+              <p-image src="assets/images/logo.png" alt="Image" width="150"></p-image>
+            </div>
+            <div class="product-grid-item-content">
+
+              <div class="product-name">{{job.jobPosition}}</div>
+              <div class="font-medium text-600 text-sm">Minimal Pengalaman : {{job.yearExperience}} Tahun</div>
+              <div class="font-medium text-600 text-sm">Posted : {{job.updatedAt | date: 'dd MMM yyyy HH:mm'}}</div>
+
+            </div>
+
+          </div>
+        </div>
+      </ng-template>
+    </p-dataView>
   </div>
 </div>
-
-<!-- Search bar -->
-<div class="p-fluid px-2 grid mb-1">
-  <div
-    class="col-3 mr-5 m-0 text-800 text-center flex justify-content-between lg:justify-content-center align-items-center flex-wrap">
-
-
-  </div>
-  <div class="col-8">
-        <span class="p-input-icon-left">
-            <i class="w-full pi pi-search"></i>
-            <input type="text" pInputText placeholder="Cari pekerjaan" (ngModel)='search'/>
-        </span>
-  </div>
-
-  <!-- <div class=" col-12 text-cyan-600 font-bold text-xl pi pi-chart-line"> 123 Lowongan pekerjaan</div> -->
-</div>
-
-
-<div class="grid h-full px-5 py-1 flex-wrap ">
-  <!-- filterbox -->
-
-
-  <!-- ngfor card job here -->
-  <div class="col-9 col-offset-3 md:col-9 lg:col-8 mt-4 flex-row">
-    <div *ngFor="let job of jobList" class="mb-3 shadow-2"
-         style="padding: 1px; border-radius: 10px; background: linear-gradient(90deg, rgba(116, 204, 195, 0.2), rgba(127, 178, 220, 0.2)), linear-gradient(180deg, rgba(167, 192, 205, 0.2), rgba(145, 210, 204, 0.2));">
-      <div class="mb-2 mr-2 p-3 surface-card h-full p-button-raised" style="border-radius: 8px;">
-        <app-card-job [jobList]="job" [userData]="applicant"></app-card-job>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-
