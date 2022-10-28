@@ -74,11 +74,11 @@ export class LoginComponent implements OnInit {
     });
     setTimeout(() => {
       this.reload(url);
-    }, 1300);
+    }, 900);
   }
 
   async reload(url: string): Promise<boolean> {
-    await this.router.navigateByUrl('/', {skipLocationChange: true});
+    await this.router.navigateByUrl('', {skipLocationChange: true});
     return this.router.navigateByUrl(`${url}`);
   }
 
