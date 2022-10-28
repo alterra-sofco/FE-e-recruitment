@@ -35,15 +35,15 @@
 <p-dialog header="Company" [(visible)]="displayMaximizable" [modal]="true" [style]="{width: '50vw'}"
   [maximizable]="true" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
   <div>
-    <p>Possition : {{jobDetail.jobPosition}}</p>
-    <p>Experience: {{jobDetail.yearExperience}} years</p>
-    <p>Posted : {{jobDetail.updatedAt | date}}</p>
-    <p>Details : {{jobDetail.JobDetail}}</p>
+    <p>Possition : {{jobDetail?.jobPosition}}</p>
+    <p>Experience: {{jobDetail?.yearExperience}} years</p>
+    <p>Posted : {{jobDetail?.updatedAt | date}}</p>
+    <p>Details : {{jobDetail?.JobDetail}}</p>
   </div>
   <ng-template pTemplate="footer">
-    <button *ngIf="jobDetail.isApplied" pButton pRipple type="button" icon="pi pi-times" disabled (click)="apply()"
+    <button *ngIf="jobDetail?.isApplied" pButton pRipple type="button" icon="pi pi-times" disabled (click)="apply()"
       label="Applied" class="p-button-text p-button-raised p-button-danger"></button>
-    <button *ngIf="!jobDetail.isApplied" pButton pRipple type="button" icon="pi pi-check" (click)="apply()"
+    <button *ngIf="!jobDetail?.isApplied" pButton pRipple type="button" icon="pi pi-check" (click)="apply()"
       label="Apply Now" class="p-button-text p-button-raised p-button-primary"></button>
   </ng-template>
 </p-dialog>
@@ -62,9 +62,9 @@
     </div>
   </form>
   <ng-template pTemplate="footer">
-    <button *ngIf="jobDetail.isApplied" pButton pRipple type="button" icon="pi pi-times" disabled label="Applied"
+    <button *ngIf="jobDetail?.isApplied" pButton pRipple type="button" icon="pi pi-times" disabled label="Applied"
       (click)="apply()" class="p-button-text p-button-raised p-button-danger"></button>
-    <button *ngIf="!jobDetail.isApplied" pButton pRipple type="button" icon="pi pi-check" label="Apply"
+    <button *ngIf="!jobDetail?.isApplied" pButton pRipple type="button" icon="pi pi-check" label="Apply"
       (click)="apply()" class="p-button-text p-button-raised p-button-primary"></button>
   </ng-template>
 

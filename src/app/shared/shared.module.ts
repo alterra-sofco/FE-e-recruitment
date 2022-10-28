@@ -51,11 +51,13 @@ import { ProfileService } from './services/profile.service';
 import { SessionService } from './services/session.service';
 import { HttpIntercepInterceptor } from './interceptor/http-intercep.interceptor';
 import { AuthGuard } from './auth.guard';
+import { NewsComponent } from './components/news/news.component';
 
 @NgModule({
   declarations: [
     StepHomepageComponent,
-    CardJobComponent
+    CardJobComponent,
+    NewsComponent
   ],
   imports: [
     CommonModule,
@@ -134,7 +136,7 @@ import { AuthGuard } from './auth.guard';
     //components
     StepHomepageComponent,
     CardJobComponent,
-    
+    NewsComponent
   ],
   //service in here
   providers: [

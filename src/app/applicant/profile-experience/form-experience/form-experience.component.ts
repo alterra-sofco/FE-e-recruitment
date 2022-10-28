@@ -90,7 +90,7 @@ export class FormExperienceComponent implements OnInit {
         if (data.status == 201) {
           this.messages('add experience', 'success', 'Success', '/profile/details');
         } else {
-          this.messages(data.message, 'warn', 'Warn', '/profile/details');
+          this.messages(data.message, 'warn', 'Warn', '/profile/experience');
         }
       })
       this.onReset()
@@ -100,7 +100,7 @@ export class FormExperienceComponent implements OnInit {
         if (data.status == 200) {
           this.messages('update experience', 'success', 'Success', '/profile/details');
         } else {
-          this.messages(data.message, 'warn', 'Warn', '/profile/details');
+          this.messages(data.message, 'warn', 'Warn', '/profile/experience');
         }
         this.isUpdate = false;
       })

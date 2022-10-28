@@ -3,9 +3,9 @@
     <!-- avatar -->
     <div class="grid">
         <div class="col-12 align-items-center pt-5 px-5">
-            <img [src]="userData?.avatarFileId" alt="" class="mr-6 mb-2 lg:mb-0" style="width: 150px; height: 150px;">
+            <img [src]="userData?.avatarFileId" alt="" class="mr-6 lg:mb-0" style="width: 150px; height: 150px;">
         </div>
-        <div class="col-6">
+        <div class="col-12">
             <!-- <button pRipple
                 class="flex-column p-element p-button-rounded -mt-5 p-button p-component p-button-icon-only"> -->
             <p-fileUpload mode="basic" name="demo[]" url="" accept="image/*" [maxFileSize]="1000000"

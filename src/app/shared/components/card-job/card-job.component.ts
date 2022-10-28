@@ -76,6 +76,10 @@ showMaximizableDialogApply() {
 
 showMaximizableDialog() {
   this.displayMaximizable = true;
+  if(this.companyDetails){
+    console.log(this.companyDetails)
+    this.moreJobDetail(this.companyDetails);
+  }
 }
 
 moreJobDetail(job: any){

@@ -55,8 +55,13 @@ export class ProfileExperienceComponent implements OnInit {
       life: 3000
     });
     setTimeout(() => {
-      this.router.navigateByUrl(`${url}`);
+      this.reload(url);
     }, 1300);
+  }
+
+  async reload(url: string): Promise<boolean> {
+    await this.router.navigateByUrl('/', { skipLocationChange: true });
+    return this.router.navigateByUrl(`${url}`);
   }
 
   ngOnDestroy() {

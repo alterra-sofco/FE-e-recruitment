@@ -102,7 +102,7 @@ export class FormEducationComponent implements OnInit {
         if (data.status == 201) {
           this.messages('add education', 'success', 'Success', '/profile/details');
         } else {
-          this.messages(data.message, 'warn', 'Warn', '/profile/details');
+          this.messages(data.message, 'warn', 'Warn', '/profile/experience');
         }
       })
       this.onReset()
@@ -112,7 +112,7 @@ export class FormEducationComponent implements OnInit {
         if (data.status == 200) {
           this.messages('update education', 'success', 'Success', '/profile/details');
         } else {
-          this.messages(data.message, 'warn', 'Warn', '/profile/details');
+          this.messages(data.message, 'warn', 'Warn', '/profile/experience');
         }
         this.isUpdate = false;
       })
@@ -135,8 +135,13 @@ export class FormEducationComponent implements OnInit {
       life: 3000
     });
     setTimeout(() => {
-      this.router.navigateByUrl(`${url}`);
+      this.reload(url);
     }, 1300);
+  }
+
+  async reload(url: string): Promise<boolean> {
+    await this.router.navigateByUrl('/', { skipLocationChange: true });
+    return this.router.navigateByUrl(`${url}`);
   }
 
   ngOnDestroy() {

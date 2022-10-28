@@ -15,6 +15,7 @@ import { SessionService } from 'src/app/shared/services/session.service';
 export class LoginComponent implements OnInit {
 
   subscription!: Subscription;
+  inputPassword!: string;
 
   submitted = false;
   formRegister: FormGroup = new FormGroup({
@@ -38,15 +39,16 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
     if (this.formRegister.valid) {
       this.authService.login(this.formRegister.value).pipe(take(1)).subscribe((data: any) => {
-        if (data.status == 200) {
+        if (data) {
           localStorage.setItem('JwtToken', data.data.accessToken);
           this.sessionService.createSession(data.data);
           this.messages(data.message, 'success', 'Success', '');
+          window.location.reload();
         } else {
           this.messages(data.message, 'warn', 'Warn', '/login');
         }
       })
-      this.messages('wrong password/ email', 'error', 'Error', '/login');
+      // this.messages('wrong password/ email', 'error', 'Error', '/login');
       this.onReset();
     }
 
@@ -61,8 +63,13 @@ export class LoginComponent implements OnInit {
       life: 3000
     });
     setTimeout(() => {
-      this.router.navigateByUrl(`${url}`);
+      this.reload(url);
     }, 1300);
+  }
+
+  async reload(url: string): Promise<boolean> {
+    await this.router.navigateByUrl('/', { skipLocationChange: true });
+    return this.router.navigateByUrl(`${url}`);
   }
 
   ngOnDestroy() {

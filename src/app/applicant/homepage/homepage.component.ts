@@ -47,7 +47,6 @@ export class HomepageComponent implements OnInit {
     //user
     this.profileService.getProfile().pipe(take(1)).subscribe((data: any) => {
       this.applicant = data.data;
-      console.log(this.applicant);
     })
 
     //skill
