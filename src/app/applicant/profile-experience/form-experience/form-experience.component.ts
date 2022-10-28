@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { Experience } from 'src/app/shared/models/experience';
 import { ExperienceService } from 'src/app/shared/services/experience.service';
@@ -8,7 +9,8 @@ import { ExperienceService } from 'src/app/shared/services/experience.service';
 @Component({
   selector: 'app-form-experience',
   templateUrl: './form-experience.component.html',
-  styleUrls: ['./form-experience.component.css']
+  styleUrls: ['./form-experience.component.css'],
+  providers: [MessageService]
 })
 export class FormExperienceComponent implements OnInit {
 
@@ -47,6 +49,7 @@ export class FormExperienceComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private experienceService: ExperienceService,
+    public messageService: MessageService
     ) { }
 
   ngOnInit(): void { 
@@ -83,17 +86,23 @@ export class FormExperienceComponent implements OnInit {
     console.log(this.formExperience.value)
     console.log(this.isUpdate)
     if (this.formExperience.valid && this.isUpdate == false) {
-      this.experienceService.addExperience(this.formExperience.value).subscribe(data => {
-        alert("add")
-        this.router.navigateByUrl('/profile/details')
+      this.experienceService.addExperience(this.formExperience.value).subscribe((data:any) => {
+        if (data.status == 201) {
+          this.messages('add experience', 'success', 'Success', '/profile/details');
+        } else {
+          this.messages(data.message, 'warn', 'Warn', '/profile/details');
+        }
       })
       this.onReset()
     }
     else if (this.formExperience.valid && this.isUpdate == true) {
-      this.experienceService.updateExperience(parseInt(this.selectedId), this.formExperience.value).subscribe(data => {
-        alert("update")
+      this.experienceService.updateExperience(parseInt(this.selectedId), this.formExperience.value).subscribe((data:any) => {
+        if (data.status == 200) {
+          this.messages('update experience', 'success', 'Success', '/profile/details');
+        } else {
+          this.messages(data.message, 'warn', 'Warn', '/profile/details');
+        }
         this.isUpdate = false;
-        this.router.navigateByUrl('/profile/details')
       })
       this.onReset()
     }
@@ -103,6 +112,19 @@ export class FormExperienceComponent implements OnInit {
     this.submitted = false;
     this.formExperience.reset();
 
+  }
+
+  messages(info: string, severity: string, summary: string, url: string) {
+    this.messageService.add({
+      key: 'notif',
+      severity: severity,
+      summary: summary,
+      detail: info,
+      life: 3000
+    });
+    setTimeout(() => {
+      this.router.navigateByUrl(`${url}`);
+    }, 1300);
   }
 
   ngOnDestroy() {

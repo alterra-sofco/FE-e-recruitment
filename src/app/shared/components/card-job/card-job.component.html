@@ -1,4 +1,6 @@
 <!-- real here................................................................ -->
+<p-toast position="top-center" key="notif"></p-toast>
+
 <div class="grid ">
   <div class="col text-center pt-2 flex-column">
     <p-image src="https://picsum.photos/200/200" alt="Image" width="100"></p-image>
@@ -39,10 +41,10 @@
     <p>Details : {{jobDetail.JobDetail}}</p>
   </div>
   <ng-template pTemplate="footer">
-    <button *ngIf="jobDetail.isApplied" pButton pRipple type="button" icon="pi pi-check" disabled (click)="apply()"
-      label="Apply" class="p-button-text p-button-raised p-button-primary"></button>
+    <button *ngIf="jobDetail.isApplied" pButton pRipple type="button" icon="pi pi-times" disabled (click)="apply()"
+      label="Applied" class="p-button-text p-button-raised p-button-danger"></button>
     <button *ngIf="!jobDetail.isApplied" pButton pRipple type="button" icon="pi pi-check" (click)="apply()"
-      label="Apply" class="p-button-text p-button-raised p-button-primary"></button>
+      label="Apply Now" class="p-button-text p-button-raised p-button-primary"></button>
   </ng-template>
 </p-dialog>
 
@@ -60,8 +62,10 @@
     </div>
   </form>
   <ng-template pTemplate="footer">
-    <button pButton pRipple type="button" icon="pi pi-check" label="Apply" (click)="apply()"
-      class="p-button-text p-button-raised p-button-primary"></button>
+    <button *ngIf="jobDetail.isApplied" pButton pRipple type="button" icon="pi pi-times" disabled label="Applied"
+      (click)="apply()" class="p-button-text p-button-raised p-button-danger"></button>
+    <button *ngIf="!jobDetail.isApplied" pButton pRipple type="button" icon="pi pi-check" label="Apply"
+      (click)="apply()" class="p-button-text p-button-raised p-button-primary"></button>
   </ng-template>
 
 </p-dialog>

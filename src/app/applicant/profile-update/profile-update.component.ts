@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { PrimeNGConfig } from 'primeng/api';
+import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { Subscription, take } from 'rxjs';
 import { Applicant } from 'src/app/shared/models/applicant';
 import { Skill } from 'src/app/shared/models/skill';
@@ -12,7 +12,8 @@ import { SkillService } from 'src/app/shared/services/skill.service';
 @Component({
   selector: 'app-profile-update',
   templateUrl: './profile-update.component.html',
-  styleUrls: ['./profile-update.component.css']
+  styleUrls: ['./profile-update.component.css'],
+  providers: [MessageService]
 })
 export class ProfileUpdateComponent implements OnInit {
 
@@ -39,7 +40,7 @@ export class ProfileUpdateComponent implements OnInit {
     email: new FormControl('', [Validators.maxLength(50)]),
     name: new FormControl('', [Validators.required, Validators.maxLength(50)]),
     phoneNumber: new FormControl('', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)/), Validators.maxLength(12)]),
-    
+
 
   });
 
@@ -47,8 +48,8 @@ export class ProfileUpdateComponent implements OnInit {
     private primengConfig: PrimeNGConfig,
     private router: Router,
     private profileService: ProfileService,
-    // private messageService: MessageService
-  ) {}
+    private messageService: MessageService
+  ) { }
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
@@ -92,15 +93,20 @@ export class ProfileUpdateComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     if (this.formProfile.valid) {
-      this.profileService.editUserProfile(this.formProfile.value).pipe(take(1)).subscribe(data => {
-        alert("updated")
-        this.router.navigateByUrl('profile/details')
+      this.profileService.editUserProfile(this.formProfile.value).pipe(take(1)).subscribe((data: any) => {
+        if (data.status == 200){
+          this.messages('update information', 'success', 'Success', '/profile/details');
+        } else {
+          this.messages(data.message, 'warn', 'Warn', '/profile/details/update');
+        }
+          console.log(data.status);
+
       })
       this.onReset()
     }
   }
 
-  onSubmitPorto(){
+  onSubmitPorto() {
   }
 
   onReset(): void {
@@ -108,10 +114,24 @@ export class ProfileUpdateComponent implements OnInit {
     this.formProfile.reset();
   }
 
+  messages(info: string, severity: string, summary: string, url: string) {
+    this.messageService.add({
+      key: 'notif',
+      severity: severity,
+      summary: summary,
+      detail: info,
+      life: 3000
+    });
+    setTimeout(() => {
+      this.router.navigateByUrl(`${url}`);
+    }, 1300);
+  }
+
   ngOnDestroy() {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
   }
+
 
 }

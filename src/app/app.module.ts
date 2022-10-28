@@ -15,6 +15,7 @@ import { AuthModule } from './auth/auth.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpIntercepInterceptor } from './shared/interceptor/http-intercep.interceptor';
 import { HttpClientModule } from '@angular/common/http';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 // registerLocaleData(localeId, 'id');
 @NgModule({

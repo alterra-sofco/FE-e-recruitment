@@ -1,7 +1,8 @@
 import { ConstantPool } from '@angular/compiler';
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { take } from 'rxjs';
+import { MessageService } from 'primeng/api';
+import { Subscription, take } from 'rxjs';
 import { Skill } from 'src/app/shared/models/skill';
 import { ProfileService } from 'src/app/shared/services/profile.service';
 import { SkillService } from 'src/app/shared/services/skill.service';
@@ -9,10 +10,12 @@ import { SkillService } from 'src/app/shared/services/skill.service';
 @Component({
   selector: 'app-profile-skill',
   templateUrl: './profile-skill.component.html',
-  styleUrls: ['./profile-skill.component.css']
+  styleUrls: ['./profile-skill.component.css'],
+  providers: [MessageService]
 })
 export class ProfileSkillComponent implements OnInit{
 
+  subscription!: Subscription;
     //skill
     skillTree: Skill[]=[]
     selectedSkill!: Skill;
@@ -21,7 +24,8 @@ export class ProfileSkillComponent implements OnInit{
   constructor(
     private skillService: SkillService,
     private profileService: ProfileService,
-    private router: Router
+    private router: Router,
+    public messageService: MessageService
     ) { }
 
     // skills: new FormControl('', [Validators.required, Validators.maxLength(50)]),
@@ -41,16 +45,33 @@ export class ProfileSkillComponent implements OnInit{
 
   onSubmitSkill(){
     this.skillService.addSkill(this.selectedSkill).pipe(take(1)).subscribe(data => {
-      alert("add skill");
-      this.router.navigateByUrl("/profile/details");
+      this.messages('add skill', 'success', 'Success', '/profile/details');
     })
 
   }
 
-  async deleteSkill(skill: any){
+  deleteSkill(skill: any){
     this.skillService.deleteSkill(skill.skillId).pipe(take(1)).subscribe(data => {
-      alert("deleted");
-      this.router.navigateByUrl("/profile/details").finally;
+      this.messages('delete skill', 'success', 'Success', '/profile/details');
     })
+  }
+
+  messages(info: string, severity: string, summary: string, url: string) {
+    this.messageService.add({
+      key: 'notif',
+      severity: severity,
+      summary: summary,
+      detail: info,
+      life: 3000
+    });
+    setTimeout(() => {
+      this.router.navigateByUrl(`${url}`);
+    }, 1300);
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }

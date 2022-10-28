@@ -27,21 +27,25 @@ export class HomepageComponent implements OnInit {
   job: Job[] = [];
   jobList: Job[] = [];
 
+  filteredJob: Job[] = [];
+
   displayMaximizable!: boolean;
 
   constructor(
     private primengConfig: PrimeNGConfig,
     private skillService: SkillService,
     private profileService: ProfileService,
-    private jobService : JobService,
+    private jobService: JobService,
   ) {
+
+
   }
 
   ngOnInit() {
     this.primengConfig.ripple = true;
 
     //user
-    this.profileService.getProfile().pipe(take(1)).subscribe((data:any) => {
+    this.profileService.getProfile().pipe(take(1)).subscribe((data: any) => {
       this.applicant = data.data;
       console.log(this.applicant);
     })
@@ -53,14 +57,20 @@ export class HomepageComponent implements OnInit {
     })
 
     //skill filter
-    this.jobService.getAllJob().pipe(take(1)).subscribe((data:any) =>{
-      this.jobList = data.data;
+    this.jobService.getAllJob().pipe(take(1)).subscribe((data: any) => {
+      this.jobList = this.filteredJob = data.data;
     })
 
   }
 
   showMaximizableDialog() {
     this.displayMaximizable = true;
+  }
+
+  filter(query: string) {
+    this.filteredJob = (query) ? this.jobList
+      .filter(data => data.jobPosition.toLowerCase().includes(query.toLowerCase())) :
+      this.jobList;
   }
 
 }

@@ -72,10 +72,6 @@ export class RegisterComponent implements OnInit {
     this.formRegister.reset();
   }
 
-  get f(): { [key: string]: AbstractControl } {
-    return this.formRegister.controls;
-  }
-
   ngOnDestroy() {
     if (this.subscription) {
       this.subscription.unsubscribe();

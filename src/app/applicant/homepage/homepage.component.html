@@ -1,19 +1,30 @@
 <!-- registrasi -->
-<div class="surface-section py-8 mb-5 md:px-6 lg:px-8"
-    style="background: linear-gradient(0deg, rgba(0, 123, 255, 0.5), rgba(0, 123, 255, 0.5)), linear-gradient(92.54deg, #1C80CF 47.88%, #FFFFFF 100.01%);">
-    <div class="text-center text-white">
-        <span class="text-5xl pi pi-briefcase mb-3"></span>
-        <div class="text-900 font-bold text-5xl mb-1 text-white"> Bergabunglah sekarang, dan kembangkan kariermu</div>
-        <div class="text-700 text-2xl mb-5 text-white">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit
-            numquam
-            eligendi quos.</div>
-        <button pButton pRipple label="Daftar" icon="pi pi-pencil" [routerLink]="['/register']"
-            class="font-bold px-5 py-3 pt-3 p-button-raised p-button-rounded p-button-warning white-space-nowrap"></button>
+
+<div class="ng-star-inserted">
+    <div class="bg-gray-900 px-4 py-8 md:px-6 lg:px-8">
+        <div class="grid">
+            <div class="col-12 md:col-6">
+                <div class="pr-0 md:pr-8">
+                    <div class="text-blue-500 font-bold text-5xl mb-5">Manage Your Corporation</div>
+                    <div class="text-900 font-bold text-5xl mb-1 text-white"> Bergabunglah sekarang, dan kembangkan
+                        kariermu</div>
+                    <div class="text-700 text-2xl mb-5 text-white">Lorem ipsum dolor sit, amet consectetur adipisicing
+                        elit. Velit
+                        numquam
+                        eligendi quos.</div>
+                    <button pButton pRipple label="Daftar" icon="pi pi-pencil" [routerLink]="['/register']"
+                        class="font-bold px-5 py-3 pt-3 p-button-raised p-button-rounded p-button-warning white-space-nowrap"></button>
+                </div>
+            </div>
+            <div class="col-12 md:col-6"><img
+                    src="https://www.primefaces.org/primeblocks-ng/assets/images/blocks/feature/feature-3.png"
+                    alt="Image" class="w-full"></div>
+        </div>
     </div>
 </div>
 
 <!-- Search bar -->
-<div class="p-fluid px-2 grid mb-1">
+<div class="p-fluid px-2 grid pt-4 mb-1">
     <div
         class="col-3 mr-5 m-0 text-800 text-center flex justify-content-between lg:justify-content-center align-items-center flex-wrap">
         <div class="font-bold mr-2">🔥 123 pengguna terdaftar!</div>
@@ -29,7 +40,7 @@
     <div class="col-8">
         <span class="p-input-icon-left">
             <i class="w-full pi pi-search"></i>
-            <input type="text" pInputText placeholder="Cari pekerjaan" (ngModel)='search' />
+            <input #query (keyup)="filter(query.value)" type="text" pInputText placeholder="Find position" (ngModel)='search' />
         </span>
     </div>
 
@@ -40,27 +51,56 @@
 <div class="grid h-full px-5 py-1 flex-wrap ">
     <!-- filterbox -->
     <div class="col-12 md:col-12 lg:col-3 pt-5 mr-5">
+        <div class="shadow-2 border-round surface-card"><img src="https://picsum.photos/100/100"
+                alt="Image" class="block w-full border-round-top">
+            <div class="p-4"><span class="block font-medium text-blue-600 mb-3">News</span>
+                <div class="text-xl text-900 font-medium mb-3 line-height-3">Lorem ipsum dolor sit amet
+                </div>
+                <div class="text-sm line-height-3 mb-3 text-700">Lorem ipsum dolor sit amet,</div>
+                <div class="flex">
+                    <p-avatar image="" shape="circle" class="p-element">
+                        <div class="p-avatar p-component p-avatar-image p-avatar-circle"><img
+                                src="https://picsum.photos/100/100" class="ng-star-inserted">
+                        </div>
+                    </p-avatar>
+                    <div class="ml-2">
+                        <div class="text-xs font-bold text-900 mb-1">Anna Lane</div>
+                        <div class="text-xs flex align-items-center text-700"><i
+                                class="pi pi-calendar mr-1 text-xs"></i><span>Apr 5, 2021</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ngfor card job here -->
+    <div class="col-9 md:col-9 lg:col-8 mt-4 flex-row">
+        <p-scrollPanel [style]="{width: '100%', height: '700px'}">
+            <div *ngFor="let job of filteredJob" class="mb-3 shadow-2"
+                style="padding: 1px; border-radius: 10px; background: linear-gradient(90deg, rgba(116, 204, 195, 0.2), rgba(127, 178, 220, 0.2)), linear-gradient(180deg, rgba(167, 192, 205, 0.2), rgba(145, 210, 204, 0.2));">
+                <div class="mb-2 mr-2 p-3 surface-card h-full p-button-raised" style="border-radius: 8px;">
+                    <app-card-job [jobList]="job" [userData]="applicant"></app-card-job>
+                </div>
+            </div>
+        </p-scrollPanel>
+    </div>
+
+</div>
+
+<app-step-homepage></app-step-homepage>
+
+
+
+<!-- filterbox -->
+<!-- <div class="col-12 md:col-12 lg:col-3 pt-5 mr-5">
         <p-listbox [options]="skill" (ngModel)="selectedSkill" [metaKeySelection]="false" [checkbox]="true"
             [filter]="true" [multiple]="true" optionLabel="skillName" [listStyle]="{'max-height':'350px'}"
-             filterPlaceHolder="skill">
+            filterPlaceHolder="skill">
             <ng-template let-skill pTemplate="item">
                 <div class="skill-item">
                     {{skill.skillName}}
                 </div>
             </ng-template>
         </p-listbox>
-    </div>
-
-    <!-- ngfor card job here -->
-    <div class="col-9 md:col-9 lg:col-8 mt-4 flex-row">
-        <div *ngFor="let job of jobList" class="mb-3 shadow-2"
-            style="padding: 1px; border-radius: 10px; background: linear-gradient(90deg, rgba(116, 204, 195, 0.2), rgba(127, 178, 220, 0.2)), linear-gradient(180deg, rgba(167, 192, 205, 0.2), rgba(145, 210, 204, 0.2));">
-            <div class="mb-2 mr-2 p-3 surface-card h-full p-button-raised" style="border-radius: 8px;">
-                <app-card-job [jobList]="job" [userData]="applicant"></app-card-job>
-            </div>
-        </div>
-    </div>
-
-</div>
-
-<app-step-homepage></app-step-homepage>
+    </div> -->
