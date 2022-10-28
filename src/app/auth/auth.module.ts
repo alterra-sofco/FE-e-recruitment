@@ -1,10 +1,12 @@
-
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
-import { SharedModule } from 'primeng/api';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {RegisterComponent} from './register/register.component';
+import {LoginComponent} from './login/login.component';
+import {SharedModule} from 'primeng/api';
+import {ButtonModule} from "primeng/button";
+import {ToastModule} from "primeng/toast";
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -17,7 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
     ButtonModule,
     ToastModule,
   ]

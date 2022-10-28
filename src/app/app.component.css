@@ -3,22 +3,4 @@
     padding-right: 3rem !important;
   }
 
-  .py-8 {
-    padding-top: 5rem !important;
-    padding-bottom: 5rem !important;
-  }
 
-  * {
-    box-sizing: border-box;
-  }
-
-  body {
-    font-family: var(--font-family);
-    color: var(--text-color);
-
-  }
-
-  html {
-    font-size: 1rem;
-    margin:0 !important;
-  }

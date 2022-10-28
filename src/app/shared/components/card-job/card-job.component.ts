@@ -1,8 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {take} from 'rxjs';
-import {Applicant} from '../../models/applicant';
-import {Job, JobDetails} from '../../models/job';
-import {JobService} from '../../services/job.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Subscription, take } from 'rxjs';
+import { Applicant } from '../../models/applicant';
+import { Job, JobDetails } from '../../models/job';
+import { JobService } from '../../services/job.service';
 
 @Component({
   selector: 'app-card-job',
@@ -11,20 +12,28 @@ import {JobService} from '../../services/job.service';
 })
 export class CardJobComponent implements OnInit {
 
-  @Input('jobList') job!: Job;
+  @Input('jobList') job?: Job;
   @Input('userData') applicant!: Applicant;
+  @Input('applied') companyDetails?: any;
 
-  jobDetail: JobDetails[] = [{
+  resume: string = ' please kindly check my profile ';
+
+  jobDetail: JobDetails = {
     JobDetail: '',
     isApplied: true,
     jobPosition: '',
     jobPostingId: 0,
     updatedAt: '',
     yearExperience: 0
-  }]
+  }
 
   //modal
   displayMaximizable!: boolean;
+  displayMaxApply!: boolean;
+
+  formApply!: FormGroup;
+  subscription!: Subscription;
+  submitted = false;
 
   constructor(
     private jobService: JobService,
@@ -32,21 +41,48 @@ export class CardJobComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.formApply = new FormGroup({
+      coverLetter: new FormControl('please kindly check my profile', [Validators.required]),
+    });
+
   }
 
-
   apply() {
-    this.jobService.applyJob(this.applicant.userId, this.applicant.cvFileId)
-      .pipe(take(1)).subscribe(data => {
-      alert("apllied the job");
-    })
+    this.submitted = true;
+    console.log(this.job?.jobPostingId)
+    if (this.formApply.valid) {
+      this.jobService.applyJob(this.job!.jobPostingId, this.formApply.value)
+        .pipe(take(1)).subscribe(data => {
+          alert("apllied the job");
+        })
+    }
+    this.submitted = false;
+  }
+
+  showMaximizableDialogApply() {
+    this.displayMaxApply = true;
   }
 
   showMaximizableDialog() {
     this.displayMaximizable = true;
-    this.jobService.getJobDetail(this.job.jobPostingId).pipe(take(1)).subscribe(data => {
+    if(this.job){
+        this.moreJobDetail(this.job);
+    } else {
+      this.moreJobDetail(this.companyDetails);
+    }
+    
+  }
+
+  moreJobDetail(job: any){
+    this.jobService.getJobDetail(job!.jobPostingId).pipe(take(1)).subscribe(data => {
       this.jobDetail = data.data;
     })
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
 }

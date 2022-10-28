@@ -1,4 +1,4 @@
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {environment} from 'src/environments/environment';
@@ -22,10 +22,14 @@ export class JobService {
     return this.httpClient.get<any>(`${environment.apiUrl}/job/${jobPostingId}`);
   }
 
-  applyJob(jobPostingId: number, cv: any): Observable<any> {
-    return this.httpClient.post<any>(`${environment.apiUrl}/job/${jobPostingId}/apply`, cv);
+  applyJob(jobPostingId: number, cv: string): Observable<any> {
+    const headerOption = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json; charset=UTF-8',
+      }),
+    };
+    return this.httpClient.post<any>(`${environment.apiUrl}/job/${jobPostingId}/apply`, cv,headerOption);
   }
-
 
   jobHistory(): Observable<any[]> {
     return this.httpClient.get<any[]>(`${environment.apiUrl}/job/history`);

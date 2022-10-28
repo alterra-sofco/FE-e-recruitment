@@ -13,94 +13,53 @@
 </div>
 
 <!-- Search bar -->
-<div class="p-fluid px-5 grid mb-3">
-    <span class="col-12 p-input-icon-left">
-        <i class="pi pi-search"></i>
-        <input type="text" pInputText placeholder="Cari pekerjaan" (ngModel)='search' />
-    </span>
-    <div class=" col-12 text-cyan-600 font-bold text-xl pi pi-chart-line"> 123 Lowongan pekerjaan</div>
+<div class="p-fluid px-2 grid mb-1">
+    <div
+        class="col-3 mr-5 m-0 text-800 text-center flex justify-content-between lg:justify-content-center align-items-center flex-wrap">
+        <div class="font-bold mr-2">🔥 123 pengguna terdaftar!</div>
+        <!-- <a class="flex align-items-center ml-2 mr-2">
+            <a class="text-800" href="#"><span class="underline font-bold">Pelajari lebih lanjut</span></a>
+        </a> -->
+        <a pRipple
+            class="flex align-items-center no-underline justify-content-center border-circle text-800 hover:bg-bluegray-100 cursor-pointer transition-colors transition-duration-150"
+            style="width:2rem; height: 2rem">
+            <i class="pi pi-database"></i>
+        </a>
+    </div>
+    <div class="col-8">
+        <span class="p-input-icon-left">
+            <i class="w-full pi pi-search"></i>
+            <input type="text" pInputText placeholder="Cari pekerjaan" (ngModel)='search' />
+        </span>
+    </div>
+
+    <!-- <div class=" col-12 text-cyan-600 font-bold text-xl pi pi-chart-line"> 123 Lowongan pekerjaan</div> -->
 </div>
 
 
-<div class="grid px-5">
+<div class="grid h-full px-5 py-1 flex-wrap ">
     <!-- filterbox -->
-    <div class="col-3 md:col-12 lg:col-3">
-        <p-listbox class="col" [options]="job" (ngModel)="selectedJob" [metaKeySelection]="false" [checkbox]="true"
-            [filter]="true" [multiple]="true" optionLabel="name" [listStyle]="{'max-height':'130px'}"
-            [style]="{'width':'16rem'}" filterPlaceHolder="Spesialisasi">
-            <ng-template let-job pTemplate="item">
-                <div class="job-item">
-                    {{job.name}}
-                </div>
-            </ng-template>
-        </p-listbox>
-
-        <p-listbox class="col" [options]="skill" (ngModel)="selectedSkill" [metaKeySelection]="false" [checkbox]="true"
-            [filter]="true" [multiple]="true" optionLabel="skillName" [listStyle]="{'max-height':'130px'}"
-            [style]="{'width':'16rem'}" filterPlaceHolder="skill">
+    <div class="col-12 md:col-12 lg:col-3 pt-5 mr-5">
+        <p-listbox [options]="skill" (ngModel)="selectedSkill" [metaKeySelection]="false" [checkbox]="true"
+            [filter]="true" [multiple]="true" optionLabel="skillName" [listStyle]="{'max-height':'350px'}"
+             filterPlaceHolder="skill">
             <ng-template let-skill pTemplate="item">
                 <div class="skill-item">
                     {{skill.skillName}}
                 </div>
             </ng-template>
         </p-listbox>
-
     </div>
 
     <!-- ngfor card job here -->
-    <div class="col-9 md:col-9 lg:col-9 p-0 lg:pr-0 mt-4" *ngFor="let job of jobList">
-        <div
-            style=" padding: 3px; border-radius: 10px; background: linear-gradient(90deg, rgba(116, 204, 195, 0.2), rgba(127, 178, 220, 0.2)), linear-gradient(180deg, rgba(167, 192, 205, 0.2), rgba(145, 210, 204, 0.2));">
-            <div class=" p-5 surface-card h-full p-button-raised" style="border-radius: 8px;">
+    <div class="col-9 md:col-9 lg:col-8 mt-4 flex-row">
+        <div *ngFor="let job of jobList" class="mb-3 shadow-2"
+            style="padding: 1px; border-radius: 10px; background: linear-gradient(90deg, rgba(116, 204, 195, 0.2), rgba(127, 178, 220, 0.2)), linear-gradient(180deg, rgba(167, 192, 205, 0.2), rgba(145, 210, 204, 0.2));">
+            <div class="mb-2 mr-2 p-3 surface-card h-full p-button-raised" style="border-radius: 8px;">
                 <app-card-job [jobList]="job" [userData]="applicant"></app-card-job>
             </div>
         </div>
     </div>
-
-     <!-- dummy dele here when integrated-->
-    <div class="col-9 md:col-9 lg:col-9 p-0 lg:pr-0 mt-4">
-        <div
-            style=" padding: 3px; border-radius: 10px; background: linear-gradient(90deg, rgba(116, 204, 195, 0.2), rgba(127, 178, 220, 0.2)), linear-gradient(180deg, rgba(167, 192, 205, 0.2), rgba(145, 210, 204, 0.2));">
-            <div class=" p-5 surface-card h-full p-button-raised" style="border-radius: 8px;">
-               
-                <div class="grid">
-                    <div class="col-1 mr-5">
-                        <p-image src="https://picsum.photos/200/200" alt="Image" width="80"></p-image>
-                    </div>
-                    <div class="col-7 flex-column cursor-pointer" pRipple (click)="showMaximizableDialog()">
-                        <div class="text-800 font-bold text-xl mb-1">jobPosition
-                            <i class="pi pi-verified px-2 text-cyan-600"></i>
-                        </div>
-                        <div>
-                            <span class="align-items-center text-green-600 mr-2">Company</span>
-                            <span class="text-500">Indonesia</span>
-                        </div>
-                        <div class="grid col-9 mt-1 align-items-center text-500">
-                            <div class="flex pi pi-dollar align-items-center mr-2">
-                                <span class="px-2">disclosed</span>
-                            </div>
-                            <div class="flex pi pi-history align-items-center">
-                                <span class="px-2">yearExperience</span>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-3 flex justify-content-end flex-wrap">
-                        <div class="mb-1">
-                            <button pButton pRipple type="button" label="Apply Now"
-                                class="p-button-raised p-button-primary" icon="pi pi-check align-items-center"
-                                onclick="apply()"></button>
-                        </div>
-                        <div class="pi pi-calendar-plus align-items-center text-500 ">
-                            <span class="px-2">updatedAt</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
 
 </div>
 

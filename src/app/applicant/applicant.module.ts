@@ -11,6 +11,8 @@ import { FormEducationComponent } from './profile-education/form-education/form-
 import { FormExperienceComponent } from './profile-experience/form-experience/form-experience.component';
 import { ProfileSkillComponent } from './profile-skill/profile-skill.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CredentialComponent } from './credential/credential.component';
+
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormEducationComponent,
     FormExperienceComponent,
     ProfileSkillComponent,
+    CredentialComponent,
   ],
   imports: [
     CommonModule,

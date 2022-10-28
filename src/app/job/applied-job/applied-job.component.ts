@@ -10,7 +10,7 @@ import { JobService } from 'src/app/shared/services/job.service';
 })
 export class AppliedJobComponent implements OnInit {
 
-  jobList?: any[] = [];
+  jobList: any[]=[];
 
   result: string = 'APPLIED';
 
@@ -19,12 +19,10 @@ export class AppliedJobComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (!this.jobList) {
       this.jobService.jobHistory().pipe(take(1)).subscribe((data: any) => {
-        this.jobList = data;
+        this.jobList = data.data;
         this.result = data.status;
       })
-    }
   }
 
   screening(result: string) {

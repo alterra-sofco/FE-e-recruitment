@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import {
   HttpErrorResponse,
   HttpEvent,
@@ -44,11 +44,11 @@ export class HttpIntercepInterceptor implements HttpInterceptor {
       });
     }
     return next.handle(request).pipe(map((event: HttpEvent<any>) => {
-        if (event instanceof HttpResponse) {
-          console.log('log:', event);
-        }
-        return event;
-      }),
+      if (event instanceof HttpResponse) {
+        console.log('log:', event);
+      }
+      return event;
+    }),
       catchError((error: HttpErrorResponse) => {
         let data = {
           reason: error && error.error && error.error.message ? error.error.message : '',

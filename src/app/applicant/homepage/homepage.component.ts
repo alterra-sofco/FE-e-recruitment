@@ -43,6 +43,7 @@ export class HomepageComponent implements OnInit {
     //user
     this.profileService.getProfile().pipe(take(1)).subscribe((data:any) => {
       this.applicant = data.data;
+      console.log(this.applicant);
     })
 
     //skill
@@ -51,7 +52,7 @@ export class HomepageComponent implements OnInit {
       this.skill = (res["data"]);
     })
 
-    //skill
+    //skill filter
     this.jobService.getAllJob().pipe(take(1)).subscribe((data:any) =>{
       this.jobList = data.data;
     })

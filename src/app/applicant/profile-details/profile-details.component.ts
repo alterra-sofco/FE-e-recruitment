@@ -15,7 +15,10 @@ export class ProfileDetailsComponent implements OnInit {
 
   applicant!: Applicant;
   userData!: Applicant | null;
+
+  //condition
   isSkillTouched: boolean = false;
+  isCredentialTouch: boolean = false;
 
   constructor(
     private profileService: ProfileService,
@@ -29,17 +32,20 @@ export class ProfileDetailsComponent implements OnInit {
   }
 
   showCrud(){
-    this.isSkillTouched = true;
+    if(this.isSkillTouched == false){
+      this.isSkillTouched = true;
+    } else {
+      this.isSkillTouched = true;
+    }
   }
 
-  onSubmitEdu(){
-
+  uploadCv(){
+    if(this.isCredentialTouch == false){
+      this.isCredentialTouch = true;
+    } else {
+      this.isCredentialTouch = true;
+    }
   }
-
-  onSubmitExp(){
-
-  }
-
 
   onUpload($event:any){
 
