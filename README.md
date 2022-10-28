@@ -1,5 +1,30 @@
-# Job seeker homepage
+# Applicant homepage
 
+  - User register (homepage banner register now)
+  - User login (navbar button on top)
+  - Job generated on main homepage
+  - Search by possition (search bar)
+  - Click on information area of selected job list to see more detail informations
+  - Apply can be done using overlay informational details or direct button apply now on selected job
+  - Before applying, appliant can include cover letter.
+  
+# Personal Detail
+  - can be accessed after login, name will be appeard on top right corner of navbar
+  - Contain of appliant's personal informations
+  - Divided by education section, experience section, skill section, applied job list, and All personal info.
+  - Edit personal button info for update basic information
+  - Skill and credential can be update by clicking the body of the column
+  - Skill delete or add can be done in the spot
+  - Add Education and Experience button only appear in personal information, update and delete available on the right side
+# Apllied job
+  - Contain all jobs related to the appliant, include informations
+  - Status changed after confirmation on admin side
+  - If appliant status not accepted by recruiter, banner color will change to red.
+
+
+
+
+# Directory tree
 ```sh
 Applicant component 
   - Homepage component (homepage job list for applicant)
