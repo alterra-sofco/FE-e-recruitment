@@ -34,11 +34,7 @@ export class ProfileUpdateComponent implements OnInit {
   submitted = false;
   formProfile: FormGroup = new FormGroup({
     address: new FormControl('', [Validators.required, Validators.maxLength(50)]),
-    // avatarFileId: new FormControl('', [ Validators.maxLength(50)]),
-    // avatarURL: new FormControl('', [Validators.maxLength(50)]),
-    bio: new FormControl('', [Validators.required, Validators.maxLength(50)]),
-    // cvFileId: new FormControl('', [ Validators.maxLength(50)]),
-    // cvURL: new FormControl('', [ Validators.maxLength(50)]),
+    bio: new FormControl('', [Validators.required, Validators.maxLength(100)]),
     dob: new FormControl('', [Validators.required, Validators.maxLength(50)]),
     email: new FormControl('', [Validators.maxLength(50)]),
     name: new FormControl('', [Validators.required, Validators.maxLength(50)]),
@@ -104,16 +100,12 @@ export class ProfileUpdateComponent implements OnInit {
     }
   }
 
-  
-
   onSubmitPorto(){
-    
   }
 
   onReset(): void {
     this.submitted = false;
     this.formProfile.reset();
-
   }
 
   ngOnDestroy() {

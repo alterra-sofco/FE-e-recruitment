@@ -1,65 +1,51 @@
 <p-toast position="top-center" key="notifRegister"></p-toast>
 <br>
 <br>
-<div class="grid surface-section col-10 col-offset-1 text-800 pb-8 pt-8">
-  <div class="col-12 md:col-6 p-6 pt-2 text-center md:text-left flex align-items-center ">
+<div class="grid surface-section col-11 col-offset-1 text-800 pb-8 pt-8">
+  <div class="col md:col-6 p-2 pt-2 text-center md:text-left flex align-items-center ">
     <section>
 
       <div class="text-cyan-900 text-3xl font-medium">Registration</div>
       <p class="text-cyan-800 text-xl mb-5">Please complete detail information on profile pages later.</p>
       <form [formGroup]="formRegister" (ngSubmit)="onSubmit()">
-        <div class="grid">
+        <div class="grid pt-5">
           <!-- name -->
-          <div class="col mb-4"><label for="name" class="block font-medium text-cyan-600 mb-2">Name</label>
-            <input formControlName="name" type="text" pinputtext id="name"
-                   class="w-full p-inputtext">
+          <div class="col-5 mb-2"><label for="name" class="block font-medium text-cyan-600 mb-2">Name</label>
+            <input formControlName="name" type="text" pinputtext id="name" class="w-full p-inputtext">
 
           </div>
 
           <!-- email -->
-          <div class="col  mb-4"><label for="email" class="block font-medium text-cyan-600 mb-2">Email</label>
-            <input formControlName="email" type="text" pinputtext id="email"
-                   class="w-full p-inputtext">
+          <div class="col-5  mb-2"><label for="email" class="block font-medium text-cyan-600 mb-2">Email</label>
+            <input formControlName="email" type="text" pinputtext id="email" class="w-full p-inputtext">
           </div>
 
           <!-- phone -->
-          <div class="col mb-4"><label for="phoneNumber" class="block font-medium text-cyan-600 mb-2">Phone</label>
-            <input formControlName="phoneNumber" type="text" pinputtext id="phoneNumber"
-                   class="w-full p-inputtext">
+          <div class="col-8 mb-2"><label for="phoneNumber" class="block font-medium text-cyan-600 mb-2">Phone</label>
+            <input formControlName="phoneNumber" type="text" pinputtext id="phoneNumber" class="w-full p-inputtext">
           </div>
         </div>
 
 
         <!-- password -->
         <div class="grid">
-          <div class="col mb-4"><label for="password"
-                                       class="block font-medium text-cyan-600 mb-2">Password</label>
-            <input formControlName="password" id="password" type="text" pinputtext
-                   class="w-full p-inputtext">
-          </div>
-
-          <div class="col mb-4"><label for="password2"
-                                       class="block font-medium text-cyan-600 mb-2">Password</label>
-            <input formControlName="password2" id="password2" type="text" pinputtext
-                   class="w-full p-inputtext">
+          <div class="col-7 mb-5"><label for="password" class="block font-medium text-cyan-600 mb-2">Password</label>
+            <input formControlName="password" id="password" type="text" pinputtext class="w-full p-inputtext">
           </div>
         </div>
 
         <!-- btn -->
-        <div class="col lg:col-12 pt-2 p-0">
+        <div class="col-6 pt-5 p-0">
           <button pbutton pripple="" label="Update Profile" type="submit"
-                  class="w-full p-element p-ripple p-button p-component">
+            class="w-full p-element p-ripple p-button p-component">
             <span class="p-button-label"> Register </span><span class="p-ink"></span>
           </button>
         </div>
       </form>
     </section>
   </div>
-  <div class="col-12 md:col-6 overflow-hidden">
+  <div class="col md:col-6 px-2 overflow-hidden">
     <img src="assets/images/hero-1.png" alt="Image" class="md:ml-auto block md:h-full"
-         style="clip-path: polygon(8% 0, 100% 0%, 100% 100%, 0 100%)">
+      style="clip-path: polygon(8% 0, 100% 0%, 100% 100%, 0 100%)">
   </div>
 </div>
-
-
-
