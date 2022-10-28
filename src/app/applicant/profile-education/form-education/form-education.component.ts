@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { Subscription, take } from 'rxjs';
 import { Applicant } from 'src/app/shared/models/applicant';
 import { Degree, Education } from 'src/app/shared/models/education';
@@ -9,7 +10,8 @@ import { EducationService } from 'src/app/shared/services/education.service';
 @Component({
   selector: 'app-form-education',
   templateUrl: './form-education.component.html',
-  styleUrls: ['./form-education.component.css']
+  styleUrls: ['./form-education.component.css'],
+  providers: [MessageService]
 })
 export class FormEducationComponent implements OnInit {
 
@@ -56,6 +58,7 @@ export class FormEducationComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private educationService: EducationService,
+    public messageService: MessageService,
   ) {
 
     this.degrees = [ "HIGH_SCHOOL","BACHELOR","MASTER","DOCTOR", "PHD" ];
@@ -95,17 +98,23 @@ export class FormEducationComponent implements OnInit {
     console.log(this.formEducation.value)
     console.log(this.isUpdate)
     if (this.formEducation.valid && this.isUpdate == false) {
-      this.educationService.addEducation(this.formEducation.value).subscribe(data => {
-        alert("add")
-        this.router.navigateByUrl('/profile/details')
+      this.educationService.addEducation(this.formEducation.value).subscribe((data:any) => {
+        if (data.status == 201) {
+          this.messages('add education', 'success', 'Success', '/profile/details');
+        } else {
+          this.messages(data.message, 'warn', 'Warn', '/profile/experience');
+        }
       })
       this.onReset()
     }
     else if (this.formEducation.valid && this.isUpdate == true) {
-      this.educationService.updateEducation(parseInt(this.selectedId), this.formEducation.value).subscribe(data => {
-        alert("update")
+      this.educationService.updateEducation(parseInt(this.selectedId), this.formEducation.value).subscribe((data:any) => {
+        if (data.status == 200) {
+          this.messages('update education', 'success', 'Success', '/profile/details');
+        } else {
+          this.messages(data.message, 'warn', 'Warn', '/profile/experience');
+        }
         this.isUpdate = false;
-        this.router.navigateByUrl('/profile/details')
       })
       this.onReset()
     }
@@ -115,6 +124,24 @@ export class FormEducationComponent implements OnInit {
     this.submitted = false;
     this.formEducation.reset();
 
+  }
+
+  messages(info: string, severity: string, summary: string, url: string) {
+    this.messageService.add({
+      key: 'notif',
+      severity: severity,
+      summary: summary,
+      detail: info,
+      life: 3000
+    });
+    setTimeout(() => {
+      this.reload(url);
+    }, 1300);
+  }
+
+  async reload(url: string): Promise<boolean> {
+    await this.router.navigateByUrl('/', { skipLocationChange: true });
+    return this.router.navigateByUrl(`${url}`);
   }
 
   ngOnDestroy() {

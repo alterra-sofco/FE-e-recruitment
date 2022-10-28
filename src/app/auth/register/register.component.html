@@ -5,7 +5,7 @@
   <div class="col md:col-6 p-2 pt-2 text-center md:text-left flex align-items-center ">
     <section>
 
-      <div class="text-cyan-900 text-3xl font-medium">Registration</div>
+      <div class="text-cyan-600 text-3xl font-bold">Registration</div>
       <p class="text-cyan-800 text-xl mb-5">Please complete detail information on profile pages later.</p>
       <form [formGroup]="formRegister" (ngSubmit)="onSubmit()">
         <div class="grid pt-5">
@@ -29,13 +29,13 @@
 
         <!-- password -->
         <div class="grid">
-          <div class="col-7 mb-5"><label for="password" class="block font-medium text-cyan-600 mb-2">Password</label>
+          <div class="col-7 mb-2"><label for="password" class="block font-medium text-cyan-600 mb-2">Password</label>
             <input formControlName="password" id="password" type="text" pinputtext class="w-full p-inputtext">
           </div>
         </div>
 
         <!-- btn -->
-        <div class="col-6 pt-5 p-0">
+        <div class="col-6 pt-4 p-0">
           <button pbutton pripple="" label="Update Profile" type="submit"
             class="w-full p-element p-ripple p-button p-component">
             <span class="p-button-label"> Register </span><span class="p-ink"></span>

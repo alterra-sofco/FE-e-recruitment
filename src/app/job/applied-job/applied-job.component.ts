@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { take } from 'rxjs';
+import { Subscription, take } from 'rxjs';
 import { Job } from 'src/app/shared/models/job';
 import { JobService } from 'src/app/shared/services/job.service';
 
@@ -10,6 +10,7 @@ import { JobService } from 'src/app/shared/services/job.service';
 })
 export class AppliedJobComponent implements OnInit {
 
+  subscription!: Subscription;
   jobList: any[]=[];
 
   result: string = 'APPLIED';
@@ -25,14 +26,10 @@ export class AppliedJobComponent implements OnInit {
       })
   }
 
-  screening(result: string) {
-    // // if (result == 'APPLIED') this.cond1 = true;
-    // if (result == 'ASSESSMENT') this.cond2 = true;
-    // if (result == 'DONE') this.cond2 = this.cond3 = true;
-    // if (result == 'INTERVIEW') this.cond2 = this.cond3 = this.cond4 = true;
-    // if (result == 'SHORTLISTED') this.cond2 = this.cond3 = this.cond4 = this.cond5 = true;
-    // else this.cond2 = this.cond3 = this.cond4 = this.cond5 = false; this.rejection = true;
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
-
 
 }

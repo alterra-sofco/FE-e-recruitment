@@ -35,6 +35,13 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { DialogModule } from 'primeng/dialog';
 //calender
 import { CalendarModule } from 'primeng/calendar';
+import {ScrollPanelModule} from 'primeng/scrollpanel';
+import {AvatarModule} from 'primeng/avatar';
+import {AvatarGroupModule} from 'primeng/avatargroup';
+
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
+
 import { AuthenticationService } from './services/authentication.service';
 import { SkillService } from './services/skill.service';
 import { EducationService } from './services/education.service';
@@ -44,18 +51,23 @@ import { ProfileService } from './services/profile.service';
 import { SessionService } from './services/session.service';
 import { HttpIntercepInterceptor } from './interceptor/http-intercep.interceptor';
 import { AuthGuard } from './auth.guard';
-
+import { NewsComponent } from './components/news/news.component';
 
 @NgModule({
   declarations: [
     StepHomepageComponent,
-    CardJobComponent
+    CardJobComponent,
+    NewsComponent
   ],
   imports: [
     CommonModule,
     BrowserAnimationsModule,
 
     //primeNg
+    MessagesModule,
+    MessageModule,
+    AvatarModule,
+    AvatarGroupModule,
     StepsModule,
     DropdownModule,
     OverlayPanelModule,
@@ -77,6 +89,8 @@ import { AuthGuard } from './auth.guard';
     DividerModule,
     TagModule,
     CalendarModule,
+    FileUploadModule,
+    ScrollPanelModule,
 
     //reactive 
     ReactiveFormsModule,
@@ -87,6 +101,10 @@ import { AuthGuard } from './auth.guard';
     BrowserAnimationsModule,
 
     //primeNg
+    MessagesModule,
+    MessageModule,
+    AvatarModule,
+    AvatarGroupModule,
     StepsModule,
     DropdownModule,
     OverlayPanelModule,
@@ -108,6 +126,8 @@ import { AuthGuard } from './auth.guard';
     DividerModule,
     TagModule,
     CalendarModule,
+    FileUploadModule,
+    ScrollPanelModule,
 
     //reactive 
     ReactiveFormsModule,
@@ -116,7 +136,7 @@ import { AuthGuard } from './auth.guard';
     //components
     StepHomepageComponent,
     CardJobComponent,
-    
+    NewsComponent
   ],
   //service in here
   providers: [

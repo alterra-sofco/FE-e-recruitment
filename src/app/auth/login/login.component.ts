@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {  FormControl, FormGroup, Validators } from '@angular/forms';
-import {  Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { Subscription, take } from 'rxjs';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
@@ -9,11 +9,13 @@ import { SessionService } from 'src/app/shared/services/session.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers: [MessageService]
 })
 export class LoginComponent implements OnInit {
 
   subscription!: Subscription;
+  inputPassword!: string;
 
   submitted = false;
   formRegister: FormGroup = new FormGroup({
@@ -36,27 +38,38 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     if (this.formRegister.valid) {
-      this.authService.login(this.formRegister.value).pipe(take(1)).subscribe((data:any) => {
-        console.log(data);
+      this.authService.login(this.formRegister.value).pipe(take(1)).subscribe((data: any) => {
         if (data) {
           localStorage.setItem('JwtToken', data.data.accessToken);
           this.sessionService.createSession(data.data);
-          alert("ok")
+          this.messages(data.message, 'success', 'Success', '');
+          window.location.reload();
         } else {
-          alert("login error")
+          this.messages(data.message, 'warn', 'Warn', '/login');
         }
-        this.router.navigateByUrl("")
       })
-      this.onReset()
+      // this.messages('wrong password/ email', 'error', 'Error', '/login');
+      this.onReset();
     }
-    else {
-      alert("error")
-    }
+
   }
 
-  onReset(): void {
-    this.submitted = false;
-    this.formRegister.reset();
+  messages(info: string, severity: string, summary: string, url: string) {
+    this.messageService.add({
+      key: 'notif',
+      severity: severity,
+      summary: summary,
+      detail: info,
+      life: 3000
+    });
+    setTimeout(() => {
+      this.reload(url);
+    }, 1300);
+  }
+
+  async reload(url: string): Promise<boolean> {
+    await this.router.navigateByUrl('/', { skipLocationChange: true });
+    return this.router.navigateByUrl(`${url}`);
   }
 
   ngOnDestroy() {
@@ -65,5 +78,9 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  onReset(): void {
+    this.submitted = false;
+    this.formRegister.reset();
+  }
 
 }
