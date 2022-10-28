@@ -1,24 +1,24 @@
 <div *ngFor="let edu of dataEdu">
-    <!-- <p-toast [style]="{marginTop: '80px'}"></p-toast> -->
+  <!-- <p-toast [style]="{marginTop: '80px'}"></p-toast> -->
 
-    <div class="grid">
-        <li class="col flex align-items-center py-3 px-3 flex-wrap">
-            <div class="text-cyan-500 w-full md:w-10 font-bold text-3xl">{{edu.educationName | uppercase}}</div>
-        </li>
-        <button pButton pRipple type="button" icon="pi pi-check"
+  <div class="grid">
+    <li class="col flex align-items-center py-3 px-3 flex-wrap">
+      <div class="text-cyan-500 w-full md:w-10 font-bold text-3xl">{{edu.educationName | uppercase}}</div>
+    </li>
+    <button pButton pRipple type="button" icon="pi pi-check"
             routerLink="/profile/education/form/{{edu.educationId}}"
             class="p-button-rounded p-button-text p-button-success"></button>
-        <button pButton pRipple type="button" icon="pi pi-times" (click)="deleteEdu(edu)"
+    <button pButton pRipple type="button" icon="pi pi-times" (click)="deleteEdu(edu)"
             class="p-button-rounded p-button-text p-button-danger"></button>
-    </div>
+  </div>
 
-    <li class="col flex align-items-center py-2 px-2 flex-wrap surface-50 surface-hover mb-5 font-medium text-xl">
-        <div class="text-500 w-full md:w-2 mb-2">Major</div>
-        <div class="text-900 w-full md:w-10 ">{{edu.major}}</div>
-        <div class="text-500 w-full md:w-2 mb-2">Degree</div>
-        <div class="text-900 w-full md:w-10">{{edu.degree | lowercase}}</div>
-        <div class="text-500 w-full md:w-2 mb-1">Periode</div>
-        <div class="text-500 w-full md:w-10 ">{{edu.startDate}} - {{edu.endDate}}</div>
-    </li>
-    <!-- <app-form-education [dataEdu]="edu" hidden></app-form-education> -->
+  <li class="col flex align-items-center py-2 px-2 flex-wrap surface-50 surface-hover mb-5 font-medium text-xl">
+    <div class="text-500 w-full md:w-2 mb-2">Major</div>
+    <div class="text-900 w-full md:w-10 ">{{edu.major}}</div>
+    <div class="text-500 w-full md:w-2 mb-2">Degree</div>
+    <div class="text-900 w-full md:w-10">{{edu.degree | lowercase}}</div>
+    <div class="text-500 w-full md:w-2 mb-1">Periode</div>
+    <div class="text-500 w-full md:w-10 ">{{edu.startDate}} - {{edu.endDate}}</div>
+  </li>
+  <!-- <app-form-education [dataEdu]="edu" hidden></app-form-education> -->
 </div>

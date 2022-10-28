@@ -1,53 +1,53 @@
 <div class="mb-5">
-    <h2>Experience</h2>
+  <h2>Experience</h2>
 </div>
 
 <form [formGroup]="formExperience" (ngSubmit)="onSubmit()">
-    <div class="grid">
-        <!-- corporate -->
-        <div class="col mb-4"><label for="corporate" class="block font-medium text-900 mb-2">Corporate</label>
-            <input placeholder="Corporate name" formControlName="corporateName" [(ngModel)]="selectedExp.corporateName"
-                type="text" pinputtext="" class="p-inputtext p-component p-element">
-        </div>
-
-        <!-- position  -->
-        <div class="col mb-4"><label for="position" class="block font-medium text-900 mb-2">Position</label>
-            <input placeholder="eg: Developer" formControlName="position" [(ngModel)]="selectedExp.position" type="text"
-                pinputtext="" class="p-inputtext p-component p-element">
-        </div>
+  <div class="grid">
+    <!-- corporate -->
+    <div class="col mb-4"><label for="corporate" class="block font-medium text-900 mb-2">Corporate</label>
+      <input placeholder="Corporate name" formControlName="corporateName" [(ngModel)]="selectedExp.corporateName"
+             type="text" pinputtext="" class="p-inputtext p-component p-element">
     </div>
 
-    <div class="grid">
-        <!-- period  -->
-        <div class="col mb-4">
-            <label for="dateStart" class="block font-medium text-900 mb-2">Period: Start date</label>
-            <p-calendar class="mr-4 w-3" formControlName="startDate" [(ngModel)]="selectedExp.startDate"
-                [showIcon]="true" inputId="icon">
-            </p-calendar>
-        </div>
-        <div class="col mb-4">
-            <label for="dateStart" class="block font-medium text-900 mb-2">Period: Start date</label>
-            <p-calendar class="w-3" formControlName="endDate" [(ngModel)]="selectedExp.endDate" [showIcon]="true"
-                inputId="icon">
-            </p-calendar>
-        </div>
+    <!-- position  -->
+    <div class="col mb-4"><label for="position" class="block font-medium text-900 mb-2">Position</label>
+      <input placeholder="eg: Developer" formControlName="position" [(ngModel)]="selectedExp.position" type="text"
+             pinputtext="" class="p-inputtext p-component p-element">
+    </div>
+  </div>
 
-
+  <div class="grid">
+    <!-- period  -->
+    <div class="col mb-4">
+      <label for="dateStart" class="block font-medium text-900 mb-2">Period: Start date</label>
+      <p-calendar class="mr-4 w-3" formControlName="startDate" [(ngModel)]="selectedExp.startDate"
+                  [showIcon]="true" inputId="icon">
+      </p-calendar>
+    </div>
+    <div class="col mb-4">
+      <label for="dateStart" class="block font-medium text-900 mb-2">Period: Start date</label>
+      <p-calendar class="w-3" formControlName="endDate" [(ngModel)]="selectedExp.endDate" [showIcon]="true"
+                  inputId="icon">
+      </p-calendar>
     </div>
 
-    <!-- description -->
-    <div class="mb-3"><label for="description" class="block font-medium text-900 mb-2">Description</label>
-        <textarea formControlName="description" [(ngModel)]="selectedExp.description" type="text" pinputtextarea=""
-            rows="5" class="p-inputtextarea p-inputtext p-component p-element p-inputtextarea-resizable"
-            style="height: 143px; overflow: hidden;">
+
+  </div>
+
+  <!-- description -->
+  <div class="mb-3"><label for="description" class="block font-medium text-900 mb-2">Description</label>
+    <textarea formControlName="description" [(ngModel)]="selectedExp.description" type="text" pinputtextarea=""
+              rows="5" class="p-inputtextarea p-inputtext p-component p-element p-inputtextarea-resizable"
+              style="height: 143px; overflow: hidden;">
     </textarea>
-    </div>
+  </div>
 
-    <!-- btn update -->
-    <div class="py-4">
-        <button pbutton="" pripple="" label="Update Profile" (click)="onSubmit()"
+  <!-- btn update -->
+  <div class="py-4">
+    <button pbutton="" pripple="" label="Update Profile" (click)="onSubmit()"
             class="p-element p-ripple w-auto p-button p-component">
-            <span class="w-16rem p-button-label"> Submit</span><span class="p-ink"></span>
-        </button>
-    </div>
+      <span class="w-16rem p-button-label"> Submit</span><span class="p-ink"></span>
+    </button>
+  </div>
 </form>

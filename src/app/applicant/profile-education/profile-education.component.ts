@@ -1,11 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { PrimeNGConfig } from 'primeng/api';
-import { take } from 'rxjs';
-import { Applicant } from 'src/app/shared/models/applicant';
-import { Education } from 'src/app/shared/models/education';
-import { EducationService } from 'src/app/shared/services/education.service';
-import { ProfileService } from 'src/app/shared/services/profile.service';
+import {Component, Input, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {PrimeNGConfig} from 'primeng/api';
+import {take} from 'rxjs';
+import {Education} from 'src/app/shared/models/education';
+import {EducationService} from 'src/app/shared/services/education.service';
+import {ProfileService} from 'src/app/shared/services/profile.service';
 
 @Component({
   selector: 'app-profile-education',
@@ -20,12 +19,13 @@ export class ProfileEducationComponent implements OnInit {
     private router: Router,
     private educationService: EducationService,
     private profileService: ProfileService,
-    private primengConfig: PrimeNGConfig) { }
+    private primengConfig: PrimeNGConfig) {
+  }
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
 
-    if(!this.dataEdu) this.profileService.getProfile().pipe(take(1)).subscribe(data=> {
+    if (!this.dataEdu) this.profileService.getProfile().pipe(take(1)).subscribe(data => {
       let param = data.data.educations;
       this.dataEdu = param;
     })

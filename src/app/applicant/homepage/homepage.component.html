@@ -1,66 +1,50 @@
 <!-- registrasi -->
 <div class="surface-section py-8 mb-5 md:px-6 lg:px-8"
-    style="background: linear-gradient(0deg, rgba(0, 123, 255, 0.5), rgba(0, 123, 255, 0.5)), linear-gradient(92.54deg, #1C80CF 47.88%, #FFFFFF 100.01%);">
-    <div class="text-center text-white">
-        <span class="text-5xl pi pi-briefcase mb-3"></span>
-        <div class="text-900 font-bold text-5xl mb-1 text-white"> Bergabunglah sekarang, dan kembangkan kariermu</div>
-        <div class="text-700 text-2xl mb-5 text-white">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit
-            numquam
-            eligendi quos.</div>
-        <button pButton pRipple label="Daftar" icon="pi pi-pencil" [routerLink]="['/register']"
-            class="font-bold px-5 py-3 pt-3 p-button-raised p-button-rounded p-button-warning white-space-nowrap"></button>
+     style="background: linear-gradient(0deg, rgba(0, 123, 255, 0.5), rgba(0, 123, 255, 0.5)), linear-gradient(92.54deg, #1C80CF 47.88%, #FFFFFF 100.01%);">
+  <div class="text-center text-white">
+    <span class="text-5xl pi pi-briefcase mb-3"></span>
+    <div class="text-900 font-bold text-5xl mb-1 text-white"> Bergabunglah sekarang, dan kembangkan kariermu</div>
+    <div class="text-700 text-2xl mb-5 text-white">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit
+      numquam
+      eligendi quos.
     </div>
+    <button pButton pRipple label="Daftar" icon="pi pi-pencil" [routerLink]="['/register']"
+            class="font-bold px-5 py-3 pt-3 p-button-raised p-button-rounded p-button-warning white-space-nowrap"></button>
+  </div>
 </div>
 
 <!-- Search bar -->
 <div class="p-fluid px-2 grid mb-1">
-    <div
-        class="col-3 mr-5 m-0 text-800 text-center flex justify-content-between lg:justify-content-center align-items-center flex-wrap">
-        <div class="font-bold mr-2">🔥 123 pengguna terdaftar!</div>
-        <!-- <a class="flex align-items-center ml-2 mr-2">
-            <a class="text-800" href="#"><span class="underline font-bold">Pelajari lebih lanjut</span></a>
-        </a> -->
-        <a pRipple
-            class="flex align-items-center no-underline justify-content-center border-circle text-800 hover:bg-bluegray-100 cursor-pointer transition-colors transition-duration-150"
-            style="width:2rem; height: 2rem">
-            <i class="pi pi-database"></i>
-        </a>
-    </div>
-    <div class="col-8">
+  <div
+    class="col-3 mr-5 m-0 text-800 text-center flex justify-content-between lg:justify-content-center align-items-center flex-wrap">
+
+
+  </div>
+  <div class="col-8">
         <span class="p-input-icon-left">
             <i class="w-full pi pi-search"></i>
-            <input type="text" pInputText placeholder="Cari pekerjaan" (ngModel)='search' />
+            <input type="text" pInputText placeholder="Cari pekerjaan" (ngModel)='search'/>
         </span>
-    </div>
+  </div>
 
-    <!-- <div class=" col-12 text-cyan-600 font-bold text-xl pi pi-chart-line"> 123 Lowongan pekerjaan</div> -->
+  <!-- <div class=" col-12 text-cyan-600 font-bold text-xl pi pi-chart-line"> 123 Lowongan pekerjaan</div> -->
 </div>
 
 
 <div class="grid h-full px-5 py-1 flex-wrap ">
-    <!-- filterbox -->
-    <div class="col-12 md:col-12 lg:col-3 pt-5 mr-5">
-        <p-listbox [options]="skill" (ngModel)="selectedSkill" [metaKeySelection]="false" [checkbox]="true"
-            [filter]="true" [multiple]="true" optionLabel="skillName" [listStyle]="{'max-height':'350px'}"
-             filterPlaceHolder="skill">
-            <ng-template let-skill pTemplate="item">
-                <div class="skill-item">
-                    {{skill.skillName}}
-                </div>
-            </ng-template>
-        </p-listbox>
-    </div>
+  <!-- filterbox -->
 
-    <!-- ngfor card job here -->
-    <div class="col-9 md:col-9 lg:col-8 mt-4 flex-row">
-        <div *ngFor="let job of jobList" class="mb-3 shadow-2"
-            style="padding: 1px; border-radius: 10px; background: linear-gradient(90deg, rgba(116, 204, 195, 0.2), rgba(127, 178, 220, 0.2)), linear-gradient(180deg, rgba(167, 192, 205, 0.2), rgba(145, 210, 204, 0.2));">
-            <div class="mb-2 mr-2 p-3 surface-card h-full p-button-raised" style="border-radius: 8px;">
-                <app-card-job [jobList]="job" [userData]="applicant"></app-card-job>
-            </div>
-        </div>
+
+  <!-- ngfor card job here -->
+  <div class="col-9 col-offset-3 md:col-9 lg:col-8 mt-4 flex-row">
+    <div *ngFor="let job of jobList" class="mb-3 shadow-2"
+         style="padding: 1px; border-radius: 10px; background: linear-gradient(90deg, rgba(116, 204, 195, 0.2), rgba(127, 178, 220, 0.2)), linear-gradient(180deg, rgba(167, 192, 205, 0.2), rgba(145, 210, 204, 0.2));">
+      <div class="mb-2 mr-2 p-3 surface-card h-full p-button-raised" style="border-radius: 8px;">
+        <app-card-job [jobList]="job" [userData]="applicant"></app-card-job>
+      </div>
     </div>
+  </div>
 
 </div>
 
-<app-step-homepage></app-step-homepage>
+

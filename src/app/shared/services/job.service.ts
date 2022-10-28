@@ -28,7 +28,7 @@ export class JobService {
         'Content-type': 'application/json; charset=UTF-8',
       }),
     };
-    return this.httpClient.post<any>(`${environment.apiUrl}/job/${jobPostingId}/apply`, cv,headerOption);
+    return this.httpClient.post<any>(`${environment.apiUrl}/job/${jobPostingId}/apply`, cv, headerOption);
   }
 
   jobHistory(): Observable<any[]> {

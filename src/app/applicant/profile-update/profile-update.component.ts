@@ -1,12 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { PrimeNGConfig } from 'primeng/api';
-import { Subscription, take } from 'rxjs';
-import { Applicant } from 'src/app/shared/models/applicant';
-import { Skill } from 'src/app/shared/models/skill';
-import { ProfileService } from 'src/app/shared/services/profile.service';
-import { SkillService } from 'src/app/shared/services/skill.service';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {PrimeNGConfig} from 'primeng/api';
+import {Subscription, take} from 'rxjs';
+import {Applicant} from 'src/app/shared/models/applicant';
+import {ProfileService} from 'src/app/shared/services/profile.service';
+
 // import { MessageService } from 'primeng/api';
 
 @Component({
@@ -39,7 +38,7 @@ export class ProfileUpdateComponent implements OnInit {
     email: new FormControl('', [Validators.maxLength(50)]),
     name: new FormControl('', [Validators.required, Validators.maxLength(50)]),
     phoneNumber: new FormControl('', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)/), Validators.maxLength(12)]),
-    
+
 
   });
 
@@ -48,7 +47,8 @@ export class ProfileUpdateComponent implements OnInit {
     private router: Router,
     private profileService: ProfileService,
     // private messageService: MessageService
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
@@ -100,7 +100,7 @@ export class ProfileUpdateComponent implements OnInit {
     }
   }
 
-  onSubmitPorto(){
+  onSubmitPorto() {
   }
 
   onReset(): void {

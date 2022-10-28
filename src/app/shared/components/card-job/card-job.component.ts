@@ -1,9 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Subscription, take } from 'rxjs';
-import { Applicant } from '../../models/applicant';
-import { Job, JobDetails } from '../../models/job';
-import { JobService } from '../../services/job.service';
+import {Component, Input, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Subscription, take} from 'rxjs';
+import {Applicant} from '../../models/applicant';
+import {Job, JobDetails} from '../../models/job';
+import {JobService} from '../../services/job.service';
 
 @Component({
   selector: 'app-card-job',
@@ -53,8 +53,8 @@ export class CardJobComponent implements OnInit {
     if (this.formApply.valid) {
       this.jobService.applyJob(this.job!.jobPostingId, this.formApply.value)
         .pipe(take(1)).subscribe(data => {
-          alert("apllied the job");
-        })
+        alert("apllied the job");
+      })
     }
     this.submitted = false;
   }
@@ -65,15 +65,15 @@ export class CardJobComponent implements OnInit {
 
   showMaximizableDialog() {
     this.displayMaximizable = true;
-    if(this.job){
-        this.moreJobDetail(this.job);
+    if (this.job) {
+      this.moreJobDetail(this.job);
     } else {
       this.moreJobDetail(this.companyDetails);
     }
-    
+
   }
 
-  moreJobDetail(job: any){
+  moreJobDetail(job: any) {
     this.jobService.getJobDetail(job!.jobPostingId).pipe(take(1)).subscribe(data => {
       this.jobDetail = data.data;
     })

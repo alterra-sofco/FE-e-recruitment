@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import {  FormControl, FormGroup, Validators } from '@angular/forms';
-import {  Router } from '@angular/router';
-import { MessageService, PrimeNGConfig } from 'primeng/api';
-import { Subscription, take } from 'rxjs';
-import { AuthenticationService } from 'src/app/shared/services/authentication.service';
-import { SessionService } from 'src/app/shared/services/session.service';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {MessageService, PrimeNGConfig} from 'primeng/api';
+import {Subscription, take} from 'rxjs';
+import {AuthenticationService} from 'src/app/shared/services/authentication.service';
+import {SessionService} from 'src/app/shared/services/session.service';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +27,8 @@ export class LoginComponent implements OnInit {
     private authService: AuthenticationService,
     private sessionService: SessionService,
     public messageService: MessageService
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.primengConfig.ripple = true;
@@ -36,7 +37,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     if (this.formRegister.valid) {
-      this.authService.login(this.formRegister.value).pipe(take(1)).subscribe((data:any) => {
+      this.authService.login(this.formRegister.value).pipe(take(1)).subscribe((data: any) => {
         console.log(data);
         if (data) {
           localStorage.setItem('JwtToken', data.data.accessToken);
@@ -48,8 +49,7 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl("")
       })
       this.onReset()
-    }
-    else {
+    } else {
       alert("error")
     }
   }

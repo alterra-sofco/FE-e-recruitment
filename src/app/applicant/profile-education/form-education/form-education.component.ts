@@ -1,10 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription, take } from 'rxjs';
-import { Applicant } from 'src/app/shared/models/applicant';
-import { Degree, Education } from 'src/app/shared/models/education';
-import { EducationService } from 'src/app/shared/services/education.service';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Subscription} from 'rxjs';
+import {Degree, Education} from 'src/app/shared/models/education';
+import {EducationService} from 'src/app/shared/services/education.service';
 
 @Component({
   selector: 'app-form-education',
@@ -29,14 +28,14 @@ export class FormEducationComponent implements OnInit {
 
   education!: Education[];
   selectedId: any;
-  selectedEdu: Education ={
-    educationId:0,
+  selectedEdu: Education = {
+    educationId: 0,
     degree: '',
-    description:'' ,
-    educationName:'', 
+    description: '',
+    educationName: '',
     endDate: '',
-    major:'',
-    startDate:'' 
+    major: '',
+    startDate: ''
   }
 
   isUpdate = false;
@@ -58,7 +57,7 @@ export class FormEducationComponent implements OnInit {
     private educationService: EducationService,
   ) {
 
-    this.degrees = [ "HIGH_SCHOOL","BACHELOR","MASTER","DOCTOR", "PHD" ];
+    this.degrees = ["HIGH_SCHOOL", "BACHELOR", "MASTER", "DOCTOR", "PHD"];
   }
 
   ngOnInit(): void {
@@ -100,8 +99,7 @@ export class FormEducationComponent implements OnInit {
         this.router.navigateByUrl('/profile/details')
       })
       this.onReset()
-    }
-    else if (this.formEducation.valid && this.isUpdate == true) {
+    } else if (this.formEducation.valid && this.isUpdate == true) {
       this.educationService.updateEducation(parseInt(this.selectedId), this.formEducation.value).subscribe(data => {
         alert("update")
         this.isUpdate = false;

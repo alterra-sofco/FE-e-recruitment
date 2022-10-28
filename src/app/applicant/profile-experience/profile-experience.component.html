@@ -1,22 +1,22 @@
 <div *ngFor="let exp of dataExp">
-    <!-- <p-toast [style]="{marginTop: '80px'}"></p-toast> -->
+  <!-- <p-toast [style]="{marginTop: '80px'}"></p-toast> -->
 
-    <div class="grid">
-        <li class="col flex align-items-center py-3 px-3 flex-wrap">
-            <div class="text-500 w-full md:w-10 font-medium font-bold text-3xl">{{exp.corporateName | uppercase}}</div>
-        </li>
-        <button pButton pRipple type="button" icon="pi pi-check" routerLink="/profile/experience/form/{{exp.experienceId}}"
-            class="p-button-rounded p-button-text p-button-success"></button>
-        <button pButton pRipple type="button" icon="pi pi-times" (click)="deleteExp(exp)"
-            class="p-button-rounded p-button-text p-button-danger"></button>
-    </div>
-
-    <li class="col flex align-items-center py-2 px-2 flex-wrap surface-50 surface-hover mb-5 font-medium text-xl">
-        <div class="text-500 w-full md:w-2 mb-2">Position</div>
-        <div class="text-900 w-full md:w-10">{{exp.position}}</div>
-        <div class="text-500 w-full md:w-2 mb-2">Description</div>
-        <div class="text-900 w-full md:w-10">{{exp.description}}</div>
-        <div class="text-500 w-full md:w-2 ">Periode</div>
-        <div class="text-500 w-full md:w-10">{{exp.startDate}} - {{exp.endDate}}</div>
+  <div class="grid">
+    <li class="col flex align-items-center py-3 px-3 flex-wrap">
+      <div class="text-500 w-full md:w-10 font-medium font-bold text-3xl">{{exp.corporateName | uppercase}}</div>
     </li>
+    <button pButton pRipple type="button" icon="pi pi-check" routerLink="/profile/experience/form/{{exp.experienceId}}"
+            class="p-button-rounded p-button-text p-button-success"></button>
+    <button pButton pRipple type="button" icon="pi pi-times" (click)="deleteExp(exp)"
+            class="p-button-rounded p-button-text p-button-danger"></button>
+  </div>
+
+  <li class="col flex align-items-center py-2 px-2 flex-wrap surface-50 surface-hover mb-5 font-medium text-xl">
+    <div class="text-500 w-full md:w-2 mb-2">Position</div>
+    <div class="text-900 w-full md:w-10">{{exp.position}}</div>
+    <div class="text-500 w-full md:w-2 mb-2">Description</div>
+    <div class="text-900 w-full md:w-10">{{exp.description}}</div>
+    <div class="text-500 w-full md:w-2 ">Periode</div>
+    <div class="text-500 w-full md:w-10">{{exp.startDate}} - {{exp.endDate}}</div>
+  </li>
 </div>

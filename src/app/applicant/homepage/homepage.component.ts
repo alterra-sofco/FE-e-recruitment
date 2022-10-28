@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { PrimeNGConfig } from 'primeng/api';
-import { take } from 'rxjs';
-import { Applicant } from 'src/app/shared/models/applicant';
-import { Job } from 'src/app/shared/models/job';
-import { Skill } from 'src/app/shared/models/skill';
-import { JobService } from 'src/app/shared/services/job.service';
-import { ProfileService } from 'src/app/shared/services/profile.service';
-import { SkillService } from 'src/app/shared/services/skill.service';
+import {Component, OnInit} from '@angular/core';
+import {PrimeNGConfig} from 'primeng/api';
+import {take} from 'rxjs';
+import {Applicant} from 'src/app/shared/models/applicant';
+import {Job} from 'src/app/shared/models/job';
+import {Skill} from 'src/app/shared/models/skill';
+import {JobService} from 'src/app/shared/services/job.service';
+import {ProfileService} from 'src/app/shared/services/profile.service';
+import {SkillService} from 'src/app/shared/services/skill.service';
 
 @Component({
   selector: 'app-homepage',
@@ -33,7 +33,7 @@ export class HomepageComponent implements OnInit {
     private primengConfig: PrimeNGConfig,
     private skillService: SkillService,
     private profileService: ProfileService,
-    private jobService : JobService,
+    private jobService: JobService,
   ) {
   }
 
@@ -41,7 +41,7 @@ export class HomepageComponent implements OnInit {
     this.primengConfig.ripple = true;
 
     //user
-    this.profileService.getProfile().pipe(take(1)).subscribe((data:any) => {
+    this.profileService.getProfile().pipe(take(1)).subscribe((data: any) => {
       this.applicant = data.data;
       console.log(this.applicant);
     })
@@ -53,7 +53,7 @@ export class HomepageComponent implements OnInit {
     })
 
     //skill filter
-    this.jobService.getAllJob().pipe(take(1)).subscribe((data:any) =>{
+    this.jobService.getAllJob().pipe(take(1)).subscribe((data: any) => {
       this.jobList = data.data;
     })
 

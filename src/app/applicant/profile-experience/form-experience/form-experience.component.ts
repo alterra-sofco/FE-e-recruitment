@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { Experience } from 'src/app/shared/models/experience';
-import { ExperienceService } from 'src/app/shared/services/experience.service';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Subscription} from 'rxjs';
+import {Experience} from 'src/app/shared/models/experience';
+import {ExperienceService} from 'src/app/shared/services/experience.service';
 
 @Component({
   selector: 'app-form-experience',
@@ -24,7 +24,7 @@ export class FormExperienceComponent implements OnInit {
 
   experience!: Experience[];
   selectedId: any;
-  selectedExp: Experience ={
+  selectedExp: Experience = {
     experienceId: 0,
     corporateName: '',
     description: '',
@@ -47,15 +47,16 @@ export class FormExperienceComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private experienceService: ExperienceService,
-    ) { }
+  ) {
+  }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     this.selectedId = this.route.snapshot.paramMap.get('id');
     if (this.selectedId) this.experienceService.getExperience(this.selectedId).subscribe((data: any) => {
       this.selectedExp = data.data;
       this.isUpdate = true;
     })
-    
+
     // date
     let today = new Date();
     let month = today.getMonth();
@@ -77,7 +78,7 @@ export class FormExperienceComponent implements OnInit {
 
   }
 
-  
+
   onSubmit() {
     this.submitted = true;
     console.log(this.formExperience.value)
@@ -88,8 +89,7 @@ export class FormExperienceComponent implements OnInit {
         this.router.navigateByUrl('/profile/details')
       })
       this.onReset()
-    }
-    else if (this.formExperience.valid && this.isUpdate == true) {
+    } else if (this.formExperience.valid && this.isUpdate == true) {
       this.experienceService.updateExperience(parseInt(this.selectedId), this.formExperience.value).subscribe(data => {
         alert("update")
         this.isUpdate = false;

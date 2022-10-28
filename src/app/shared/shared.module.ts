@@ -1,49 +1,48 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-import { StepHomepageComponent } from './components/step-homepage/step-homepage.component';
-import { CardJobComponent } from './components/card-job/card-job.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {HttpClientModule} from '@angular/common/http';
+import {StepHomepageComponent} from './components/step-homepage/step-homepage.component';
+import {CardJobComponent} from './components/card-job/card-job.component';
 
 //form
-import { ReactiveFormsModule } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 //primeNg
-import { StepsModule } from 'primeng/steps';
-import { ToastModule } from 'primeng/toast';
-import { StyleClassModule } from 'primeng/styleclass';
-import { RippleModule } from 'primeng/ripple';
-import { MenubarModule } from 'primeng/menubar';
-import { DividerModule } from 'primeng/divider';
-import { TagModule } from 'primeng/tag';
-import { FileUploadModule } from 'primeng/fileupload';
-import { MultiSelectModule } from 'primeng/multiselect';
-import { FieldsetModule } from 'primeng/fieldset';
-import { OverlayPanelModule } from 'primeng/overlaypanel';
-import { DropdownModule } from 'primeng/dropdown';
+import {StepsModule} from 'primeng/steps';
+import {ToastModule} from 'primeng/toast';
+import {StyleClassModule} from 'primeng/styleclass';
+import {RippleModule} from 'primeng/ripple';
+import {MenubarModule} from 'primeng/menubar';
+import {DividerModule} from 'primeng/divider';
+import {TagModule} from 'primeng/tag';
+import {FileUploadModule} from 'primeng/fileupload';
+import {MultiSelectModule} from 'primeng/multiselect';
+import {FieldsetModule} from 'primeng/fieldset';
+import {OverlayPanelModule} from 'primeng/overlaypanel';
+import {DropdownModule} from 'primeng/dropdown';
 //card
-import { ButtonModule } from 'primeng/button';
-import { CardModule, } from 'primeng/card';
-import { ImageModule } from 'primeng/image';
+import {ButtonModule} from 'primeng/button';
+import {CardModule,} from 'primeng/card';
+import {ImageModule} from 'primeng/image';
 //seacrh
-import { InputTextModule } from 'primeng/inputtext';
+import {InputTextModule} from 'primeng/inputtext';
 //listbox
-import { ListboxModule } from 'primeng/listbox';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {ListboxModule} from 'primeng/listbox';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 //overlay
-import { DynamicDialogModule } from 'primeng/dynamicdialog';
-import { DialogModule } from 'primeng/dialog';
+import {DynamicDialogModule} from 'primeng/dynamicdialog';
+import {DialogModule} from 'primeng/dialog';
 //calender
-import { CalendarModule } from 'primeng/calendar';
-import { AuthenticationService } from './services/authentication.service';
-import { SkillService } from './services/skill.service';
-import { EducationService } from './services/education.service';
-import { ExperienceService } from './services/experience.service';
-import { FileService } from './services/file.service';
-import { ProfileService } from './services/profile.service';
-import { SessionService } from './services/session.service';
-import { HttpIntercepInterceptor } from './interceptor/http-intercep.interceptor';
-import { AuthGuard } from './auth.guard';
+import {CalendarModule} from 'primeng/calendar';
+import {AuthenticationService} from './services/authentication.service';
+import {SkillService} from './services/skill.service';
+import {EducationService} from './services/education.service';
+import {ExperienceService} from './services/experience.service';
+import {FileService} from './services/file.service';
+import {ProfileService} from './services/profile.service';
+import {SessionService} from './services/session.service';
+import {HttpIntercepInterceptor} from './interceptor/http-intercep.interceptor';
+import {AuthGuard} from './auth.guard';
 
 
 @NgModule({
@@ -78,10 +77,10 @@ import { AuthGuard } from './auth.guard';
     TagModule,
     CalendarModule,
 
-    //reactive 
+    //reactive
     ReactiveFormsModule,
     FormsModule
-    
+
   ],
   exports: [
     BrowserAnimationsModule,
@@ -109,14 +108,14 @@ import { AuthGuard } from './auth.guard';
     TagModule,
     CalendarModule,
 
-    //reactive 
+    //reactive
     ReactiveFormsModule,
     FormsModule,
 
     //components
     StepHomepageComponent,
     CardJobComponent,
-    
+
   ],
   //service in here
   providers: [
@@ -131,4 +130,5 @@ import { AuthGuard } from './auth.guard';
     AuthGuard,
   ],
 })
-export class SharedModule { }
+export class SharedModule {
+}

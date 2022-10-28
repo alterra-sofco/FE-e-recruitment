@@ -1,10 +1,7 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject, Subject, take } from 'rxjs';
-import { Applicant } from 'src/app/shared/models/applicant';
-import { EducationService } from 'src/app/shared/services/education.service';
-import { ExperienceService } from 'src/app/shared/services/experience.service';
-import { ProfileService } from 'src/app/shared/services/profile.service';
+import {Component, OnInit} from '@angular/core';
+import {take} from 'rxjs';
+import {Applicant} from 'src/app/shared/models/applicant';
+import {ProfileService} from 'src/app/shared/services/profile.service';
 
 @Component({
   selector: 'app-profile-details',
@@ -22,7 +19,8 @@ export class ProfileDetailsComponent implements OnInit {
 
   constructor(
     private profileService: ProfileService,
-     ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.profileService.getProfile().pipe(take(1)).subscribe(data => {
@@ -31,23 +29,23 @@ export class ProfileDetailsComponent implements OnInit {
 
   }
 
-  showCrud(){
-    if(this.isSkillTouched == false){
+  showCrud() {
+    if (this.isSkillTouched == false) {
       this.isSkillTouched = true;
     } else {
       this.isSkillTouched = true;
     }
   }
 
-  uploadCv(){
-    if(this.isCredentialTouch == false){
+  uploadCv() {
+    if (this.isCredentialTouch == false) {
       this.isCredentialTouch = true;
     } else {
       this.isCredentialTouch = true;
     }
   }
 
-  onUpload($event:any){
+  onUpload($event: any) {
 
   }
 

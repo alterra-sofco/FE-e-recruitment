@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ProfileSkillComponent } from './profile-skill.component';
+import {ProfileSkillComponent} from './profile-skill.component';
 
 describe('ProfileSkillComponent', () => {
   let component: ProfileSkillComponent;
@@ -8,9 +8,9 @@ describe('ProfileSkillComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProfileSkillComponent ]
+      declarations: [ProfileSkillComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(ProfileSkillComponent);
     component = fixture.componentInstance;
