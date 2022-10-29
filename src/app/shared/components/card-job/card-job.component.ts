@@ -15,9 +15,10 @@ import { JobService } from '../../services/job.service';
 })
 export class CardJobComponent implements OnInit {
 
-  @Input('jobList') job?: Job;
+  @Input('jobList') job?: any;
   @Input('userData') applicant!: Applicant;
   @Input('applied') companyDetails?: any;
+  @Input('isGrid') isGrid!: boolean;
 
   resume: string = ' please kindly check my profile ';
 
@@ -41,17 +42,17 @@ export class CardJobComponent implements OnInit {
   constructor(
     private jobService: JobService,
     public messageService: MessageService,
-    private router: Router,
+    private router: Router
   ) {
   }
 
   ngOnInit(): void {
     this.moreJobDetail(this.job);
-
+    //this.data.subscribe((data: any) => console.log(JSON.stringify(data)))
     this.formApply = new FormGroup({
       coverLetter: new FormControl('please kindly check my profile', [Validators.required]),
     });
-  
+
   }
 
   apply() {
@@ -60,51 +61,51 @@ export class CardJobComponent implements OnInit {
     if (this.formApply.valid) {
       this.jobService.applyJob(this.job!.jobPostingId, this.formApply.value)
         .pipe(take(1)).subscribe(data => {
-          if (data.status === '201'){
+          if (data.status < 301) {
             this.messages(data.message, 'success', 'Success', '');
           } else {
             this.messages(data.message, 'warn', 'Warn', '');
           }
         })
-  }
+    }
     this.submitted = false;
   }
 
-showMaximizableDialogApply() {
-  this.displayMaxApply = true;
-}
-
-showMaximizableDialog() {
-  this.displayMaximizable = true;
-  if(this.companyDetails){
-    console.log(this.companyDetails)
-    this.moreJobDetail(this.companyDetails);
+  showMaximizableDialogApply() {
+    this.displayMaxApply = true;
   }
-}
 
-moreJobDetail(job: any){
-  this.jobService.getJobDetail(job!.jobPostingId).pipe(take(1)).subscribe(data => {
-    this.jobDetail = data.data;
-  })
-}
-
-ngOnDestroy() {
-  if (this.subscription) {
-    this.subscription.unsubscribe();
+  showMaximizableDialog() {
+    this.displayMaximizable = true;
+    if (this.companyDetails) {
+      console.log(this.companyDetails)
+      this.moreJobDetail(this.companyDetails);
+    }
   }
-}
 
-messages(info: string, severity: string, summary: string, url: string) {
-  this.messageService.add({
-    key: 'notif',
-    severity: severity,
-    summary: summary,
-    detail: info,
-    life: 3000
-  });
-  setTimeout(() => {
-    this.router.navigateByUrl(`${url}`);
-  }, 1300);
-}
+  moreJobDetail(job: any) {
+    this.jobService.getJobDetail(job!.jobPostingId).pipe(take(1)).subscribe(data => {
+      this.jobDetail = data.data;
+    })
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
+
+  messages(info: string, severity: string, summary: string, url: string) {
+    this.messageService.add({
+      key: 'notif',
+      severity: severity,
+      summary: summary,
+      detail: info,
+      life: 3000
+    });
+    setTimeout(() => {
+      this.router.navigateByUrl(`${url}`);
+    }, 1300);
+  }
 
 }

@@ -45,34 +45,23 @@ export class HomepageComponent implements OnInit {
     private jobService: JobService,
     private dialogService: DialogService
   ) { 
+
     this.primengConfig.ripple = true;
   }
 
   ngOnInit() {
-    //user
-    this.profileService.getProfile().pipe(take(1)).subscribe((data: any) => {
-      this.applicant = data.data;
-    })
 
-    //skill filter
-    this.jobService.getAllJob().pipe(take(1)).subscribe((data: any) => {
-      this.jobList = this.filteredJob = data.data;
-    })
-
-    this.jobCounter = this.jobList.length;
+    // //user
+    // this.profileService.getProfile().pipe(take(1)).subscribe((data: any) => {
+    //   this.applicant = data.data;
+    //   console.log(this.applicant);
+    // })
 
     this.getData();
-
   }
 
   showMaximizableDialog() {
     this.displayMaximizable = true;
-  }
-
-  filter(query: string) {
-    this.filteredJob = (query) ? this.jobList
-      .filter(data => data.jobPosition.toLowerCase().includes(query.toLowerCase())) :
-      this.jobList;
   }
 
   getData() {

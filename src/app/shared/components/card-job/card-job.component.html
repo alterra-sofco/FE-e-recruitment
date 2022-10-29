@@ -1,91 +1,93 @@
 <!-- real here................................................................ -->
 <p-toast position="top-center" key="notif"></p-toast>
 
-<div class="col-12 grid pt-2">
-  <div class="col-3 lex align-items-center justify-content-center">
-    <p-image src="assets/images/logo.png" alt="Image" width="100"></p-image>
+<div *ngIf="!isGrid" class="grid py-4 px-2 flex-row flex-wrap card-container ">
+  <div class="col-12 md:col-12 lg:col-3 md:flex-order-1  ">
+    <img [src]="'assets/images/logo.png'" width="150" />
   </div>
-  <div class="col-6 cursor-pointer justify-content-center" pRipple (click)="showMaximizableDialog()">
-    <div class="text-800 font-bold text-xl mb-1"> {{job?.jobPosition || companyDetails?.jobPosition}}
+  <div class="col-12 md:col-12 md:flex-order-2 lg:col-6 " pRipple (click)="showMaximizableDialog()">
+    <div class="job-possition text-800 font-bold text-medium">{{job?.jobPosition || companyDetails?.jobPosition}}
       <i class="pi pi-verified px-2 text-cyan-600"></i>
     </div>
-    <div class="">
-      <span class="align-items-center text-green-600 mb-2">Indonesia</span>
-      <div>
-        <span class="pi pi-history text-500 py-1"> {{job?.yearExperience || companyDetails?.yearExperience}}years minimum
-          experience</span>
-      </div>
+    <div class="job-location text-small text-green-500">Indonesia</div>
+    <span class="pi pi-history text-500 py-1"> {{job?.yearExperience || companyDetails?.yearExperience}}years
+      minimum
+      experience</span>
+    <div class="text-500">
+      <i class="pi pi-calendar-plus text-small text-500"></i><span class="date"> {{job?.updatedAt ||
+        companyDetails?.updatedAt | date: 'ddMMM yyyy HH:mm'}}</span>
     </div>
   </div>
-  <div class="col-3 ">
-    <button *ngIf="job" pButton pRipple type="button" style="height: 50px;" label="Apply now"
+  <div class="col-12 md:col-12 lg:col-3 md:flex-order-2 ">
+    <button *ngIf="job" pButton pRipple type="button" style="height: 50px;" label="Apply now" [disabled]=""
       class="mb-1 px-3 p-button-raised p-button-primary justify-content-center" icon="pi pi-check align-items-center"
       (click)="showMaximizableDialogApply()"></button>
-    <span class="pi pi-calendar-plus -m-1 text-500">
-      {{job?.updatedAt || companyDetails?.updatedAt | date: 'ddMMM yyyy HH:mm'}}</span>
-  </div>
-
-  <!-- <div class="col text-center pt-1 mb-2 flex-column">
-
-  </div>
-  <div class="col w-full pt-3 flex-column cursor-pointer" pRipple (click)="showMaximizableDialog()">
-    <div class="text-800 font-bold text-xl mb-1"> {{job?.jobPosition || companyDetails?.jobPosition}}
-      <i class="pi pi-verified px-2 text-cyan-600"></i>
+    <div class="product-list-detail cursor-pointer" pRipple (click)="showMaximizableDialog()">
     </div>
-    <div class="col">
-      <span class="align-items-center text-green-600">Indonesia</span>
+  </div>
+</div>
+
+<div *ngIf="isGrid" class="p-3">
+  <div class="grid text-center">
+    <div class="col-12">
+      <img [src]="'assets/images/logo.png'" width="150" />
     </div>
-    <div class="col-10 text-500">
-      <span class="pi pi-history -m-1"> {{job?.yearExperience || companyDetails?.yearExperience}} years min
+    <div class="col-12 cursor-pointer " pRipple (click)="showMaximizableDialog()">
+      <div class="job-possition text-800 font-bold text-medium" style="height: 70px; ;">{{job?.jobPosition ||
+        companyDetails?.jobPosition}}<i class="pi pi-verified px-2 text-cyan-600"></i>
+      </div>
+      <div class="job-location text-small text-green-500">Indonesia</div>
+      <span class="pi pi-history text-500 py-1"> {{job?.yearExperience || companyDetails?.yearExperience}}years
+        minimum
         experience</span>
-    </div>
-    <div class="col">
-      <span class="pi pi-calendar-plus -m-1 text-500">
-        {{job?.updatedAt || companyDetails?.updatedAt | date: 'ddMMM yyyy HH:mm'}}</span>
-    </div>
-  </div>
-  <div class="col">
-    <button *ngIf="job" pButton pRipple type="button" style="height: 50px;" label="Apply now"
-      class="mb-1 px-3 p-button-raised p-button-primary justify-content-center" icon="pi pi-check align-items-center"
-      (click)="showMaximizableDialogApply()"></button>
-  </div>
-</div> -->
-
-
-  <!-- modal detail job -->
-  <p-dialog header={{jobDetail!.jobPosition}} [(visible)]="displayMaximizable" [modal]="true" [style]="{width: '50vw'}"
-    [maximizable]="true" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
-    <div>
-      <p>Minimum Experience: {{jobDetail!.yearExperience}} years</p>
-      <p>Posted : {{jobDetail!.updatedAt | date}}</p>
-      <p>Details : {{jobDetail!.JobDetail }}</p>
-    </div>
-    <ng-template pTemplate="footer">
-      <button *ngIf="jobDetail?.isApplied" pButton pRipple type="button" icon="pi pi-times" disabled (click)="apply()"
-        label="Applied" class="p-button-text p-button-raised p-button-danger"></button>
-      <button *ngIf="!jobDetail?.isApplied" pButton pRipple type="button" icon="pi pi-check" (click)="apply()"
-        label="Apply Now" class="p-button-text p-button-raised p-button-primary"></button>
-    </ng-template>
-  </p-dialog>
-
-
-  <!-- modal apply -->
-  <p-dialog header="Applying" [(visible)]="displayMaxApply" [modal]="true" [style]="{width: '50vw'}"
-    [maximizable]="true" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
-    <form [formGroup]="formApply">
-      <div>
-        <h5>Cover Letter to HR:</h5>
-        <span class="p-float-label">
-          <textarea formControlName="coverLetter" [(ngModel)]="resume" rows="5" cols="50" pInputTextarea></textarea>
-          <label for="coverLetter"></label>
-        </span>
+      <div class="text-500">
+        <i class="pi pi-calendar-plus text-small text-500"></i><span class="date"> {{job?.updatedAt ||
+          companyDetails?.updatedAt | date: 'ddMMM yyyy HH:mm'}}</span>
       </div>
-    </form>
-    <ng-template pTemplate="footer">
-      <button *ngIf="jobDetail?.isApplied" pButton pRipple type="button" icon="pi pi-times" disabled label="Applied"
-        (click)="apply()" class="p-button-text p-button-raised p-button-danger"></button>
-      <button *ngIf="!jobDetail?.isApplied" pButton pRipple type="button" icon="pi pi-check" label="Apply"
-        (click)="apply()" class="p-button-text p-button-raised p-button-primary"></button>
-    </ng-template>
+    </div>
+    <div class="col-12 justify-content-between">
+      <button *ngIf="job" pButton pRipple type="button" style="height: 50px;" label="Apply Now" [disabled]=""
+        class="mb-1 px-3 p-button-raised p-button-primary justify-content-center" icon="pi pi-check align-items-center"
+        (click)="showMaximizableDialogApply()"></button>
+      <div class="product-list-detail cursor-pointer" pRipple (click)="showMaximizableDialog()">
+      </div>
+    </div>
+  </div>
+</div>
 
-  </p-dialog>
+<!-- modal detail job -->
+<p-dialog header={{jobDetail!.jobPosition}} [(visible)]="displayMaximizable" [modal]="true" [style]="{width: '50vw'}"
+  [maximizable]="true" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+  <div>
+    <p>Minimum Experience: {{jobDetail!.yearExperience}} years</p>
+    <p>Posted : {{jobDetail!.updatedAt | date}}</p>
+    <p>Details : {{jobDetail!.JobDetail }}</p>
+  </div>
+  <ng-template pTemplate="footer">
+    <button *ngIf="jobDetail?.isApplied" pButton pRipple type="button" icon="pi pi-times" disabled (click)="apply()"
+      label="Applied" class="p-button-text p-button-raised p-button-danger"></button>
+    <button *ngIf="!jobDetail?.isApplied" pButton pRipple type="button" icon="pi pi-check" (click)="apply()"
+      label="Apply Now" class="p-button-text p-button-raised p-button-primary"></button>
+  </ng-template>
+</p-dialog>
+
+<!-- modal apply -->
+<p-dialog header="Applying" [(visible)]="displayMaxApply" [modal]="true" [style]="{width: '50vw'}" [maximizable]="true"
+  [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+  <form [formGroup]="formApply">
+    <div>
+      <h5>Cover Letter to HR:</h5>
+      <span class="p-float-label">
+        <textarea formControlName="coverLetter" [(ngModel)]="resume" rows="5" cols="50" pInputTextarea></textarea>
+        <label for="coverLetter"></label>
+      </span>
+    </div>
+  </form>
+  <ng-template pTemplate="footer">
+    <button *ngIf="jobDetail?.isApplied" pButton pRipple type="button" icon="pi pi-times" disabled label="Applied"
+      (click)="apply()" class="p-button-text p-button-raised p-button-danger"></button>
+    <button *ngIf="!jobDetail?.isApplied" pButton pRipple type="button" icon="pi pi-check" label="Apply"
+      (click)="apply()" class="p-button-text p-button-raised p-button-primary"></button>
+  </ng-template>
+
+</p-dialog>

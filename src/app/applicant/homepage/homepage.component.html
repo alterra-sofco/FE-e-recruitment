@@ -1,42 +1,31 @@
 <app-step-homepage></app-step-homepage>
 
-<!-- Search bar -->
-<!-- <div class="p-fluid px-2 grid pt-4 mb-1">
-  <div class="col-8">
-    <span class="p-input-icon-left">
-      <i class="w-full pi pi-search"></i>
-      <input #query (keyup)="filter(query.value)" type="text" pInputText placeholder="Find position"
-        (ngModel)='search' />
-    </span>
-  </div>
-</div> -->
-
-
-<div class="grid-nogutter pt-4">
+<div class="pt-5">
   <div class="card col-8 col-offset-2 surface-card p-5 shadow-2 border-round flex-auto">
     <p-dataView #dt [value]="jobList" [paginator]="true" [rows]="12" (onLazyLoad)="loadDataLazy($event)"
-      [loading]="isLoading" [lazy]="true" [totalRecords]="totalRecords" layout="grid">
+      [loading]="isLoading" [lazy]="true" [totalRecords]="totalRecords" layout="list">
       <ng-template pTemplate="header">
         <div class="flex flex-column md:flex-row md:justify-content-between">
-          <span class="p-input-icon-left mb-2 md:mb-0 ">
-            <span class="p-input-icon-left mb-2 md:mb-0">
-              <i class="pi pi-search"></i>
-              <input class="mr-5" type="search" pInputText (input)="searchData($event)" placeholder="Search by Position">
-            </span>
-            <span class="font-medium mr-2 justify-content-end text-500"> {{jobList.length}} jobs available <i class="pi pi-database"></i> </span>
+          <span class="p-input-icon-left mb-2 md:mb-0">
+            <i class="pi pi-search"></i>
+            <input class="mr-5" type="search" pInputText (input)="searchData($event)" placeholder="Search by Position">
+            <span class="font-medium mr-2 justify-content-end text-500"> {{jobList.length}} jobs available <i
+                class="pi pi-database"></i> </span>
           </span>
           <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
         </div>
       </ng-template>
       <ng-template let-job pTemplate="listItem">
-        <div class="px-6 mb-1">
-          <app-card-job [jobList]="job" [userData]="applicant"></app-card-job>
+        <div class="col-12">
+          <div class="list-item">
+            <app-card-job [jobList]="job" [userData]="applicant" [isGrid]="false"></app-card-job>
+          </div>
         </div>
       </ng-template>
       <ng-template let-job pTemplate="gridItem">
-        <div class="px-6 mb-1">
-          <div class="mr-1 p-3 w-full h-full p-button-raised" style="border-radius: 8px;">
-            <app-card-job [jobList]="job" [userData]="applicant"></app-card-job>
+        <div class="col-12 md:col-4">
+          <div class="grid-item card">
+            <app-card-job [jobList]="job" [userData]="applicant" [isGrid]="true"></app-card-job>
           </div>
         </div>
       </ng-template>
@@ -44,14 +33,32 @@
   </div>
 </div>
 
-
-<!-- ngfor card job here
-  <div class="grid h-full px-5 py-1 flex-wrap ">
-    <div class="col-5 md:col-12 lg:col-4 mt-4 flex-row">
-      <div *ngFor="let job of filteredJob" class="mb-3 shadow-2" style=" border-radius: 10px;">
-        <div class="mb-1 mr-1 p-3 surface-card h-full p-button-raised" style="border-radius: 8px;">
-          <app-card-job [jobList]="job" [userData]="applicant"></app-card-job>
+<!-- 
+<div class="grid-nogutter pt-4">
+  <div class="card col-8 col-offset-2 surface-card p-5 shadow-2 border-round flex-auto">
+    <p-dataView #dt [value]="jobList" [paginator]="true" [rows]="12" (onLazyLoad)="loadDataLazy($event)"
+      [loading]="isLoading" [lazy]="true" [totalRecords]="totalRecords" layout="grid">
+      <ng-template pTemplate="header">
+        <div class="flex flex-column md:flex-row md:justify-content-between">
+          <span class="p-input-icon-left mb-2 md:mb-0 ">
+            <i class="pi pi-search"></i>
+            <input class="mr-5" type="search" pInputText (input)="searchData($event)" placeholder="Search by Position">
+          </span>
+          <span class="font-medium mr-2 justify-content-end text-500"> {{jobList.length}} jobs available <i
+              class="pi pi-database"></i> </span>
+          <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
         </div>
-      </div>
-    </div>
-  </div> -->
+      </ng-template>
+      <ng-template let-job pTemplate="listItem">
+        <div class="col-12">
+          <div class="product-list-item">
+            <app-card-job [jobList]="job" [userData]="applicant"></app-card-job>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template let-job pTemplate="gridItem">
+        <app-card-job [jobList]="job" [userData]="applicant"></app-card-job>
+      </ng-template>
+    </p-dataView>
+  </div>
+</div> -->
