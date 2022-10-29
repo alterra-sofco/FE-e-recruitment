@@ -16,6 +16,7 @@ import {DataViewModule} from "primeng/dataview";
 import {DynamicDialogModule} from "primeng/dynamicdialog";
 import { HomepageJobDetailComponent } from './homepage-job-detail/homepage-job-detail.component';
 import {ConfirmPopupModule} from "primeng/confirmpopup";
+import { ApplyJobComponent } from './apply-job/apply-job.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import {ConfirmPopupModule} from "primeng/confirmpopup";
     ProfileSkillComponent,
     CredentialComponent,
     HomepageJobDetailComponent,
+    ApplyJobComponent,
   ],
   imports: [
     CommonModule,
