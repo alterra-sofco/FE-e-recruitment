@@ -83,4 +83,8 @@ export class LoginComponent implements OnInit {
     this.formRegister.reset();
   }
 
+  goingTo(){
+    this.router.navigateByUrl(`/register`);
+  }
+
 }

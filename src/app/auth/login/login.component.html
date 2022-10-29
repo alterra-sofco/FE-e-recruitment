@@ -1,41 +1,52 @@
-<p-toast position="top-center" key="notif"></p-toast>
+<p-toast position="top-center" key="notifRegister"></p-toast>
 
-<div class="block-content">
-    <div class="ng-star-inserted">
-        <div class="relative py-5 p-8 overflow-hidden bg-no-repeat bg-cover py-0"
-            style="background-image: url(https://www.primefaces.org/primeblocks-ng/assets/images/blocks/hero/hero-3.jpg);">
-            <div class="text-center my-5 relative">
-                <div class="text-6xl font-bold mb-2 text-white">One step ahead</div>
-                <div class="text-4xl text-blue-400 font-bold mb-5">Complete details information on profile pages.</div>
-
-                <form [formGroup]="formRegister" (ngSubmit)="onSubmit()">
-                    <div class="grid px-8 flex text-center align-items-center justify-content-center flex-wrap ">
-                        <!-- email -->
-                        <div class="col-12 mb-2"><label for="email"
-                                class="block font-medium text-cyan-600 mb-2">Email</label>
-                            <input formControlName="email" type="text" pinputtext="" id="email"
-                                class="p-inputtext p-component p-element">
-                        </div>
-
-                        <!-- password -->
-                        <div class="col-12 mb-2"><label for="password"
-                                class="block font-medium bg-transparent text-cyan-600 mb-2">Password</label>
-                            <input formControlName="password" type="text" pinputtext="" id="password"
-                                class="p-inputtext p-component p-element">
-                        </div>
-
-                        <!-- btn -->
-                        <div class="col-12 md:col-3 py-5">
-                            <button pbutton="" pripple="" label="Update Profile" type="submit"
-                                class=" w-full p-element p-ripple p-button p-component">
-                                <span class="p-button-label"> Login </span><span class="p-ink"></span>
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
+<div class="relative py-5 p-8 overflow-hidden bg-no-repeat bg-cover py-0"
+  style="background-image: url(https://www.primefaces.org/primeblocks-ng/assets/images/blocks/hero/hero-3.jpg);">
+  <div class="grid flex justify-content-center flex-wrap text-center pt-5">
+    <div class="col-12 text-6xl font-bold text-white">One step ahead</div>
+    <div class="col text-4xl text-blue-400 font-bold mb-4">Complete details information on profile pages.</div>
+  </div>
+  <div class="main-wrap mb-7">
+    <div class="box-container">
+      <div class="img-box">
+        <div class="text-700 text-3xl font-medium ml-3 mt-3 align-items-center">
         </div>
+      </div>
+      <div class="form-wrap">
+        <div class="mid-container">
+          <form [formGroup]="formRegister" (ngSubmit)="onSubmit()">
+            <div class="grid flex-wrap pr-3 pt-8">
+
+              <div class="col-12 top-signup">
+                <a class="line-height-1 text-blue-400 cursor-pointer" (click)="goingTo()">
+                  Don't you have an
+                  account?</a>
+              </div>
+
+              <!-- email -->
+              <div class="col-12 mb-2 -mt-3">
+                <label for="email" class="block font-semibold text-black-alpha-70 mb-2">Email</label>
+                <input formControlName="email" type="text" pinputtext="" id="email" placeholder="Email"
+                  class="p-inputtext p-component p-element p-inputtext-sm w-full">
+              </div>
+
+              <!-- password -->
+              <div class="col-12"><label for="password"
+                  class="block font-semibold text-black-alpha-70 mb-2">Password</label>
+                <input formControlName="password" type="password" pinputtext="" id="password" placeholder="Password"
+                  class="p-inputtext p-component p-element p-inputtext-sm w-full">
+              </div>
+
+              <!-- btn -->
+              <button pbutton label="Update Profile" type="submit"
+                class="p-button-sm p-element p-ripple p-button p-button-rounded login-btn">
+                <span class="p-button-label"> Login </span><span class="p-ink"></span>
+              </button>
+              
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-    <!---->
-    <!---->
+  </div>
 </div>
