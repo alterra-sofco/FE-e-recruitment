@@ -1,0 +1,21 @@
+<div class="product-grid-item card">
+  <div class="flex justify-content-center align-items-center">
+    <img [src]="'assets/images/logo.png'" alt="Image" width="200"/>
+
+  </div>
+
+  <div class="product-grid-item-content text-center">
+    <div class="product-name">{{jobDetail.jobPosition}}</div>
+    <div class="font-medium text-600 text-sm">Minimal Pengalaman : {{jobDetail.yearExperience}} Tahun</div>
+
+  </div>
+  <div class="product-grid-item-content">
+
+    <div class="font-semibold text-800 text-sm">Deskripsi:</div>
+    <div class="font-medium text-600 text-sm mt-0 pt-0" [innerHtml]="jobDetail.JobDetail"></div>
+    <div class="text-600 text-xs font-italic">Posted on: {{jobDetail.updatedAt | date: 'dd MMM yyyy HH:mm'}}</div>
+  </div>
+  <div class="product-grid-item-bottom flex align-items-end justify-content-end">
+    <p-button icon="pi pi-check" label="Apply" styleClass="p-button-info" (click)="apply()" [loading]="submitted" [disabled]="jobDetail.isApplied"></p-button>
+  </div>
+</div>
