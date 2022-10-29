@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {LazyLoadEvent, PrimeNGConfig} from 'primeng/api';
+import {LazyLoadEvent, MessageService, PrimeNGConfig} from 'primeng/api';
 import {Subject, take, takeUntil} from 'rxjs';
 import {Applicant} from 'src/app/shared/models/applicant';
 import {Job, MasterDataModel} from 'src/app/shared/models/job';
@@ -8,12 +8,13 @@ import {JobService} from 'src/app/shared/services/job.service';
 import {ProfileService} from 'src/app/shared/services/profile.service';
 import {SkillService} from 'src/app/shared/services/skill.service';
 import {DialogService} from "primeng/dynamicdialog";
+import {CardJob2Component} from "../../shared/components/card-job2/card-job2.component";
 
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.scss'],
-  providers: [DialogService]
+  providers: [DialogService, MessageService]
 })
 export class HomepageComponent implements OnInit {
 
@@ -43,7 +44,6 @@ export class HomepageComponent implements OnInit {
 
   constructor(
     private primengConfig: PrimeNGConfig,
-    private skillService: SkillService,
     private profileService: ProfileService,
     private jobService: JobService,
     private dialogService: DialogService
@@ -57,7 +57,6 @@ export class HomepageComponent implements OnInit {
     //user
     this.profileService.getProfile().pipe(take(1)).subscribe((data: any) => {
       this.applicant = data.data;
-      console.log(this.applicant);
     })
     this.getData();
 
@@ -107,8 +106,16 @@ export class HomepageComponent implements OnInit {
 
   viewDetail(job: Job) {
     this.jobService.getJobDetail(job.jobPostingId).pipe(take(1)).subscribe(data => {
-      this.jobDetail = data.data;
+      this.jobService.jobDetail = data.data;
+      this.dialogService.open(CardJob2Component, {
+        header: 'Info detail',
+        width: '40%',
+        contentStyle: {"overflow": "auto"},
+        baseZIndex: 10000,
+        maximizable: true
+      });
     })
+
   }
 
 }

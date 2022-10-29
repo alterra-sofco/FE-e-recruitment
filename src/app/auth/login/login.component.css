@@ -12,7 +12,7 @@
 .box-container {
   display: flex;
   width: 800px;
-  height: 450px;
+  height: 400px;
   background: #fff;
 }
 
@@ -102,14 +102,9 @@
 }
 
 .login-btn {
-  padding: 10px;
   cursor: pointer;
-  width: 140px;
-  font-size: 16px;
-  margin-top: 20px;
   background-color: rgb(114, 114, 248);
   color: rgb(247, 244, 244);
-  border-radius: 20px;
   border: none;
 }
 

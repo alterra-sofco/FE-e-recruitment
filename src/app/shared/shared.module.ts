@@ -52,12 +52,15 @@ import { SessionService } from './services/session.service';
 import { HttpIntercepInterceptor } from './interceptor/http-intercep.interceptor';
 import { AuthGuard } from './auth.guard';
 import { NewsComponent } from './components/news/news.component';
+import { CardJob2Component } from './components/card-job2/card-job2.component';
+import {SkeletonModule} from "primeng/skeleton";
 
 @NgModule({
   declarations: [
     StepHomepageComponent,
     CardJobComponent,
-    NewsComponent
+    NewsComponent,
+    CardJob2Component
   ],
   imports: [
     CommonModule,
@@ -92,10 +95,11 @@ import { NewsComponent } from './components/news/news.component';
     FileUploadModule,
     ScrollPanelModule,
 
-    //reactive 
+    //reactive
     ReactiveFormsModule,
-    FormsModule
-    
+    FormsModule,
+    SkeletonModule
+
   ],
   exports: [
     BrowserAnimationsModule,
@@ -129,7 +133,7 @@ import { NewsComponent } from './components/news/news.component';
     FileUploadModule,
     ScrollPanelModule,
 
-    //reactive 
+    //reactive
     ReactiveFormsModule,
     FormsModule,
 

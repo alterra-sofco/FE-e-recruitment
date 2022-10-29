@@ -6,7 +6,7 @@
   }
 
   .product-name {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 700;
   }
 
@@ -19,7 +19,7 @@
 
     img {
       width: 150px;
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+
       margin-right: 2rem;
     }
 
@@ -52,6 +52,7 @@
   .product-grid-item {
     margin: .5em;
     border: 1px solid #dee2e6;
+    height: 270px;
 
     .product-grid-item-top,
     .product-grid-item-bottom {
@@ -74,6 +75,7 @@
   box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
   border-radius: 4px;
   margin-bottom: 2rem;
+
 }
 
 @media screen and (max-width: 576px) {

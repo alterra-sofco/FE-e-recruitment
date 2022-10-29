@@ -2,12 +2,14 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {environment} from 'src/environments/environment';
-import {MasterDataModel} from "../models/job";
+import {JobDetails, MasterDataModel} from "../models/job";
 
 @Injectable({
   providedIn: 'root'
 })
 export class JobService {
+
+  jobDetail!:JobDetails;
 
   constructor(
     private httpClient: HttpClient

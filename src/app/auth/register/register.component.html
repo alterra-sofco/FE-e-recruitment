@@ -1,50 +1,77 @@
 <p-toast position="top-center" key="notifRegister"></p-toast>
 
-<div class="grid surface-section text-800 pb-8 pt-8">
-  <div class="col md:col-6 p-2 pt-2 text-center md:text-left flex align-items-center ">
-    <section>
+<div
+  class="surface-ground flex min-h-screen form-02-main"
+>
+  <div class="main-wrap pt-5">
 
-      <div class="text-cyan-600 text-3xl font-bold">Registration</div>
-      <p class="text-cyan-800 text-xl mb-5">Please complete detail information on profile pages later.</p>
-      <form [formGroup]="formRegister" (ngSubmit)="onSubmit()">
-        <div class="grid pt-5">
-          <!-- name -->
-          <div class="col-5 mb-2"><label for="name" class="block font-medium text-cyan-600 mb-2">Name</label>
-            <input formControlName="name" type="text" pinputtext id="name" class="w-full p-inputtext">
+    <div class="box-container">
 
-          </div>
 
-          <!-- email -->
-          <div class="col-5  mb-2"><label for="email" class="block font-medium text-cyan-600 mb-2">Email</label>
-            <input formControlName="email" type="text" pinputtext id="email" class="w-full p-inputtext">
-          </div>
-
-          <!-- phone -->
-          <div class="col-8 mb-2"><label for="phoneNumber" class="block font-medium text-cyan-600 mb-2">Phone</label>
-            <input formControlName="phoneNumber" type="text" pinputtext id="phoneNumber" class="w-full p-inputtext">
+      <div class="img-box flex flex-wrap">
+        <div class="text-700 text-3xl font-medium ml-3 mt-3 align-items-center">
+          eRecruitment
+        </div>
+        <div class="relative bottom-0 w-full ml-5">
+          <div class="absolute text-700 text-xs font-medium align-items-center bottom-0">
+            Dengan memilih "<strong>Mendaftar</strong>", saya telah membaca dan menyetujui Persyaratan penggunaan
+            <strong>eRecruitment</strong> dan Kebijakan privasi.
           </div>
         </div>
 
 
-        <!-- password -->
-        <div class="grid">
-          <div class="col-7 mb-2"><label for="password" class="block font-medium text-cyan-600 mb-2">Password</label>
-            <input formControlName="password" id="password" type="text" pinputtext class="w-full p-inputtext">
-          </div>
-        </div>
-
-        <!-- btn -->
-        <div class="col-6 pt-4 p-0">
-          <button pbutton pripple="" label="Update Profile" type="submit"
-            class="w-full p-element p-ripple p-button p-component">
-            <span class="p-button-label"> Register </span><span class="p-ink"></span>
+      </div>
+      <div class="form-wrap">
+        <div class="top-signup">
+          <span class="line-height-3">Sudah menjadi anggota?</span>
+          <button class="signup-btn p-button p-button-outlined p-button-rounded font-bold text-blue-700 cursor-pointer"
+                  [routerLink]="['/login']">Masuk sekarang
           </button>
         </div>
-      </form>
-    </section>
-  </div>
-  <div class="col md:col-6 px-2 overflow-hidden">
-    <img src="assets/images/hero-1.png" alt="Image" class="md:ml-auto block md:h-full"
-      style="clip-path: polygon(8% 0, 100% 0%, 100% 100%, 0 100%)">
+        <div class="mid-container">
+          <div class="mb-3 mt-3">
+            <div class="text-700 text-2xl font-medium mt-3">Kandidat Daftar</div>
+            <span class="text-600 font-medium text-sm line-height-3">Daftar GRATIS dan dapatkan pekerjaan dengan mudah kemudian lamar.</span>
+          </div>
+          <form [formGroup]="formRegister" (ngSubmit)="onSubmit()" autocomplete="off">
+            <div class="grid flex-wrap pr-3">
+              <div class="field col mb-1">
+                <label for="name" class="block font-semibold text-black-alpha-70">Name</label>
+                <input formControlName="name" type="text" pinputtext id="name" placeholder="Name"
+                       class="w-full p-inputtext p-inputtext-sm">
+              </div>
+              <div class="field col mb-1">
+                <label for="phoneNumber" class="block font-semibold text-black-alpha-70">Phone</label>
+                <input formControlName="phoneNumber" type="text" pinputtext id="phoneNumber" placeholder="Phone"
+                       class="w-full p-inputtext p-inputtext-sm">
+              </div>
+              <!-- email -->
+              <div class="col-12 mb-1">
+                <label for="email" class="block font-semibold text-black-alpha-70">Email</label>
+                <input formControlName="email" type="text" pinputtext id="email" placeholder="Email"
+                       class="w-full p-inputtext p-inputtext-sm">
+              </div>
+
+              <!-- password -->
+              <div class="col-12 mb-2">
+                <label for="password" class="block font-semibold text-black-alpha-70">Password</label>
+                <input formControlName="password" id="password" type="password" pinputtext placeholder="Password"
+                       class="w-full p-inputtext p-inputtext-sm">
+              </div>
+
+              <!-- btn -->
+
+              <button pbutton pripple="" label="Update Profile" type="submit"
+                      class="w-full login-btn p-element p-ripple p-button p-button-sm p-component ml-2 mr-2">
+                <span class="p-button-label"> Mendaftar </span><span class="p-ink"></span>
+              </button>
+
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </div>

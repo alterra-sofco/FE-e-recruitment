@@ -13,6 +13,8 @@ import { ProfileSkillComponent } from './profile-skill/profile-skill.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CredentialComponent } from './credential/credential.component';
 import {DataViewModule} from "primeng/dataview";
+import {CardJobComponent} from "../shared/components/card-job/card-job.component";
+import {FooterComponent} from "../core/footer/footer.component";
 
 @NgModule({
   declarations: [

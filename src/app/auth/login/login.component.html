@@ -15,9 +15,9 @@
       </div>
       <div class="form-wrap">
         <div class="top-signup">
-          <span class="line-height-3">Don't you have an account?</span>
+          <span class="line-height-3">Belum punya akun?</span>
           <button class="signup-btn p-button p-button-outlined p-button-rounded font-bold text-blue-700 cursor-pointer"
-                  [routerLink]="['/register']">SIGN UP
+                  [routerLink]="['/register']">Daftar Sekarang
           </button>
         </div>
         <div class="mid-container">
@@ -25,7 +25,7 @@
             <div class="text-700 text-2xl font-medium mt-3">Kandidat Masuk</div>
             <span class="text-600 font-medium line-height-3">Temukan lowongan sesuai gaji Anda</span>
           </div>
-          <form [formGroup]="formRegister" (ngSubmit)="onSubmit()">
+          <form [formGroup]="formRegister" (ngSubmit)="onSubmit()" autocomplete="off">
             <div class="grid flex-wrap pr-3">
               <!-- email -->
               <div class="col-12 mb-2">
@@ -35,7 +35,7 @@
               </div>
 
               <!-- password -->
-              <div class="col-12 mb-2"><label for="password"
+              <div class="col-12 mb-3"><label for="password"
                                               class="block font-semibold text-black-alpha-70">Password</label>
                 <input formControlName="password" type="password" pinputtext="" id="password" placeholder="Password"
                        class="p-inputtext p-component p-element p-inputtext-sm w-full">
@@ -44,7 +44,7 @@
               <!-- btn -->
 
               <button pbutton label="Update Profile" type="submit"
-                      class="p-button-sm p-element p-ripple p-button p-button-rounded login-btn">
+                      class="p-button-sm p-element p-ripple p-button w-full login-btn  ml-2 mr-2">
                 <span class="p-button-label"> Login </span><span class="p-ink"></span>
               </button>
 
@@ -56,4 +56,4 @@
     </div>
 
   </div>
-</div>>
+</div>

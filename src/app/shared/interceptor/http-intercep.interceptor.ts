@@ -11,14 +11,16 @@ import {
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { SessionService } from '../services/session.service';
 import { AuthenticationService } from '../services/authentication.service';
+import {MessageService} from "primeng/api";
 
 @Injectable()
 export class HttpIntercepInterceptor implements HttpInterceptor {
-  messageService: any;
+
 
   constructor(
     private authService: AuthenticationService,
     private sessionService: SessionService,
+    public messageService: MessageService
   ) {
   }
 

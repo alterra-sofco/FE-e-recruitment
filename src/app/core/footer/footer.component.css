@@ -1,6 +1,95 @@
-.layout-footer {
+footer {
+  position: static;
   bottom: 0;
-  position: absolute;
-  padding-top: 1rem;
-  border-top: 1px solid var(--surface-border);
+  left: 0;
+  right: 0;
+  background: #000000;
+  height: auto;
+  color: #fff;
+  padding-top: 40px;
+  font-family: sans-serif;
 }
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.footer-content h3 {
+  font-size: 2.1rem;
+}
+
+.footer-content p {
+  max-width: 700px;
+  margin: 10px auto;
+  line-height: 28px;
+  font-size: 14px;
+  color: #cacdd2;
+}
+
+footer p {
+  float: left;
+  font-size: 14px;
+  word-spacing: 2px;
+}
+
+footer p a {
+  color: #44bae8;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+footer span {
+  text-transform: uppercase;
+  opacity: .4;
+  font-weight: 200;
+}
+
+.logo {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.socials {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0 1rem 0;
+}
+
+.socials li {
+  margin: 0 10px;
+}
+
+.socials a {
+  text-decoration: none;
+  color: #fff;
+  padding: 5px;
+
+}
+
+.socials a i {
+  font-size: 1.1rem;
+  width: 20px;
+  transition: color .4s ease;
+}
+
+.socials a:hover i {
+  color: aqua;
+}
+
+.footer-left {
+  width: 30%;
+}
+
+.footer-left img {
+  width: 30%;
+  margin: 5px;
+}
+
