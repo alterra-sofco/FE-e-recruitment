@@ -7,7 +7,8 @@ import {Skill} from 'src/app/shared/models/skill';
 import {JobService} from 'src/app/shared/services/job.service';
 import {ProfileService} from 'src/app/shared/services/profile.service';
 import {SkillService} from 'src/app/shared/services/skill.service';
-import {DialogService} from "primeng/dynamicdialog";
+import {DialogService, DynamicDialogRef} from "primeng/dynamicdialog";
+import {HomepageJobDetailComponent} from "../homepage-job-detail/homepage-job-detail.component";
 
 @Component({
   selector: 'app-homepage',
@@ -35,6 +36,8 @@ export class HomepageComponent implements OnInit {
   rows?: number = 10;
   globalFilter: any;
 
+  ref !: DynamicDialogRef;
+
   private unsubcribe$ = new Subject();
   totalRecords!: number | 0;
   isLoading: boolean = false;
@@ -46,7 +49,7 @@ export class HomepageComponent implements OnInit {
     private skillService: SkillService,
     private profileService: ProfileService,
     private jobService: JobService,
-    private dialogService: DialogService
+    private dialogService: DialogService,
   ) {
     this.primengConfig.ripple = true;
   }
@@ -109,6 +112,16 @@ export class HomepageComponent implements OnInit {
     this.jobService.getJobDetail(job.jobPostingId).pipe(take(1)).subscribe(data => {
       this.jobDetail = data.data;
     })
+
+    this.jobService.id = job.jobPostingId;
+
+    this.ref = this.dialogService.open(HomepageJobDetailComponent, {
+      header: 'Job detail',
+      width: '70%',
+      contentStyle: {"max-height": "100%", "overflow": "auto"},
+      baseZIndex: 10000,
+      maximizable: true
+    });
   }
 
 }

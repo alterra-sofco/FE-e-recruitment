@@ -39,15 +39,17 @@
         </div>
       </ng-template>
       <ng-template let-job pTemplate="gridItem">
-        <div class="col-12 md:col-3">
-          <div class="product-grid-item card shadow-none cursor-pointer hover:shadow-2 hover:bg-gray-200"
+        <div class="col-12 md:col-3" style="width: 300px">
+          <div class="product-grid-item card shadow-none cursor-pointer hover:shadow-2 hover:bg-gray-200 "
                (click)="viewDetail(job)">
             <div class="col text-center pt-1 flex-column">
               <p-image src="assets/images/logo.png" alt="Image" width="150"></p-image>
             </div>
             <div class="product-grid-item-content">
+              <div class=" white-space-nowrap overflow-hidden text-overflow-ellipsis product-name" style="width:220px">
+                {{job.jobPosition}}
+              </div>
 
-              <div class="product-name">{{job.jobPosition}}</div>
               <div class="font-medium text-600 text-sm">Minimal Pengalaman : {{job.yearExperience}} Tahun</div>
               <div class="font-medium text-600 text-sm">Posted : {{job.updatedAt | date: 'dd MMM yyyy HH:mm'}}</div>
 

@@ -13,6 +13,9 @@ import { ProfileSkillComponent } from './profile-skill/profile-skill.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CredentialComponent } from './credential/credential.component';
 import {DataViewModule} from "primeng/dataview";
+import {DynamicDialogModule} from "primeng/dynamicdialog";
+import { HomepageJobDetailComponent } from './homepage-job-detail/homepage-job-detail.component';
+import {ConfirmPopupModule} from "primeng/confirmpopup";
 
 @NgModule({
   declarations: [
@@ -26,12 +29,15 @@ import {DataViewModule} from "primeng/dataview";
     FormExperienceComponent,
     ProfileSkillComponent,
     CredentialComponent,
+    HomepageJobDetailComponent,
   ],
-    imports: [
-        CommonModule,
-        SharedModule,
-        HttpClientModule,
-        DataViewModule
-    ]
+  imports: [
+    CommonModule,
+    SharedModule,
+    HttpClientModule,
+    DataViewModule,
+    DynamicDialogModule,
+    ConfirmPopupModule
+  ]
 })
 export class ApplicantModule { }
