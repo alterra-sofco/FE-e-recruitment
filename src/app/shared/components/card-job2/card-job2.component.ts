@@ -4,7 +4,6 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Subscription, take} from "rxjs";
 import {JobService} from "../../services/job.service";
 import {MessageService} from "primeng/api";
-import {Router} from "@angular/router";
 import {DynamicDialogRef} from "primeng/dynamicdialog";
 
 @Component({
@@ -14,7 +13,7 @@ import {DynamicDialogRef} from "primeng/dynamicdialog";
 })
 export class CardJob2Component implements OnInit {
 
-  @Input("jobDetail") jobDetail!:JobDetails;
+  @Input("jobDetail") jobDetail!: JobDetails;
   resume: string = ' please kindly check my profile ';
 
   formApply!: FormGroup;

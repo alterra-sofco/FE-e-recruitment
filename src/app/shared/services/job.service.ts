@@ -9,7 +9,7 @@ import {JobDetails, MasterDataModel} from "../models/job";
 })
 export class JobService {
 
-  jobDetail!:JobDetails;
+  jobDetail!: JobDetails;
 
   constructor(
     private httpClient: HttpClient
@@ -34,7 +34,7 @@ export class JobService {
         'Content-type': 'application/json; charset=UTF-8',
       }),
     };
-    return this.httpClient.post<any>(`${environment.apiUrl}/job/${jobPostingId}/apply`, cv,headerOption);
+    return this.httpClient.post<any>(`${environment.apiUrl}/job/${jobPostingId}/apply`, cv, headerOption);
   }
 
   jobHistory(): Observable<any[]> {

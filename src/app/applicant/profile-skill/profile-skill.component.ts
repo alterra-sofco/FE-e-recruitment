@@ -1,11 +1,10 @@
-import { ConstantPool } from '@angular/compiler';
-import { Component, OnChanges, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { MessageService } from 'primeng/api';
-import { Subscription, take } from 'rxjs';
-import { Skill } from 'src/app/shared/models/skill';
-import { ProfileService } from 'src/app/shared/services/profile.service';
-import { SkillService } from 'src/app/shared/services/skill.service';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {MessageService} from 'primeng/api';
+import {Subscription, take} from 'rxjs';
+import {Skill} from 'src/app/shared/models/skill';
+import {ProfileService} from 'src/app/shared/services/profile.service';
+import {SkillService} from 'src/app/shared/services/skill.service';
 
 @Component({
   selector: 'app-profile-skill',
@@ -13,29 +12,30 @@ import { SkillService } from 'src/app/shared/services/skill.service';
   styleUrls: ['./profile-skill.component.css'],
   providers: [MessageService]
 })
-export class ProfileSkillComponent implements OnInit{
+export class ProfileSkillComponent implements OnInit {
 
   subscription!: Subscription;
-    //skill
-    skillTree: Skill[]=[]
-    selectedSkill!: Skill;
-    skills!: Skill[];
-  
+  //skill
+  skillTree: Skill[] = []
+  selectedSkill!: Skill;
+  skills!: Skill[];
+
   constructor(
     private skillService: SkillService,
     private profileService: ProfileService,
     private router: Router,
     public messageService: MessageService
-    ) { }
+  ) {
+  }
 
-    // skills: new FormControl('', [Validators.required, Validators.maxLength(50)]),
+  // skills: new FormControl('', [Validators.required, Validators.maxLength(50)]),
 
   ngOnInit(): void {
-    this.profileService.getProfile().pipe(take(1)).subscribe((data:any) => {
+    this.profileService.getProfile().pipe(take(1)).subscribe((data: any) => {
       this.skillTree = data.data.skills;
     })
 
-    this.skillService.getSkill().pipe(take(1)).subscribe((data:any) => {
+    this.skillService.getSkill().pipe(take(1)).subscribe((data: any) => {
       let skillTree: any = data;
       this.skills = skillTree.data;
     })
@@ -43,14 +43,14 @@ export class ProfileSkillComponent implements OnInit{
   }
 
 
-  onSubmitSkill(){
+  onSubmitSkill() {
     this.skillService.addSkill(this.selectedSkill).pipe(take(1)).subscribe(data => {
       this.messages('add skill', 'success', 'Success', '/profile/details');
     })
 
   }
 
-  deleteSkill(skill: any){
+  deleteSkill(skill: any) {
     this.skillService.deleteSkill(skill.skillId).pipe(take(1)).subscribe(data => {
       this.messages('delete skill', 'success', 'Success', '/profile/details');
     })
@@ -70,7 +70,7 @@ export class ProfileSkillComponent implements OnInit{
   }
 
   async reload(url: string): Promise<boolean> {
-    await this.router.navigateByUrl('/', { skipLocationChange: true });
+    await this.router.navigateByUrl('/', {skipLocationChange: true});
     return this.router.navigateByUrl(`${url}`);
   }
 

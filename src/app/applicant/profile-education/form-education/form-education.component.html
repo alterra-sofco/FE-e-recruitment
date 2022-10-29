@@ -1,57 +1,57 @@
 <p-toast position="top-center" key="notif"></p-toast>
 
 <div class="mb-5">
-    <h2>Education</h2>
+  <h2>Education</h2>
 </div>
 
 <form [formGroup]="formEducation" (ngSubmit)="onSubmit()">
-    <div class="grid">
-        <!-- intitution -->
-        <div class=" col mb-4"><label for="educationName" class="block font-medium text-900 mb-2">Institution</label>
-            <input placeholder="Institution" formControlName="educationName" [(ngModel)]="selectedEdu.educationName"
-                type="text" pinputtext="" class="p-inputtext p-component p-element">
-        </div>
-
-        <!-- major  -->
-        <div class="col mb-4"><label for="major" class="block font-medium text-900 mb-2">Major</label>
-            <input placeholder="eg: Information Technology" formControlName="major" [(ngModel)]="selectedEdu.major"
-                type="text" pinputtext="" class="p-inputtext p-component p-element">
-        </div>
+  <div class="grid">
+    <!-- intitution -->
+    <div class=" col mb-4"><label for="educationName" class="block font-medium text-900 mb-2">Institution</label>
+      <input placeholder="Institution" formControlName="educationName" [(ngModel)]="selectedEdu.educationName"
+             type="text" pinputtext="" class="p-inputtext p-component p-element">
     </div>
 
-    <div class="grid">
-        <!-- degree  -->
-        <div class="col mb-4"><label for="degrees" class="block font-medium text-900 mb-2">Degree</label>
-            <p-dropdown [(ngModel)]="selectedEdu.degree" [options]="degrees" placeholder="Select a degree"
-                [showClear]="true" formControlName="degree"></p-dropdown>
-        </div>
-        <!-- period  -->
-        <div class="col-3 mb-4">
-            <label for="dateStart" class="block font-medium text-900 mb-2">Period: Start date</label>
-            <p-calendar class="mr-4 w-3" [(ngModel)]="selectedEdu.startDate" [showIcon]="true" inputId="icon"
-                formControlName="startDate"></p-calendar>
-        </div>
+    <!-- major  -->
+    <div class="col mb-4"><label for="major" class="block font-medium text-900 mb-2">Major</label>
+      <input placeholder="eg: Information Technology" formControlName="major" [(ngModel)]="selectedEdu.major"
+             type="text" pinputtext="" class="p-inputtext p-component p-element">
+    </div>
+  </div>
 
-        <div class="col-3 mb-3">
-            <label for="dateStart" class="block font-medium text-900 mb-2">End date</label>
-            <p-calendar class="w-3" [(ngModel)]="selectedEdu.endDate" [showIcon]="true" inputId="icon"
-                formControlName="endDate">
-            </p-calendar>
-        </div>
+  <div class="grid">
+    <!-- degree  -->
+    <div class="col mb-4"><label for="degrees" class="block font-medium text-900 mb-2">Degree</label>
+      <p-dropdown [(ngModel)]="selectedEdu.degree" [options]="degrees" placeholder="Select a degree"
+                  [showClear]="true" formControlName="degree"></p-dropdown>
+    </div>
+    <!-- period  -->
+    <div class="col-3 mb-4">
+      <label for="dateStart" class="block font-medium text-900 mb-2">Period: Start date</label>
+      <p-calendar class="mr-4 w-3" [(ngModel)]="selectedEdu.startDate" [showIcon]="true" inputId="icon"
+                  formControlName="startDate"></p-calendar>
     </div>
 
-    <!-- description -->
-    <div class="mb-4"><label for="description" class="block font-medium text-900 mb-2">Description</label>
-        <textarea formControlName="description" type="text" [(ngModel)]="selectedEdu.description" pinputtextarea=""
-            rows="5" class="p-inputtextarea p-inputtext p-component p-element p-inputtextarea-resizable"
-            style="height: 143px; overflow: hidden;">
+    <div class="col-3 mb-3">
+      <label for="dateStart" class="block font-medium text-900 mb-2">End date</label>
+      <p-calendar class="w-3" [(ngModel)]="selectedEdu.endDate" [showIcon]="true" inputId="icon"
+                  formControlName="endDate">
+      </p-calendar>
+    </div>
+  </div>
+
+  <!-- description -->
+  <div class="mb-4"><label for="description" class="block font-medium text-900 mb-2">Description</label>
+    <textarea formControlName="description" type="text" [(ngModel)]="selectedEdu.description" pinputtextarea=""
+              rows="5" class="p-inputtextarea p-inputtext p-component p-element p-inputtextarea-resizable"
+              style="height: 143px; overflow: hidden;">
     </textarea>
-    </div>
+  </div>
 
-    <!-- btn update -->
-    <div class="py-4">
-        <button pbutton="" pRipple label="Update Profile" class="p-element p-ripple w-auto p-button p-component">
-            <span class="w-16rem p-button-label"> Submit</span><span class="p-ink"></span>
-        </button>
-    </div>
+  <!-- btn update -->
+  <div class="py-4">
+    <button pbutton="" pRipple label="Update Profile" class="p-element p-ripple w-auto p-button p-component">
+      <span class="w-16rem p-button-label"> Submit</span><span class="p-ink"></span>
+    </button>
+  </div>
 </form>

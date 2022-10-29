@@ -1,65 +1,65 @@
 <p-toast position="top-center" key="notif"></p-toast>
 
 <form [formGroup]="formProfile" (ngSubmit)="onSubmit()">
-    <div class="text-900 font-semibold text-lg mt-3 mb-5">Profile Information</div>
-    <div class="grid flex gap-5 flex-column md:flex-row mb-5">
-        <div class="col flex-auto p-fluid">
+  <div class="text-900 font-semibold text-lg mt-3 mb-5">Profile Information</div>
+  <div class="grid flex gap-5 flex-column md:flex-row mb-5">
+    <div class="col flex-auto p-fluid">
 
-            <!-- name -->
-            <div class="mb-4"><label for="name" class="block font-medium text-900 mb-2">Name</label>
-                <input formControlName="name" [(ngModel)]="userData.name" type="text" pinputtext=""
-                    class="p-inputtext p-component p-element">
-            </div>
+      <!-- name -->
+      <div class="mb-4"><label for="name" class="block font-medium text-900 mb-2">Name</label>
+        <input formControlName="name" [(ngModel)]="userData.name" type="text" pinputtext=""
+               class="p-inputtext p-component p-element">
+      </div>
 
-            <!-- address -->
-            <div class="mb-4"><label for="address" class="block font-medium text-900 mb-2">Address</label>
-                <input formControlName="address" [(ngModel)]="userData.address" type="text" pinputtext=""
-                    class="p-inputtext p-component p-element">
-            </div>
+      <!-- address -->
+      <div class="mb-4"><label for="address" class="block font-medium text-900 mb-2">Address</label>
+        <input formControlName="address" [(ngModel)]="userData.address" type="text" pinputtext=""
+               class="p-inputtext p-component p-element">
+      </div>
 
-            <!-- bio -->
-            <div class="mb-4"><label for="bio" class="block font-medium text-900 mb-2">Bio</label>
-                <textarea formControlName="bio" [(ngModel)]="userData.bio" type="text" pinputtextarea="" rows="5"
-                    class="p-inputtextarea p-inputtext p-component p-element p-inputtextarea-resizable"
-                    style="height: 143px; overflow: hidden;">
+      <!-- bio -->
+      <div class="mb-4"><label for="bio" class="block font-medium text-900 mb-2">Bio</label>
+        <textarea formControlName="bio" [(ngModel)]="userData.bio" type="text" pinputtextarea="" rows="5"
+                  class="p-inputtextarea p-inputtext p-component p-element p-inputtextarea-resizable"
+                  style="height: 143px; overflow: hidden;">
             </textarea>
-            </div>
+      </div>
 
-            <!-- btn update -->
-            <div class="pt-4">
-                <button pbutton="" pripple="" label="Update Profile" (click)="onSubmit()"
-                    class="p-element p-ripple w-auto p-button p-component">
-                    <span class="p-button-label"> Update Profile</span><span class="p-ink"></span>
-                </button>
-            </div>
-        </div>
-
-        <div class="col-4">
-            <!-- email -->
-            <div class="mb-4"><label for="email" class="block font-medium text-900 mb-2">Email</label>
-                <input formControlName="email" [(ngModel)]="userData.email" type="text" pinputtext=""
-                    class="p-inputtext p-component p-element">
-            </div>
-
-            <!-- phone -->
-            <div class="mb-4"><label for="phone" class="block font-medium text-900 mb-2">Phone</label>
-                <input formControlName="phoneNumber" [(ngModel)]="userData.phoneNumber" type="text" pinputtext=""
-                    class="p-inputtext p-component p-element">
-            </div>
-
-            <!-- dob date input -->
-            <div class="mb-6"><label for="dob" class="block font-medium text-900 mb-2">Date
-                    of Birth</label>
-                <p-calendar formControlName="dob" [(ngModel)]="userData.dob" [showIcon]="true" inputId="icon">
-                </p-calendar>
-            </div>
-
-            
-        </div>
+      <!-- btn update -->
+      <div class="pt-4">
+        <button pbutton="" pripple="" label="Update Profile" (click)="onSubmit()"
+                class="p-element p-ripple w-auto p-button p-component">
+          <span class="p-button-label"> Update Profile</span><span class="p-ink"></span>
+        </button>
+      </div>
     </div>
+
+    <div class="col-4">
+      <!-- email -->
+      <div class="mb-4"><label for="email" class="block font-medium text-900 mb-2">Email</label>
+        <input formControlName="email" [(ngModel)]="userData.email" type="text" pinputtext=""
+               class="p-inputtext p-component p-element">
+      </div>
+
+      <!-- phone -->
+      <div class="mb-4"><label for="phone" class="block font-medium text-900 mb-2">Phone</label>
+        <input formControlName="phoneNumber" [(ngModel)]="userData.phoneNumber" type="text" pinputtext=""
+               class="p-inputtext p-component p-element">
+      </div>
+
+      <!-- dob date input -->
+      <div class="mb-6"><label for="dob" class="block font-medium text-900 mb-2">Date
+        of Birth</label>
+        <p-calendar formControlName="dob" [(ngModel)]="userData.dob" [showIcon]="true" inputId="icon">
+        </p-calendar>
+      </div>
+
+
+    </div>
+  </div>
 </form>
 
-<!-- 
+<!--
 <div class="grid flex gap-5 flex-column md:flex-row mb-5">
     <div class="col flex-auto p-fluid">
         <div class="grid col-3 py-2">
@@ -78,35 +78,35 @@
                     </button>
                 </div>
             </div>
-            
+
         </div> -->
 
-        <!-- <div class="col">
-            cv
-            <div class="grid px-2 py-3">
-                <label for="cv" class="block font-medium text-900 mb-2">Curiculum Vitae</label>
-                <p-fileUpload formControlName="cvFileId" [(ngModel)]="userData.cvFileId" mode="basic" name="myfile[]"
-                    (onUpload)="onBasicUpload($event)" accept="image/*" chooseLabel="Drop Cv">
-                </p-fileUpload>
-            </div> -->
+<!-- <div class="col">
+    cv
+    <div class="grid px-2 py-3">
+        <label for="cv" class="block font-medium text-900 mb-2">Curiculum Vitae</label>
+        <p-fileUpload formControlName="cvFileId" [(ngModel)]="userData.cvFileId" mode="basic" name="myfile[]"
+            (onUpload)="onBasicUpload($event)" accept="image/*" chooseLabel="Drop Cv">
+        </p-fileUpload>
+    </div> -->
 
-            <!-- porto
-            <div class="grid py-3">
-                <div class="col"><label class="block font-medium text-900 mb-3">Portofolio</label></div>
-                <div class="col-8">
-                    <div class="p-inputgroup">
-                        <span class="p-inputgroup-addon">https://</span>
-                        <input formControlName="cvURL" [(ngModel)]="userData.cvURL" type="text" pinputtext=""
-                            placeholder="link portofolio" class="p-inputtext p-component p-element">
-                    </div>
-                </div>
-                <div class="col">
-                    <button pbutton="" pripple="" label="add portofolio" (click)="onSubmitPorto()"
-                        class="p-element p-ripple w-auto p-button p-component">
-                        <span class="p-button-label pi pi-plus"> </span><span class="p-ink"></span>
-                    </button>
-                </div>
-            </div> -->
-        <!-- </div> -->
-    <!-- </div>
+<!-- porto
+<div class="grid py-3">
+    <div class="col"><label class="block font-medium text-900 mb-3">Portofolio</label></div>
+    <div class="col-8">
+        <div class="p-inputgroup">
+            <span class="p-inputgroup-addon">https://</span>
+            <input formControlName="cvURL" [(ngModel)]="userData.cvURL" type="text" pinputtext=""
+                placeholder="link portofolio" class="p-inputtext p-component p-element">
+        </div>
+    </div>
+    <div class="col">
+        <button pbutton="" pripple="" label="add portofolio" (click)="onSubmitPorto()"
+            class="p-element p-ripple w-auto p-button p-component">
+            <span class="p-button-label pi pi-plus"> </span><span class="p-ink"></span>
+        </button>
+    </div>
+</div> -->
+<!-- </div> -->
+<!-- </div>
 </div> -->

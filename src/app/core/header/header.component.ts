@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {MessageService, PrimeNGConfig} from 'primeng/api';
-import { Subscription } from 'rxjs';
+import {Subscription} from 'rxjs';
 import {SessionService} from 'src/app/shared/services/session.service';
 
 @Component({
@@ -55,7 +55,7 @@ export class HeaderComponent implements OnInit {
   }
 
   async reload(url: string): Promise<boolean> {
-    await this.router.navigateByUrl('/', { skipLocationChange: true });
+    await this.router.navigateByUrl('/', {skipLocationChange: true});
     return this.router.navigateByUrl(`${url}`);
   }
 

@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { CredentialComponent } from './credential.component';
+import {CredentialComponent} from './credential.component';
 
 describe('CredentialComponent', () => {
   let component: CredentialComponent;
@@ -8,9 +8,9 @@ describe('CredentialComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CredentialComponent ]
+      declarations: [CredentialComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(CredentialComponent);
     component = fixture.componentInstance;

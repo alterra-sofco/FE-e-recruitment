@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { MessageService } from 'primeng/api';
-import { Subscription, take } from 'rxjs';
-import { ProfileService } from 'src/app/shared/services/profile.service';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {MessageService} from 'primeng/api';
+import {Subscription, take} from 'rxjs';
+import {ProfileService} from 'src/app/shared/services/profile.service';
 
 @Component({
   selector: 'app-credential',
@@ -21,22 +21,23 @@ export class CredentialComponent implements OnInit {
     private messageService: MessageService,
     private profileService: ProfileService,
     private router: Router
-    ) {}
+  ) {
+  }
 
   ngOnInit(): void {
-    
+
   }
 
   onUpload(event: any) {
-      for(let file of event.files) {
-          this.upload(file);
-      }
-      this.messages('upload file', 'success', 'Success', '');
+    for (let file of event.files) {
+      this.upload(file);
+    }
+    this.messages('upload file', 'success', 'Success', '');
   }
 
-  upload(file: any){
+  upload(file: any) {
     this.profileService.uploadCv(file).pipe(take(1)).subscribe((data: any) => {
-      if (data.status < 300 ) {
+      if (data.status < 300) {
         this.messages('upload cv', 'success', 'Success', '/profile/details');
       } else {
         this.messages(data.message, 'warn', 'Warn', '/profile/details');

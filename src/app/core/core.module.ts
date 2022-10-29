@@ -1,14 +1,14 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { SharedModule } from '../shared/shared.module';
-import { HttpClientModule } from '@angular/common/http';
-import { ToastModule } from "primeng/toast";
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {SharedModule} from '../shared/shared.module';
+import {HttpClientModule} from '@angular/common/http';
+import {ToastModule} from "primeng/toast";
 import {FooterComponent} from "./footer/footer.component";
 
 @NgModule({
   declarations: [
     // HeaderComponent,
-     FooterComponent
+    FooterComponent
     // StepHomepageComponent
   ],
   imports: [
@@ -17,8 +17,7 @@ import {FooterComponent} from "./footer/footer.component";
     HttpClientModule,
     ToastModule
   ],
-  exports: [
-
-  ]
+  exports: []
 })
-export class CoreModule { }
+export class CoreModule {
+}

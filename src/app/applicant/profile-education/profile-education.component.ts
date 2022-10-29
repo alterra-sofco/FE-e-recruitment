@@ -1,11 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { MessageService, PrimeNGConfig } from 'primeng/api';
-import { Subscription, take } from 'rxjs';
-import { Applicant } from 'src/app/shared/models/applicant';
-import { Education } from 'src/app/shared/models/education';
-import { EducationService } from 'src/app/shared/services/education.service';
-import { ProfileService } from 'src/app/shared/services/profile.service';
+import {Component, Input, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {MessageService, PrimeNGConfig} from 'primeng/api';
+import {Subscription, take} from 'rxjs';
+import {Education} from 'src/app/shared/models/education';
+import {EducationService} from 'src/app/shared/services/education.service';
+import {ProfileService} from 'src/app/shared/services/profile.service';
 
 @Component({
   selector: 'app-profile-education',
@@ -24,12 +23,13 @@ export class ProfileEducationComponent implements OnInit {
     private profileService: ProfileService,
     private primengConfig: PrimeNGConfig,
     public messageService: MessageService
-    ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
 
-    if(!this.dataEdu) this.profileService.getProfile().pipe(take(1)).subscribe(data=> {
+    if (!this.dataEdu) this.profileService.getProfile().pipe(take(1)).subscribe(data => {
       let param = data.data.educations;
       this.dataEdu = param;
     })
@@ -37,7 +37,7 @@ export class ProfileEducationComponent implements OnInit {
   }
 
   deleteEdu(edu: Education) {
-    this.educationService.deleteEducation(edu.educationId).pipe(take(1)).subscribe((data:any) => {
+    this.educationService.deleteEducation(edu.educationId).pipe(take(1)).subscribe((data: any) => {
       if (data.status == 200) {
         this.messages('delete education', 'success', 'Success', '/profile/details');
       } else {
@@ -60,7 +60,7 @@ export class ProfileEducationComponent implements OnInit {
   }
 
   async reload(url: string): Promise<boolean> {
-    await this.router.navigateByUrl('/', { skipLocationChange: true });
+    await this.router.navigateByUrl('/', {skipLocationChange: true});
     return this.router.navigateByUrl(`${url}`);
   }
 

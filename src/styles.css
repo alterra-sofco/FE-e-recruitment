@@ -1,11 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
-body{
+body {
   margin: 0;
   background: #F7F8FB !important;
 }
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;

@@ -6,7 +6,6 @@ import {Job, MasterDataModel} from 'src/app/shared/models/job';
 import {Skill} from 'src/app/shared/models/skill';
 import {JobService} from 'src/app/shared/services/job.service';
 import {ProfileService} from 'src/app/shared/services/profile.service';
-import {SkillService} from 'src/app/shared/services/skill.service';
 import {DialogService} from "primeng/dynamicdialog";
 import {CardJob2Component} from "../../shared/components/card-job2/card-job2.component";
 

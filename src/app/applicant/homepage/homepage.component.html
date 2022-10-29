@@ -9,9 +9,18 @@
   <div class="flex flex-wrap align-items-center justify-content-center card-container blue-container mb-5">
     <div
       class="relative bg-transparent col-8 col-offset-2 mx-4 my-3 md:my-0 border-1 p-3 border-round border-round-1 border-black-alpha-10">
-      <div class="font-medium text-2xl ml-3">Selamat Datang <strong>{{applicant.name}}</strong>,</div>
-      <div class="text-black-alpha-60 text-lg mt-2 ml-3">Profilmu sudah diperbarui. <a
-        class="no-underline hover:underline text-blue-600" routerLink="/profile/details">Lihat profil</a></div>
+      <div class="font-medium text-2xl ml-3" *ngIf="applicant">Selamat Datang <strong>{{applicant.name}}</strong>,
+      </div>
+      <div class="text-black-alpha-60 text-lg mt-2 ml-3" *ngIf="applicant; else notApplicant">Profilmu sudah diperbarui.
+        <a class="no-underline hover:underline text-blue-600" routerLink="/profile/details">Lihat profil</a>
+      </div>
+      <ng-template #notApplicant>
+        <div class="text-black-alpha-70 text-lg mt-2 ml-3 align-items-center flex">
+          <img src="assets/images/daftar.jpg" width="120px">
+          <a class="no-underline hover:underline text-blue-600 mr-1" routerLink="/register"> Daftar </a>
+           sekarang untuk menemukan lowongan yang dipilih hanya untukmu
+        </div>
+      </ng-template>
     </div>
   </div>
   <div class="card col-8 col-offset-2 surface-card p-5 shadow-2 border-round flex-auto">

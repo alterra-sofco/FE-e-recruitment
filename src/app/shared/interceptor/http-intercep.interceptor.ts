@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {
   HttpErrorResponse,
   HttpEvent,
@@ -8,9 +8,9 @@ import {
   HttpResponse,
 } from '@angular/common/http';
 
-import { catchError, map, Observable, throwError } from 'rxjs';
-import { SessionService } from '../services/session.service';
-import { AuthenticationService } from '../services/authentication.service';
+import {catchError, map, Observable, throwError} from 'rxjs';
+import {SessionService} from '../services/session.service';
+import {AuthenticationService} from '../services/authentication.service';
 import {MessageService} from "primeng/api";
 
 @Injectable()
@@ -46,17 +46,17 @@ export class HttpIntercepInterceptor implements HttpInterceptor {
       });
     }
     return next.handle(request).pipe(map((event: HttpEvent<any>) => {
-      if (event instanceof HttpResponse) {
-        console.log('log:', event);
-      }
-      return event;
-    }),
+        if (event instanceof HttpResponse) {
+          console.log('log:', event);
+        }
+        return event;
+      }),
       catchError((error: HttpErrorResponse) => {
         let data = {
           reason: error && error.error && error.error.message ? error.error.message : '',
           status: error.status
         };
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: data?.status + ': ' + data?.reason });
+        this.messageService.add({severity: 'error', summary: 'Error', detail: data?.status + ': ' + data?.reason});
         console.log(error);
         return throwError(() => error);
       }));

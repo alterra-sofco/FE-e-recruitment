@@ -5,17 +5,15 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './core/header/header.component';
 
-import { JobModule } from './job/job.module';
-import { FooterComponent } from './core/footer/footer.component';
-import { MessageService, SharedModule } from 'primeng/api';
-import { ApplicantModule } from './applicant/applicant.module';
-import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AuthModule } from './auth/auth.module';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HttpIntercepInterceptor } from './shared/interceptor/http-intercep.interceptor';
-import { HttpClientModule } from '@angular/common/http';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import {JobModule} from './job/job.module';
+import {FooterComponent} from './core/footer/footer.component';
+import {MessageService, SharedModule} from 'primeng/api';
+import {ApplicantModule} from './applicant/applicant.module';
+import {NgModule} from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {AuthModule} from './auth/auth.module';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {HttpIntercepInterceptor} from './shared/interceptor/http-intercep.interceptor';
 
 // registerLocaleData(localeId, 'id');
 @NgModule({

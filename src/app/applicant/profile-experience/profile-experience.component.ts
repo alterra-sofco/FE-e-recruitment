@@ -1,12 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { MessageService, PrimeNGConfig } from 'primeng/api';
-import { Subscription, take } from 'rxjs';
-import { Applicant } from 'src/app/shared/models/applicant';
-import { Education } from 'src/app/shared/models/education';
-import { Experience } from 'src/app/shared/models/experience';
-import { ExperienceService } from 'src/app/shared/services/experience.service';
-import { ProfileService } from 'src/app/shared/services/profile.service';
+import {Component, Input, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {MessageService, PrimeNGConfig} from 'primeng/api';
+import {Subscription, take} from 'rxjs';
+import {Experience} from 'src/app/shared/models/experience';
+import {ExperienceService} from 'src/app/shared/services/experience.service';
+import {ProfileService} from 'src/app/shared/services/profile.service';
 
 @Component({
   selector: 'app-profile-experience',
@@ -18,26 +16,27 @@ export class ProfileExperienceComponent implements OnInit {
 
   @Input('dataExp') dataExp!: Experience[];
   subscription!: Subscription;
-  
+
   constructor(private router: Router,
-    private experienceService: ExperienceService,
-    private profileService: ProfileService,
-    private primengConfig: PrimeNGConfig,
-    public messageService: MessageService
-    ) { }
+              private experienceService: ExperienceService,
+              private profileService: ProfileService,
+              private primengConfig: PrimeNGConfig,
+              public messageService: MessageService
+  ) {
+  }
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
 
-    if(!this.dataExp) this.profileService.getProfile().pipe(take(1)).subscribe(data=> {
+    if (!this.dataExp) this.profileService.getProfile().pipe(take(1)).subscribe(data => {
       let param = data.data.experiences;
       this.dataExp = param;
     })
-    
+
   }
 
-  deleteExp(exp: Experience){
-    this.experienceService.deleteExperience(exp.experienceId).pipe(take(1)).subscribe((data:any) => {
+  deleteExp(exp: Experience) {
+    this.experienceService.deleteExperience(exp.experienceId).pipe(take(1)).subscribe((data: any) => {
       if (data.status == 200) {
         this.messages('delete experience', 'success', 'Success', '/profile/details');
       } else {
@@ -60,7 +59,7 @@ export class ProfileExperienceComponent implements OnInit {
   }
 
   async reload(url: string): Promise<boolean> {
-    await this.router.navigateByUrl('/', { skipLocationChange: true });
+    await this.router.navigateByUrl('/', {skipLocationChange: true});
     return this.router.navigateByUrl(`${url}`);
   }
 

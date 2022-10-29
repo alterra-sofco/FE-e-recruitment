@@ -1,12 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { MessageService, PrimeNGConfig } from 'primeng/api';
-import { Subscription, take } from 'rxjs';
-import { Applicant } from 'src/app/shared/models/applicant';
-import { Skill } from 'src/app/shared/models/skill';
-import { ProfileService } from 'src/app/shared/services/profile.service';
-import { SkillService } from 'src/app/shared/services/skill.service';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {MessageService, PrimeNGConfig} from 'primeng/api';
+import {Subscription, take} from 'rxjs';
+import {Applicant} from 'src/app/shared/models/applicant';
+import {ProfileService} from 'src/app/shared/services/profile.service';
+
 // import { MessageService } from 'primeng/api';
 
 @Component({
@@ -49,7 +48,8 @@ export class ProfileUpdateComponent implements OnInit {
     private router: Router,
     private profileService: ProfileService,
     private messageService: MessageService
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
@@ -94,12 +94,12 @@ export class ProfileUpdateComponent implements OnInit {
     this.submitted = true;
     if (this.formProfile.valid) {
       this.profileService.editUserProfile(this.formProfile.value).pipe(take(1)).subscribe((data: any) => {
-        if (data.status == 200){
+        if (data.status == 200) {
           this.messages('update information', 'success', 'Success', '/profile/details');
         } else {
           this.messages(data.message, 'warn', 'Warn', '/profile/details/update');
         }
-          console.log(data.status);
+        console.log(data.status);
 
       })
       this.onReset()
