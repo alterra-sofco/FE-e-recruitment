@@ -8,6 +8,7 @@ import { MasterDataModel } from '../models/job';
   providedIn: 'root'
 })
 export class JobService {
+  id !: number;
 
   constructor(
     private httpClient: HttpClient
