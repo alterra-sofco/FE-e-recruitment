@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription, take } from 'rxjs';
+import { Route, Router } from '@angular/router';
+import { Subscription, take, window } from 'rxjs';
 import { Job } from 'src/app/shared/models/job';
 import { JobService } from 'src/app/shared/services/job.service';
 
@@ -17,13 +18,22 @@ export class AppliedJobComponent implements OnInit {
 
   constructor(
     private jobService: JobService,
+    private router:Router,
   ) { }
 
   ngOnInit(): void {
-      this.jobService.jobHistory().pipe(take(1)).subscribe((data: any) => {
-        this.jobList = data.data;
-        this.result = data.status;
-      })
+    
+    setTimeout(() => {
+      this.jobFetch()
+    }, 1300);
+      
+  }
+
+  async jobFetch(){
+    this.jobService.jobHistory().pipe(take(1)).subscribe((data: any) => {
+      this.jobList = data.data;
+      this.result = data.status;
+    })
   }
 
   ngOnDestroy() {

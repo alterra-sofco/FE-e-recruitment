@@ -2,7 +2,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {environment} from 'src/environments/environment';
-import {MasterDataModel} from "../models/job";
+import { MasterDataModel } from '../models/job';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +12,13 @@ export class JobService {
   constructor(
     private httpClient: HttpClient
   ) {
+  }
+
+  getAllJobFilter(first?: number, rows?: number, globalFilter?: string): Observable<MasterDataModel> {
+    rows = rows ? rows : 10;
+    first = first ? first / rows : 0;
+    globalFilter = globalFilter ? globalFilter : '';
+    return this.httpClient.get<MasterDataModel>(`${environment.apiUrl}/job?page=${first}&size=${rows}&keyword=${globalFilter}`);
   }
 
 

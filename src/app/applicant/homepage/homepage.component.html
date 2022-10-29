@@ -1,61 +1,35 @@
-<div class="md:px-6 lg:px-8 border-top-1 border-bottom-1 border-black-alpha-40 img-bg flex flex-wrap align-items-center justify-content-center card-container">
+<app-step-homepage></app-step-homepage>
 
-
-  <p class="text-left md:text-center text-white font-bold text-3xl">Dapatkan pekerjaan yang berarti bagimu </p>
-
-
-</div>
-<div class="grid-nogutter pt-4">
+<div class="pt-5">
   <div class="card col-8 col-offset-2 surface-card p-5 shadow-2 border-round flex-auto">
     <p-dataView #dt [value]="jobList" [paginator]="true" [rows]="12" (onLazyLoad)="loadDataLazy($event)"
-                [loading]="isLoading"
-                [lazy]="true" [totalRecords]="totalRecords" layout="grid">
+      [loading]="isLoading" [lazy]="true" [totalRecords]="totalRecords" layout="list">
       <ng-template pTemplate="header">
         <div class="flex flex-column md:flex-row md:justify-content-between">
-
-        <span class="p-input-icon-left mb-2 md:mb-0 ">
-                    <span class="p-input-icon-left mb-2 md:mb-0">
-                    <i class="pi pi-search"></i>
-                    <input type="search" pInputText (input)="searchData($event)" placeholder="Search by Position">
-                </span>
-
-                </span>
+          <span class="p-input-icon-left mb-2 md:mb-0">
+            <i class="pi pi-search"></i>
+            <input class="mr-5" type="search" pInputText (input)="searchData($event)" placeholder="Search by Position">
+            <span class="font-medium mr-2 justify-content-end text-500"> {{jobList.length}} jobs available <i
+                class="pi pi-database"></i> </span>
+          </span>
           <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
         </div>
       </ng-template>
       <ng-template let-job pTemplate="listItem">
         <div class="col-12">
-          <div class="product-list-item cursor-pointer hover:shadow-2 hover:bg-gray-200">
-
-            <div class="product-list-detail">
-              <div class="product-name">{{job.jobPosition}}</div>
-              <div class="font-medium text-600 text-sm">Minimal Pengalaman :{{job.description}}</div>
-              <div class="font-medium text-600 text-sm">Posted : {{job.updatedAt | date: 'dd MMM yyyy HH:mm'}}</div>
-
-
-            </div>
-
+          <div class="list-item">
+            <app-card-job [jobList]="job" [userData]="applicant" [isGrid]="false"></app-card-job>
           </div>
         </div>
       </ng-template>
       <ng-template let-job pTemplate="gridItem">
-        <div class="col-12 md:col-3">
-          <div class="product-grid-item card shadow-none cursor-pointer hover:shadow-2 hover:bg-gray-200"
-               (click)="viewDetail(job)">
-            <div class="col text-center pt-1 flex-column">
-              <p-image src="assets/images/logo.png" alt="Image" width="150"></p-image>
-            </div>
-            <div class="product-grid-item-content">
-
-              <div class="product-name">{{job.jobPosition}}</div>
-              <div class="font-medium text-600 text-sm">Minimal Pengalaman : {{job.yearExperience}} Tahun</div>
-              <div class="font-medium text-600 text-sm">Posted : {{job.updatedAt | date: 'dd MMM yyyy HH:mm'}}</div>
-
-            </div>
-
+        <div class="col-12 md:col-4">
+          <div class="grid-item card">
+            <app-card-job [jobList]="job" [userData]="applicant" [isGrid]="true"></app-card-job>
           </div>
         </div>
       </ng-template>
     </p-dataView>
   </div>
 </div>
+

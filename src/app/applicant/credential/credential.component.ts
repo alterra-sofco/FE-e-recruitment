@@ -42,6 +42,7 @@ export class CredentialComponent implements OnInit {
         this.messages(data.message, 'warn', 'Warn', '/profile/details');
       }
     })
+    
   }
 
   messages(info: string, severity: string, summary: string, url: string) {
