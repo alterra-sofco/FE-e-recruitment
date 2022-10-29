@@ -5,10 +5,8 @@
         <div class="col-12 align-items-center pt-5 px-5">
             <img [src]="userData?.avatarFileId" alt="" class="mr-6 lg:mb-0" style="width: 150px; height: 150px;">
         </div>
-        <div class="col-12">
-            <!-- <button pRipple
-                class="flex-column p-element p-button-rounded -mt-5 p-button p-component p-button-icon-only"> -->
-            <p-fileUpload mode="basic" name="demo[]" url="" accept="image/*" [maxFileSize]="1000000"
+        <div class="col-12 -mt-6">
+            <p-fileUpload class="p-button-icon-only p-button-outlined p-button-rounded" mode="basic" name="demo[]" url="" accept="image/*" [maxFileSize]="1000000"
                 (onUpload)="onUpload($event)" chooseLabel="avatar"></p-fileUpload>
         </div>
     </div>
@@ -16,18 +14,16 @@
     <div class="pt-5"><span class="text-900 font-bold text-5xl">{{userData?.name }}</span>
         <!-- bio -->
         <li class="flex align-items-center py-3 px-2 flex-wrap">
-            <div class="text-500 text-2xl w-full md:w-10 font-medium line-height-3">{{userData?.bio}}</div>
+            <div class="text-500 text-xl w-full md:w-10 font-medium line-height-3">{{userData?.bio}}</div>
         </li>
     </div>
 </div>
 
 <ul class="list-none p-0 m-0 border-300">
     <!-- btn edit -->
-    <div class="p-3 pt-3 w-16rem flex align-items-center flex-wrap">
-        <button pbutton="" pRipple label="edit" icon="pi pi-arrow-right" iconpos="right"
-            class=" p-element p-ripple p-button-rounded p-button p-component" [routerLink]="['update']"><span
-                class="p-button-icon p-button-icon-right pi pi-arrow-right" aria-hidden="true"></span><span
-                class="p-button-label">Edit Information</span><span class="p-ink"></span>
+    <div class="px-3 pt-3 w-16rem flex align-items-center flex-wrap">
+        <button pButton pRipple [routerLink]="['update']" type="button" label="Edit Information" class="p-button-outlined p-button-rounded">
+            <i class="pi pi-arrow-right" ></i>
         </button>
     </div>
     <li class="mb-3 pt-2">

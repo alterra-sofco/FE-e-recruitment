@@ -13,25 +13,14 @@ import {HomepageJobDetailComponent} from "../homepage-job-detail/homepage-job-de
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.scss'],
+  styleUrls: ['./homepage.component.css'],
   providers: [DialogService]
 })
 export class HomepageComponent implements OnInit {
 
   @ViewChild("dt") dt!: any;
-  search: string = '';
-  applicant!: Applicant;
 
-  //filter
-  selectedSkill!: Skill;
-  skill: Skill[] = [];
-
-  //job
-  selectedJob!: any;
-  job: Job[] = [];
-  jobList: Job[] = [];
-  jobDetail: any;
-
+  //incoming
   first?: number = 0;
   rows?: number = 10;
   globalFilter: any;
@@ -42,11 +31,19 @@ export class HomepageComponent implements OnInit {
   totalRecords!: number | 0;
   isLoading: boolean = false;
 
+  //main
+  search: string = '';
+  applicant!: Applicant;
+
+  jobList: Job[] = [];
+  filteredJob: Job[] = [];
+  jobCounter!: number;
+  jobDetail: any;
+
   displayMaximizable!: boolean;
 
   constructor(
     private primengConfig: PrimeNGConfig,
-    private skillService: SkillService,
     private profileService: ProfileService,
     private jobService: JobService,
     private dialogService: DialogService,
@@ -56,27 +53,24 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit() {
 
+    // //user
+    // this.profileService.getProfile().pipe(take(1)).subscribe((data: any) => {
+    //   this.applicant = data.data;
+    //   console.log(this.applicant);
+    // })
 
-    //user
-    this.profileService.getProfile().pipe(take(1)).subscribe((data: any) => {
-      this.applicant = data.data;
-      console.log(this.applicant);
-    })
     this.getData();
-
-    //skill
-
-
-    //skill filter
-
-
   }
 
+  showMaximizableDialog() {
+    this.displayMaximizable = true;
+  }
 
   getData() {
     this.isLoading = true;
     setTimeout(() => {
-      this.jobService.getAllJob(this.first!, this.rows, this.globalFilter).pipe(takeUntil(this.unsubcribe$)).subscribe((res: MasterDataModel) => {
+      this.jobService.getAllJobFilter(this.first,this.rows,this.globalFilter)
+      .pipe(takeUntil(this.unsubcribe$)).subscribe((res: MasterDataModel) => {
           this.jobList = res.data;
           this.totalRecords = res.totalData;
           this.isLoading = false;
@@ -90,6 +84,7 @@ export class HomepageComponent implements OnInit {
     }, 1000);
   }
 
+
   loadDataLazy(event: LazyLoadEvent): LazyLoadEvent {
     this.first = event.first;
     this.rows = event.rows;
@@ -102,10 +97,6 @@ export class HomepageComponent implements OnInit {
     const res = (event.target as HTMLInputElement)?.value
     this.globalFilter = res;
     this.getData();
-  }
-
-  showMaximizableDialog() {
-    this.displayMaximizable = true;
   }
 
   viewDetail(job: Job) {
