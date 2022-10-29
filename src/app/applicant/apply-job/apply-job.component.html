@@ -1,0 +1,11 @@
+<div class="job-position">{{position}}</div>
+
+<p-card styleClass="p-card-shadow">
+  <p>Cover Letter</p>
+  <form [formGroup]="formApply" (ngSubmit)="onSubmit()" class="w-full">
+    <div class="p-fluid p-grid p-formgrid">
+      <textarea [rows]="5" [cols]="30" pInputTextarea [autoResize]="true" placeholder="Cover Letter" formControlName="coverLetter"></textarea>
+    </div>
+    <p-button label="Submit" icon="pi pi-check" iconPos="left" type="submit"></p-button>
+  </form>
+</p-card>
