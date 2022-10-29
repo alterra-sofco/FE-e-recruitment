@@ -1,5 +1,34 @@
-# Job seeker homepage
+![image](https://user-images.githubusercontent.com/38674801/198814466-2e8c38c7-048d-4ed6-a10c-20e32411f65c.png)
+# Applicant homepage
+  - User register (via Login page)
+  - User login (navbar button on top)
+  - Job generated on main homepage
+  - Search by possition (search bar)
+  - Click on information area of selected job list to see more detail informations
+  - Apply can be done using overlay informational details or direct button apply now on selected job
+  - Before applying, appliant can include cover letter.
+  
+![image](https://user-images.githubusercontent.com/38674801/198814513-e26ac38c-cea9-482a-bd5a-1540b0acf2e4.png)
+# Personal Detail
+  - can be accessed after login, name will be appeard on top right corner of navbar
+  - Contain of appliant's personal informations
+  - Divided by education section, experience section, skill section, applied job list, and All personal info.
+  - Edit personal button info for update basic information
+  - Skill and credential can be update by clicking the body of the column
+  - Skill delete or add can be done in the spot
+  - Add Education and Experience button only appear in personal information, update and delete available on the right side
 
+![image](https://user-images.githubusercontent.com/38674801/198814547-bdd69153-856c-4527-9704-8fddc161a8af.png)  
+# Apllied job
+  - Contain all jobs related to the appliant, include informations
+  - Status changed after confirmation on admin side
+  - If appliant status not accepted by recruiter, banner color will change to red.
+
+
+
+
+# Directory tree
+![image](https://user-images.githubusercontent.com/38674801/198814592-fb6f22ea-b1c9-4247-b1c7-225c796617f4.png)
 ```sh
 Applicant component 
   - Homepage component (homepage job list for applicant)

@@ -22,8 +22,11 @@ export class JobService {
   }
 
 
-  getAllJob(): Observable<any[]> {
-    return this.httpClient.get<any[]>(`${environment.apiUrl}/job`);
+  getAllJob(first?: number, rows?: number, globalFilter?: string): Observable<MasterDataModel> {
+    rows = rows ? rows : 10;
+    first = first ? first / rows : 0;
+    globalFilter = globalFilter ? globalFilter : '';
+    return this.httpClient.get<MasterDataModel>(`${environment.apiUrl}/job?page=${first}&size=${rows}&keyword=${globalFilter}`);
   }
 
   getJobDetail(jobPostingId: number): Observable<any> {

@@ -12,6 +12,7 @@ import { FormExperienceComponent } from './profile-experience/form-experience/fo
 import { ProfileSkillComponent } from './profile-skill/profile-skill.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CredentialComponent } from './credential/credential.component';
+import {DataViewModule} from "primeng/dataview";
 
 @NgModule({
   declarations: [
@@ -26,10 +27,11 @@ import { CredentialComponent } from './credential/credential.component';
     ProfileSkillComponent,
     CredentialComponent,
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    HttpClientModule
-  ]
+    imports: [
+        CommonModule,
+        SharedModule,
+        HttpClientModule,
+        DataViewModule
+    ]
 })
 export class ApplicantModule { }
