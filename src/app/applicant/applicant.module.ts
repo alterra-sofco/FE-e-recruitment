@@ -14,7 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CredentialComponent } from './credential/credential.component';
 import {DataViewModule} from "primeng/dataview";
 import {DynamicDialogModule} from "primeng/dynamicdialog";
-import { HomepageJobDetailComponent } from './homepage-job-detail/homepage-job-detail.component';
+import { HomepageJobDetailComponent } from '../shared/components/homepage-job-detail/homepage-job-detail.component';
 import {ConfirmPopupModule} from "primeng/confirmpopup";
 
 @NgModule({
@@ -29,7 +29,6 @@ import {ConfirmPopupModule} from "primeng/confirmpopup";
     FormExperienceComponent,
     ProfileSkillComponent,
     CredentialComponent,
-    HomepageJobDetailComponent,
   ],
   imports: [
     CommonModule,

@@ -5,7 +5,7 @@
   <div class="col-12 md:col-12 lg:col-3 md:flex-order-1  ">
     <img [src]="'assets/images/logo.png'" width="150" />
   </div>
-  <div class="col-12 md:col-12 md:flex-order-2 lg:col-6 " pRipple (click)="showMaximizableDialog()">
+  <div class="col-12 md:col-12 md:flex-order-2 lg:col-6 cursor-pointer" pRipple (click)="viewDetail()">
     <div class="job-possition text-800 font-bold text-medium">{{job?.jobPosition || companyDetails?.jobPosition}}
       <i class="pi pi-verified px-2 text-cyan-600"></i>
     </div>
@@ -22,17 +22,16 @@
     <button *ngIf="job" pButton pRipple type="button" style="height: 50px;" label="Apply now" [disabled]=""
       class="mb-1 px-3 p-button-raised p-button-primary justify-content-center" icon="pi pi-check align-items-center"
       (click)="showMaximizableDialogApply()"></button>
-    <div class="product-list-detail cursor-pointer" pRipple (click)="showMaximizableDialog()">
-    </div>
   </div>
 </div>
+
 
 <div *ngIf="isGrid" class="p-3">
   <div class="grid text-center">
     <div class="col-12">
       <img [src]="'assets/images/logo.png'" width="150" />
     </div>
-    <div class="col-12 cursor-pointer " pRipple (click)="showMaximizableDialog()">
+    <div class="col-12 cursor-pointer " pRipple (click)="viewDetail()">
       <div class="job-possition text-800 font-bold text-medium" style="height: 70px; ;">{{job?.jobPosition ||
         companyDetails?.jobPosition}}<i class="pi pi-verified px-2 text-cyan-600"></i>
       </div>
@@ -49,27 +48,11 @@
       <button *ngIf="job" pButton pRipple type="button" style="height: 50px;" label="Apply Now" [disabled]=""
         class="mb-1 px-3 p-button-raised p-button-primary justify-content-center" icon="pi pi-check align-items-center"
         (click)="showMaximizableDialogApply()"></button>
-      <div class="product-list-detail cursor-pointer" pRipple (click)="showMaximizableDialog()">
+      <div class="product-list-detail cursor-pointer" pRipple>
       </div>
     </div>
   </div>
 </div>
-
-<!-- modal detail job -->
-<p-dialog header={{jobDetail!.jobPosition}} [(visible)]="displayMaximizable" [modal]="true" [style]="{width: '50vw'}"
-  [maximizable]="true" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
-  <div>
-    <p>Minimum Experience: {{jobDetail!.yearExperience}} years</p>
-    <p>Posted : {{jobDetail!.updatedAt | date}}</p>
-    <p>Details : {{jobDetail!.JobDetail }}</p>
-  </div>
-  <ng-template pTemplate="footer">
-    <button *ngIf="jobDetail?.isApplied" pButton pRipple type="button" icon="pi pi-times" disabled (click)="apply()"
-      label="Applied" class="p-button-text p-button-raised p-button-danger"></button>
-    <button *ngIf="!jobDetail?.isApplied" pButton pRipple type="button" icon="pi pi-check" (click)="apply()"
-      label="Apply Now" class="p-button-text p-button-raised p-button-primary"></button>
-  </ng-template>
-</p-dialog>
 
 <!-- modal apply -->
 <p-dialog header="Applying" [(visible)]="displayMaxApply" [modal]="true" [style]="{width: '50vw'}" [maximizable]="true"

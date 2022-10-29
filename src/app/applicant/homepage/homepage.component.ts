@@ -1,14 +1,11 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {LazyLoadEvent, PrimeNGConfig} from 'primeng/api';
-import {Subject, take, takeUntil} from 'rxjs';
+import {Subject, takeUntil} from 'rxjs';
 import {Applicant} from 'src/app/shared/models/applicant';
 import {Job, MasterDataModel} from 'src/app/shared/models/job';
-import {Skill} from 'src/app/shared/models/skill';
 import {JobService} from 'src/app/shared/services/job.service';
-import {ProfileService} from 'src/app/shared/services/profile.service';
-import {SkillService} from 'src/app/shared/services/skill.service';
-import {DialogService, DynamicDialogRef} from "primeng/dynamicdialog";
-import {HomepageJobDetailComponent} from "../homepage-job-detail/homepage-job-detail.component";
+import {} from 'src/app/shared/services/profile.service';
+import {DialogService} from "primeng/dynamicdialog";
 
 @Component({
   selector: 'app-homepage',
@@ -24,8 +21,6 @@ export class HomepageComponent implements OnInit {
   first?: number = 0;
   rows?: number = 10;
   globalFilter: any;
-
-  ref !: DynamicDialogRef;
 
   private unsubcribe$ = new Subject();
   totalRecords!: number | 0;
@@ -44,21 +39,12 @@ export class HomepageComponent implements OnInit {
 
   constructor(
     private primengConfig: PrimeNGConfig,
-    private profileService: ProfileService,
     private jobService: JobService,
-    private dialogService: DialogService,
   ) {
     this.primengConfig.ripple = true;
   }
 
   ngOnInit() {
-
-    // //user
-    // this.profileService.getProfile().pipe(take(1)).subscribe((data: any) => {
-    //   this.applicant = data.data;
-    //   console.log(this.applicant);
-    // })
-
     this.getData();
   }
 
@@ -97,22 +83,6 @@ export class HomepageComponent implements OnInit {
     const res = (event.target as HTMLInputElement)?.value
     this.globalFilter = res;
     this.getData();
-  }
-
-  viewDetail(job: Job) {
-    this.jobService.getJobDetail(job.jobPostingId).pipe(take(1)).subscribe(data => {
-      this.jobDetail = data.data;
-    })
-
-    this.jobService.id = job.jobPostingId;
-
-    this.ref = this.dialogService.open(HomepageJobDetailComponent, {
-      header: 'Job detail',
-      width: '70%',
-      contentStyle: {"max-height": "100%", "overflow": "auto"},
-      baseZIndex: 10000,
-      maximizable: true
-    });
   }
 
 }

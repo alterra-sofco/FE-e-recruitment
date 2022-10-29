@@ -5,27 +5,54 @@
             <ul class="list-none p-0 m-0 flex flex-column md:flex-row">
                 <div class="mb-5 flex">
                     <div class="flex flex-column align-items-center" style="width: 2rem;">
-                        
-                        <span *ngIf="data.status != 'UNSUITABLE'" class="bg-blue-500 text-0 flex align-items-center justify-content-center border-circle"
-                            style="min-width: 2.5rem; min-height: 2.5rem;"><i class="pi pi-image"></i></span>
-                        <div *ngIf="data.status != 'UNSUITABLE'" class="h-full bg-blue-500" style="width: 2px; min-height: 4rem;"></div>
 
-                        <span *ngIf="data.status == 'UNSUITABLE'" class="bg-red-500 text-0 flex align-items-center justify-content-center border-circle"
+                        <span *ngIf="data.status != 'UNSUITABLE'"
+                            class="bg-blue-500 text-0 flex align-items-center justify-content-center border-circle"
                             style="min-width: 2.5rem; min-height: 2.5rem;"><i class="pi pi-image"></i></span>
-                        <div *ngIf="data.status == 'UNSUITABLE'" class="h-full bg-red-500" style="width: 2px; min-height: 4rem;"></div>
+                        <div *ngIf="data.status != 'UNSUITABLE'" class="h-full bg-blue-500"
+                            style="width: 2px; min-height: 4rem;"></div>
+
+                        <span *ngIf="data.status == 'UNSUITABLE'"
+                            class="bg-red-500 text-0 flex align-items-center justify-content-center border-circle"
+                            style="min-width: 2.5rem; min-height: 2.5rem;"><i class="pi pi-image"></i></span>
+                        <div *ngIf="data.status == 'UNSUITABLE'" class="h-full bg-red-500"
+                            style="width: 2px; min-height: 4rem;"></div>
 
                     </div>
-                    <div class=" ml-5 surface-card shadow-2 border-round p-3 flex-auto" style="width:55vw">
-                        <div class="mb-3 px-5"><span class="text-800 font-bold text-xl inline-block mr-3">{{data.status}}</span>
-                        </div>
-                        <div class="px-5 line-height-3 w-full text-700 mb-3"> information. </div>
-                        <div>
-                            <app-card-job class="" [applied]="data.jobPosting"></app-card-job>
+                    <div class=" ml-5 surface-card shadow-2 border-round p-3 flex-auto cursor-pointer"
+                        (click)="showMaximizableDialog()" style="width:55vw">
+                        <div class="grid py-4 px-2 flex-row flex-wrap card-container ">
+                            <div class="col-12 md:col-12 lg:col-3 md:flex-order-1  ">
+                                <img [src]="'assets/images/logo.png'" width="150" />
+                            </div>
+                            <div class="col-12 md:col-12 md:flex-order-2 lg:col-6 cursor-pointer" pRipple>
+                                <div class="job-possition text-800 font-bold text-medium">
+                                    {{data.jobPosting.jobPosition}}
+                                    <i class="pi pi-verified px-2 text-cyan-600"></i>
+                                </div>
+                                <div class="job-location text-small text-green-500">Indonesia</div>
+                                <span class="pi pi-history text-500 py-1"> {{data.jobPosting.yearExperience }}years
+                                    minimum
+                                    experience</span>
+                                <div class="text-500">
+                                    <i class="pi pi-calendar-plus text-small text-500"></i><span class="date">
+                                        {{data.jobPosting.updatedAt| date: 'ddMMM yyyy HH:mm'}}</span>
+                                </div>
+                            </div>
+                            <div class="col-12 md:col-12 lg:col-3 md:flex-order-2 ">
+                                <div class="mb-3 px-5"><span
+                                        class="text-800 font-bold text-xl inline-block mr-3">{{data.status}}</span>
+                                </div>
+                                <div class="px-5 line-height-3 w-full text-700 mb-3"> details. </div>
+                                <div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </ul>
         </div>
+        <app-homepage-job-detail [jobDetail]="data.jobPosting" *ngIf="displayMaximizable" ></app-homepage-job-detail>
     </div>
-
 </div>

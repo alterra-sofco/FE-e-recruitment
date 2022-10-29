@@ -14,6 +14,7 @@ export class AppliedJobComponent implements OnInit {
   subscription!: Subscription;
   jobList: any[]=[];
 
+  displayMaximizable!: boolean;
   result: string = 'APPLIED';
 
   constructor(
@@ -22,10 +23,7 @@ export class AppliedJobComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    
-    setTimeout(() => {
-      this.jobFetch()
-    }, 1300);
+    this.jobFetch()
       
   }
 
@@ -33,6 +31,7 @@ export class AppliedJobComponent implements OnInit {
     this.jobService.jobHistory().pipe(take(1)).subscribe((data: any) => {
       this.jobList = data.data;
       this.result = data.status;
+      console.log(this.jobList);
     })
   }
 
@@ -40,6 +39,15 @@ export class AppliedJobComponent implements OnInit {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
+  }
+
+  showMaximizableDialog() {
+    if(this.displayMaximizable){
+      this.displayMaximizable = false;
+    } else {
+      this.displayMaximizable = true;
+    }
+    
   }
 
 }

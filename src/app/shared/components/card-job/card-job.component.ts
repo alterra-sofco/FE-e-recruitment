@@ -6,21 +6,25 @@ import { Subscription, take } from 'rxjs';
 import { Applicant } from '../../models/applicant';
 import { Job, JobDetails } from '../../models/job';
 import { JobService } from '../../services/job.service';
+import {DialogService, DynamicDialogRef} from "primeng/dynamicdialog";
+import { HomepageJobDetailComponent } from '../homepage-job-detail/homepage-job-detail.component';
 
 @Component({
   selector: 'app-card-job',
   templateUrl: './card-job.component.html',
   styleUrls: ['./card-job.component.css'],
-  providers: [MessageService]
+  providers: [MessageService,DialogService]
 })
 export class CardJobComponent implements OnInit {
 
-  @Input('jobList') job?: any;
+  @Input('jobList') job?: Job;
   @Input('userData') applicant!: Applicant;
   @Input('applied') companyDetails?: any;
   @Input('isGrid') isGrid!: boolean;
 
   resume: string = ' please kindly check my profile ';
+
+  ref !: DynamicDialogRef;
 
   jobDetail: JobDetails = {
     JobDetail: '',
@@ -42,6 +46,7 @@ export class CardJobComponent implements OnInit {
   constructor(
     private jobService: JobService,
     public messageService: MessageService,
+    private dialogService: DialogService,
     private router: Router
   ) {
   }
@@ -81,6 +86,19 @@ export class CardJobComponent implements OnInit {
       console.log(this.companyDetails)
       this.moreJobDetail(this.companyDetails);
     }
+  }
+
+  viewDetail() {
+
+    this.jobService.id = this.jobDetail.jobPostingId;
+
+    this.ref = this.dialogService.open(HomepageJobDetailComponent, {
+      header: 'Job detail',
+      width: '70%',
+      contentStyle: {"max-height": "100%", "overflow": "auto"},
+      baseZIndex: 10000,
+      maximizable: true
+    });
   }
 
   moreJobDetail(job: any) {

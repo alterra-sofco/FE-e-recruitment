@@ -53,12 +53,14 @@ import { HttpIntercepInterceptor } from './interceptor/http-intercep.interceptor
 import { AuthGuard } from './auth.guard';
 import { NewsComponent } from './components/news/news.component';
 import {DataViewModule} from 'primeng/dataview';
+import { HomepageJobDetailComponent } from './components/homepage-job-detail/homepage-job-detail.component';
 
 @NgModule({
   declarations: [
     StepHomepageComponent,
     CardJobComponent,
-    NewsComponent
+    NewsComponent,
+    HomepageJobDetailComponent,
   ],
   imports: [
     CommonModule,
@@ -139,7 +141,8 @@ import {DataViewModule} from 'primeng/dataview';
     //components
     StepHomepageComponent,
     CardJobComponent,
-    NewsComponent
+    NewsComponent,
+    HomepageJobDetailComponent
   ],
   //service in here
   providers: [
