@@ -41,17 +41,17 @@ export class CardJobComponent implements OnInit {
   constructor(
     private jobService: JobService,
     public messageService: MessageService,
-    private router: Router,
+    private router: Router
   ) {
   }
 
   ngOnInit(): void {
     this.moreJobDetail(this.job);
-
+    //this.data.subscribe((data: any) => console.log(JSON.stringify(data)))
     this.formApply = new FormGroup({
       coverLetter: new FormControl('please kindly check my profile', [Validators.required]),
     });
-  
+
   }
 
   apply() {

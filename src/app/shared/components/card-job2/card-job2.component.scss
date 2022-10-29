@@ -1,0 +1,79 @@
+:host ::ng-deep {
+
+
+  .product-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+
+
+  .product-grid-item {
+
+    border: 1px solid #dee2e6;
+
+    .product-grid-item-top,
+    .product-grid-item-bottom {
+      display: flex;
+
+      justify-content: space-between;
+    }
+
+
+
+
+    .product-price {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+  }
+}
+
+.card {
+  padding: 2rem;
+  padding-top: 1rem;;
+
+  border-radius: 4px;
+  margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 576px) {
+  :host ::ng-deep .product-list-item {
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      width: 75%;
+      margin: 2rem 0;
+    }
+
+    .product-list-detail {
+      text-align: center;
+    }
+
+    .product-price {
+      align-self: center;
+    }
+
+    .product-list-action {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-list-action {
+      margin-top: 2rem;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+  }
+
+  p{
+    margin-top: 0 !important;
+  }
+
+
+}
+
