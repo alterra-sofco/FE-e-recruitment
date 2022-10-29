@@ -24,12 +24,13 @@ export class HomepageJobDetailComponent implements OnInit {
     })
 
   }
-  apply(id:number){
+  apply(id:number, position:string){
     this.ref = this.dialogService.open(ApplyJobComponent, {
       header: 'Submit',
       width: '30%',
       data: {
-        id: '51gF3'
+        id: id,
+        position: position
       },
       contentStyle: {"max-height": "30%", "overflow": "auto"},
       baseZIndex: 10000

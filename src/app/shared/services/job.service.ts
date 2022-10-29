@@ -27,7 +27,7 @@ export class JobService {
     return this.httpClient.get<any>(`${environment.apiUrl}/job/${jobPostingId}`);
   }
 
-  applyJob(jobPostingId: number, cv: string): Observable<any> {
+  applyJob(jobPostingId: number, cv: any): Observable<any> {
     const headerOption = {
       headers: new HttpHeaders({
         'Content-type': 'application/json; charset=UTF-8',
