@@ -34,10 +34,10 @@ export class ProfileService {
   uploadProfilePicture(payload: any): Observable<any> {
     const headerOption = {
       headers: new HttpHeaders({
-        'Content-type': 'application/json; charset=UTF-8',
+        'Content-type': 'multipart/form-data',
       }),
     };
-    return this.httpClient.patch<any>(`${environment.apiUrl}/account/applicant/avatar`, payload, headerOption);
+    return this.httpClient.patch<any>(`${environment.apiUrl}/account/applicant/avatar`, payload);
   }
 
   uploadCv(payload: any): Observable<any> {
@@ -46,7 +46,7 @@ export class ProfileService {
         'Content-type': 'application/json; charset=UTF-8',
       }),
     };
-    return this.httpClient.patch<any>(`${environment.apiUrl}/account/applicant/cv`, payload, headerOption);
+    return this.httpClient.patch<any>(`${environment.apiUrl}/account/applicant/cv`, payload);
   }
 
 }

@@ -24,25 +24,29 @@ export class CredentialComponent implements OnInit {
     ) {}
 
   ngOnInit(): void {
-    
+
   }
 
   onUpload(event: any) {
+    let formData:FormData = new FormData();
       for(let file of event.files) {
-          this.upload(file);
+        formData.append("file", file);
+        this.upload(formData);
       }
       this.messages('upload file', 'success', 'Success', '');
   }
 
   upload(file: any){
-    this.profileService.uploadCv(file).pipe(take(1)).subscribe((data: any) => {
+    setTimeout(() => {  this.profileService.uploadCv(file).pipe(take(1)).subscribe((data: any) => {
       if (data.status < 300 ) {
-        this.messages('upload cv', 'success', 'Success', '/profile/details');
+        this.messages('upload cv', 'success', 'Success', '');
       } else {
-        this.messages(data.message, 'warn', 'Warn', '/profile/details');
+        this.messages(data.message, 'warn', 'Warn', '');
       }
-    })
-    
+    });
+    }, 5000)
+
+
   }
 
   messages(info: string, severity: string, summary: string, url: string) {
