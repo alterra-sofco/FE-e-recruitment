@@ -15,8 +15,8 @@
   <!-- nama -->
   <div class="pt-5"><span class="text-900 font-bold text-5xl">{{userData?.name }}</span>
     <!-- bio -->
-    <li class="flex align-items-center py-3 px-2 flex-wrap">
-      <div class="text-500 text-2xl w-full md:w-10 font-medium line-height-3">{{userData?.bio}}</div>
+    <li class="flex align-items-center flex-wrap">
+      <div class="text-500 text-lg w-full font-medium line-height-3">{{userData?.bio}}</div>
     </li>
   </div>
 </div>
@@ -80,7 +80,7 @@
     <div class="text-900 w-full md:w-10">
       <div class="grid">
         <div class="col-9 md:col-6">
-          <div  *ngIf="userData?.cvURL !=null">
+          <div *ngIf="userData?.cvURL !=null">
             <a href="{{userData?.cvURL}}" target="_blank">
               <p-button label="Curriculum Vitae" icon="pi pi-file-pdf"></p-button>
             </a>
