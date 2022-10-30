@@ -3,13 +3,13 @@
   <!-- avatar -->
   <div class="grid">
     <div class="col-12 align-items-center pt-5 px-5">
-      <img [src]="userData?.avatarFileId" alt="" class="mr-6 lg:mb-0" style="width: 150px; height: 150px;">
+      <img [src]="userData?.avatarURL" alt="" class="mr-6 lg:mb-0" style="width: 150px; height: 150px;">
     </div>
     <div class="col-12">
       <!-- <button pRipple
           class="flex-column p-element p-button-rounded -mt-5 p-button p-component p-button-icon-only"> -->
-      <p-fileUpload mode="basic" name="demo[]" url="" accept="image/*" [maxFileSize]="1000000"
-                    (onUpload)="onUpload($event)" chooseLabel="avatar"></p-fileUpload>
+      <p-fileUpload mode="basic" name="demo[]" accept="image/*" [maxFileSize]="10000000" [customUpload]="true"
+                    (uploadHandler)="onUpload($event)" chooseLabel="avatar"></p-fileUpload>
     </div>
   </div>
   <!-- nama -->
@@ -80,8 +80,13 @@
     <div class="text-900 w-full md:w-10">
       <div class="grid">
         <div class="col-9 md:col-6">
+          <div  *ngIf="userData?.cvURL !=null">
+            <a href="{{userData?.cvURL}}" target="_blank">
+              <p-button label="Curriculum Vitae" icon="pi pi-file-pdf"></p-button>
+            </a>
+          </div>
           <div class="p-3 border-1 border-300 border-round surface-0 cursor-pointer" (click)="uploadCv()">
-            <div class="text-700"><i class="text-900 pi pi-file mr-2"></i> {{userData?.cvFileId}}</div>
+            <div class="text-700"><i class="text-900 pi pi-file mr-2"></i> {{userData?.cvURL}}</div>
           </div>
         </div>
       </div>
