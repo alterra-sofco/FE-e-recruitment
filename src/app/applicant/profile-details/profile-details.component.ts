@@ -6,6 +6,7 @@ import { Applicant } from 'src/app/shared/models/applicant';
 import { EducationService } from 'src/app/shared/services/education.service';
 import { ExperienceService } from 'src/app/shared/services/experience.service';
 import { ProfileService } from 'src/app/shared/services/profile.service';
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-profile-details',
@@ -23,12 +24,18 @@ export class ProfileDetailsComponent implements OnInit {
 
   uploadedFiles: any[] = [];
 
+  uploadForm !: FormGroup;
+
   constructor(
     private messageService: MessageService,
     private profileService: ProfileService,
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit(): void {
+    this.uploadForm = this.formBuilder.group({
+      file: ['']
+    });
     this.profileService.getProfile().pipe(take(1)).subscribe(data => {
       this.userData = data.data;
     })
@@ -52,14 +59,20 @@ export class ProfileDetailsComponent implements OnInit {
   }
 
   onUpload(event:any) {
+    let formData:FormData = new FormData();
     for(let file of event.files) {
-        this.uploadedFiles.push(file);
+
+      formData.append("file", file);
     }
-    this.profileService.uploadProfilePicture(this.uploadedFiles).pipe(take(1)).subscribe(data => {
-      console.log(data)
+    setTimeout(() => { this.profileService.uploadProfilePicture(formData).pipe(take(1)).subscribe(data => {
+      console.log(data);
+      this.userData = data.data;
       this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: ''});
-    })
-    
+      window.location.reload();
+    });
+    }, 5000)
+
+
 }
 
 }
