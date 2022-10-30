@@ -17,6 +17,9 @@
   </div>
   <div class="product-grid-item-bottom flex align-items-end justify-content-end">
     <p-button icon="pi pi-check" label="Apply" styleClass="p-button-info" (click)="apply()" [loading]="submitted"
-              [disabled]="jobDetail.isApplied"></p-button>
+              [disabled]="jobDetail.isApplied" *ngIf="sessionService.isUserLogin; else notLogin"></p-button>
+    <ng-template #notLogin>
+      <p-button icon="pi pi-check" label="Apply" styleClass="p-button-info" routerLink="/login"></p-button>
+    </ng-template>
   </div>
 </div>

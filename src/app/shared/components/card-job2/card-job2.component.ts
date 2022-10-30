@@ -5,6 +5,7 @@ import {Subscription, take} from "rxjs";
 import {JobService} from "../../services/job.service";
 import {MessageService} from "primeng/api";
 import {DynamicDialogRef} from "primeng/dynamicdialog";
+import {SessionService} from "../../services/session.service";
 
 @Component({
   selector: 'app-card-job2',
@@ -20,10 +21,13 @@ export class CardJob2Component implements OnInit {
   subscription!: Subscription;
   submitted = false;
 
+
+
   constructor(
     private jobService: JobService,
     public messageService: MessageService,
-    private ref: DynamicDialogRef
+    private ref: DynamicDialogRef,
+    public sessionService:SessionService,
   ) {
   }
 
