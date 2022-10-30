@@ -1,13 +1,13 @@
 <p-toast position="top-center" key="notifRegister"></p-toast>
 
-<div class="grid surface-section text-800 pb-8 pt-8">
-  <div class="col md:col-6 p-2 pt-2 text-center md:text-left flex align-items-center ">
+<div class="grid surface-section col-12 px-5 py-5 text-800 pt-5">
+  <div class="col md:col-6 text-center md:text-left flex align-items-center ">
     <section>
 
-      <div class="text-cyan-600 text-3xl font-bold">Registration</div>
-      <p class="text-cyan-800 text-xl mb-5">Please complete detail information on profile pages later.</p>
+      <div class="text-cyan-600 text-3xl font-bold  px-5">Registration</div>
+      <p class="text-cyan-800 text-xl mb-5  px-5">Please complete detail information on profile pages later.</p>
       <form [formGroup]="formRegister" (ngSubmit)="onSubmit()">
-        <div class="grid pt-5">
+        <div class="grid pt-5 px-5">
           <!-- name -->
           <div class="col-5 mb-2"><label for="name" class="block font-medium text-cyan-600 mb-2">Name</label>
             <input formControlName="name" type="text" pinputtext id="name" class="w-full p-inputtext">
@@ -27,14 +27,14 @@
 
 
         <!-- password -->
-        <div class="grid">
+        <div class="grid  px-5">
           <div class="col-7 mb-2"><label for="password" class="block font-medium text-cyan-600 mb-2">Password</label>
             <input formControlName="password" id="password" type="text" pinputtext class="w-full p-inputtext">
           </div>
         </div>
 
         <!-- btn -->
-        <div class="col-6 pt-4 p-0">
+        <div class="col-6 pt-4 p-0 px-5">
           <button pbutton pripple="" label="Update Profile" type="submit"
             class="w-full p-element p-ripple p-button p-component">
             <span class="p-button-label"> Register </span><span class="p-ink"></span>
@@ -43,8 +43,8 @@
       </form>
     </section>
   </div>
-  <div class="col md:col-6 px-2 overflow-hidden">
-    <img src="assets/images/hero-1.png" alt="Image" class="md:ml-auto block md:h-full"
+  <div class="col md:col-6 px-2">
+    <img src="https://www.primefaces.org/primeblocks-ng/assets/images/blocks/hero/hero-3.jpg" alt="Image" class="md:ml-auto block md:h-full"
       style="clip-path: polygon(8% 0, 100% 0%, 100% 100%, 0 100%)">
   </div>
 </div>

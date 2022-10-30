@@ -52,18 +52,22 @@ import { SessionService } from './services/session.service';
 import { HttpIntercepInterceptor } from './interceptor/http-intercep.interceptor';
 import { AuthGuard } from './auth.guard';
 import { NewsComponent } from './components/news/news.component';
+import {DataViewModule} from 'primeng/dataview';
+import { HomepageJobDetailComponent } from './components/homepage-job-detail/homepage-job-detail.component';
 
 @NgModule({
   declarations: [
     StepHomepageComponent,
     CardJobComponent,
-    NewsComponent
+    NewsComponent,
+    HomepageJobDetailComponent,
   ],
   imports: [
     CommonModule,
     BrowserAnimationsModule,
 
     //primeNg
+    DataViewModule,
     MessagesModule,
     MessageModule,
     AvatarModule,
@@ -101,6 +105,7 @@ import { NewsComponent } from './components/news/news.component';
     BrowserAnimationsModule,
 
     //primeNg
+    DataViewModule,
     MessagesModule,
     MessageModule,
     AvatarModule,
@@ -136,7 +141,8 @@ import { NewsComponent } from './components/news/news.component';
     //components
     StepHomepageComponent,
     CardJobComponent,
-    NewsComponent
+    NewsComponent,
+    HomepageJobDetailComponent
   ],
   //service in here
   providers: [
