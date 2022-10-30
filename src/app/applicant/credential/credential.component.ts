@@ -29,7 +29,7 @@ export class CredentialComponent implements OnInit {
   }
 
   onUpload(event: any) {
-    let formData:FormData = new FormData();
+    let formData: FormData = new FormData();
     for (let file of event.files) {
       formData.append("file", file);
       this.upload(formData);
@@ -38,14 +38,15 @@ export class CredentialComponent implements OnInit {
   }
 
   upload(file: any) {
-    setTimeout(() => {  this.profileService.uploadCv(file).pipe(take(1)).subscribe((data: any) => {
-      if (data.status < 300 ) {
-        this.messages('upload cv', 'success', 'Success', '/profile/details');
-        window.location.reload();
-      } else {
-        this.messages(data.message, 'warn', 'Warn', '');
-      }
-    });
+    setTimeout(() => {
+      this.profileService.uploadCv(file).pipe(take(1)).subscribe((data: any) => {
+        if (data.status < 300) {
+          this.messages('upload cv', 'success', 'Success', '/profile/details');
+          window.location.reload();
+        } else {
+          this.messages(data.message, 'warn', 'Warn', '');
+        }
+      });
     }, 5000)
   }
 

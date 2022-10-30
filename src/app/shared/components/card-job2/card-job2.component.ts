@@ -6,6 +6,7 @@ import {JobService} from "../../services/job.service";
 import {MessageService} from "primeng/api";
 import {DynamicDialogRef} from "primeng/dynamicdialog";
 import {SessionService} from "../../services/session.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-card-job2',
@@ -22,12 +23,12 @@ export class CardJob2Component implements OnInit {
   submitted = false;
 
 
-
   constructor(
     private jobService: JobService,
     public messageService: MessageService,
     private ref: DynamicDialogRef,
-    public sessionService:SessionService,
+    public sessionService: SessionService,
+    private router: Router
   ) {
   }
 
@@ -52,7 +53,6 @@ export class CardJob2Component implements OnInit {
         }
       })
     }
-
   }
 
 
@@ -72,6 +72,11 @@ export class CardJob2Component implements OnInit {
     });
     this.ref.close();
     this.submitted = false;
+  }
+
+  redirectToLogin() {
+    this.ref.close();
+    this.router.navigateByUrl(`/login`);
   }
 
 }

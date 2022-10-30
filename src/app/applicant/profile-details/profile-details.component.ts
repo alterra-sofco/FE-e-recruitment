@@ -50,17 +50,18 @@ export class ProfileDetailsComponent implements OnInit {
   }
 
   onUpload(event: any) {
-    let formData:FormData = new FormData();
+    let formData: FormData = new FormData();
     for (let file of event.files) {
       formData.append("file", file);
     }
 
-    setTimeout(() => { this.profileService.uploadProfilePicture(formData).pipe(take(1)).subscribe(data => {
-      this.userData = data.data;
-      this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: ''});
-    })
+    setTimeout(() => {
+      this.profileService.uploadProfilePicture(formData).pipe(take(1)).subscribe(data => {
+        this.userData = data.data;
+        this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: ''});
+      })
       window.location.reload();
-  }, 5000);
+    }, 5000);
 
   }
 

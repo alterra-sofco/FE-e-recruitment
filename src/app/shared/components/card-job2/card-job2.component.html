@@ -16,10 +16,12 @@
     <div class="text-600 text-xs font-italic">Posted on: {{jobDetail.updatedAt | date: 'dd MMM yyyy HH:mm'}}</div>
   </div>
   <div class="product-grid-item-bottom flex align-items-end justify-content-end">
-    <p-button icon="pi pi-check" label="Apply" styleClass="p-button-info" (click)="apply()" [loading]="submitted"
-              [disabled]="jobDetail.isApplied" *ngIf="sessionService.isUserLogin; else notLogin"></p-button>
+    <p-button icon="pi pi-check" label="Apply" styleClass="p-button-info p-button-sm" (click)="apply()"
+              [loading]="submitted"
+              [disabled]="jobDetail.isApplied" *ngIf="sessionService.isUserLogin(); else notLogin"></p-button>
     <ng-template #notLogin>
-      <p-button icon="pi pi-check" label="Apply" styleClass="p-button-info" routerLink="/login"></p-button>
+      <p-button icon="pi pi-user" label="Login untuk melamar" styleClass="p-button-warning p-button-sm"
+                (onClick)="redirectToLogin()"></p-button>
     </ng-template>
   </div>
 </div>
